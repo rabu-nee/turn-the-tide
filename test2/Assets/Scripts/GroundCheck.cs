@@ -13,12 +13,39 @@ public class GroundCheck : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
     {
-        pm.grounded = true;
+        if (col.gameObject.CompareTag("Wall"))
+        {
+            pm.grounded = false;
+        }
+        else
+        {
+            pm.grounded = true;
+        }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            pm.grounded = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+            pm.grounded = false;
+    }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        pm.grounded = true;
+        if (col.gameObject.CompareTag("Wall"))
+        {
+            pm.grounded = false;
+        }
+        else
+        {
+            pm.grounded = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)

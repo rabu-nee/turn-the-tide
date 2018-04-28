@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Jump();
         Fall();
-        Debug.Log(rb2d.velocity.y);
     }
 
     private void Move()
