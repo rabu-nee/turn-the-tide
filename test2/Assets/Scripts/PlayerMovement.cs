@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb2d;
+    private SpriteRenderer sr;
 
 
     Selected sel;
@@ -25,12 +26,16 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sel = gameObject.GetComponent<Selected>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Move();
+        Jump();
+        Fall();
+        Debug.Log(rb2d.velocity.y);
     }
 
     private void Move()
@@ -40,31 +45,25 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal") > 0f) //move right
             {
-                anim.SetFloat("State", 0);
-                anim.SetBool("IsWalking", true);
+                if (grounded)
+                {
+                    anim.SetBool("IsWalking", true);
+                }
+                sr.flipX = false;
                 rb2d.AddForce(Vector2.right * speed, ForceMode2D.Force);
             }
             else if (Input.GetAxis("Horizontal") < 0f) //move left
             {
-                anim.SetFloat("State", 1);
-                anim.SetBool("IsWalking", true);
+                if (grounded)
+                {
+                    anim.SetBool("IsWalking", true);
+                }
+                sr.flipX = true;
                 rb2d.AddForce(-Vector2.right * speed, ForceMode2D.Force);
             }
             else
             {
                 anim.SetBool("IsWalking", false);
-            }
-
-            if (Input.GetKey(KeyCode.Space) && grounded) //jump
-            {
-                if (rb2d.gravityScale > 0)
-                {
-                    rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Force);
-                }
-                else if (rb2d.gravityScale < 0)
-                {
-                    rb2d.AddForce(-Vector2.up * jumpSpeed, ForceMode2D.Force);
-                }
             }
 
             //speed limit
@@ -76,6 +75,46 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb2d.velocity = new Vector2(-maxSpeed, rb2d.velocity.y);
             }
+        }
+    }
+
+    private void Jump()
+    {
+        selected = sel.selected;
+        if (selected)
+        {
+            if (Input.GetKey(KeyCode.Space) && grounded) //jump
+            {
+                anim.SetBool("Jumping", true);
+                anim.SetBool("Grounded", false);
+                anim.SetBool("IsWalking", false);
+                if (rb2d.gravityScale > 0)
+                {
+                    rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Force);
+                }
+                else if (rb2d.gravityScale < 0)
+                {
+                    rb2d.AddForce(-Vector2.up * jumpSpeed, ForceMode2D.Force);
+                }
+            }
+        }
+    }
+
+    private void Fall()
+    {
+        if (rb2d.velocity.y < 0f)
+        {
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Falling", true);
+        }
+        if (grounded)
+        {
+            anim.SetBool("Grounded", true);
+            anim.SetBool("Falling", false);
+        }
+        else if (!grounded)
+        {
+            anim.SetBool("Grounded", false);
         }
     }
 }
