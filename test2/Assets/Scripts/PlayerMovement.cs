@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         selected = sel.selected;
         if (selected)
         {
-            if (Input.GetKey(KeyCode.Space) && grounded) //jump
+            if (Input.GetKeyDown(KeyCode.Space) && grounded) //jump
             {
                 anim.SetBool("Jumping", true);
                 anim.SetBool("Grounded", false);
@@ -102,10 +102,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Fall()
     {
-        if (rb2d.velocity.y < 0f)
+        if(rb2d.gravityScale > 0)
         {
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Falling", true);
+            if (rb2d.velocity.y < 0f)
+            {
+                anim.SetBool("Jumping", false);
+                anim.SetBool("Falling", true);
+            }
+        }
+        else if(rb2d.gravityScale < 0)
+        {
+            if (rb2d.velocity.y > 0f)
+            {
+                anim.SetBool("Jumping", false);
+                anim.SetBool("Falling", true);
+            }
         }
         if (grounded)
         {
