@@ -4,58 +4,46 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour {
 
-    GameObject[] playersObjs;
-    public Transform[] players;
-    Selected[] selectedComponents;
-
-    public Transform mainPlayer;
+    private GameObject player1, player2;
 
 	// Use this for initialization
 	void Start () {
-        playersObjs = new GameObject[GameObject.FindGameObjectsWithTag("Player").Length];
-        playersObjs = GameObject.FindGameObjectsWithTag("Player");
-        players = new Transform[playersObjs.Length];
-        selectedComponents = new Selected[playersObjs.Length];
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+        player1.GetComponent<PlayerMovement>().selected = true;
 
-        for (int i = 0; i < playersObjs.Length; i++)
-        {
-            players[i] = playersObjs[i].transform;
-            selectedComponents[i] = playersObjs[i].GetComponent<Selected>();
-            if (selectedComponents[i].selected)
-            {
-                mainPlayer = selectedComponents[i].gameObject.transform;
-            }
-        }
+        CameraFollow.S.poi = player1;
 
+        player2 = GameObject.FindGameObjectWithTag("Player2");
+        player2.GetComponent<PlayerMovement>().selected = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.JoystickButton4) == true || Input.GetKey(KeyCode.Alpha1)) //e.g. XBox controller (L) or keyboard 1
+        if (Input.GetKeyDown(KeyCode.JoystickButton4) == true || Input.GetKeyDown(KeyCode.Alpha1)) //e.g. XBox controller (L) or keyboard 1
         {
             Debug.Log("Pressed L or 1");
-            ChangeCharacter(1);
+            ChangeCharacter();
         }
-        if (Input.GetKey(KeyCode.JoystickButton5) == true || Input.GetKey(KeyCode.Alpha2)) //e.g. XBox controller (R) or keyboard 2
+        if (Input.GetKeyDown(KeyCode.JoystickButton5) == true || Input.GetKeyDown(KeyCode.Alpha2)) //e.g. XBox controller (R) or keyboard 2
         {
             Debug.Log("Pressed R or 2");
-            ChangeCharacter(0);
+            ChangeCharacter();
         }
     }
 
-    void ChangeCharacter(int index)
+    void ChangeCharacter()
     {
-        for (int i = 0; i < selectedComponents.Length; i++)
+        if(!player1.GetComponent<PlayerMovement>().selected)
         {
-            if (i == index)
-            {
-                selectedComponents[i].selected = true;
-                mainPlayer = selectedComponents[i].gameObject.transform;
-            }
-            else
-            {
-                selectedComponents[i].selected = false;
-            }
+            player1.GetComponent<PlayerMovement>().selected = true;
+            player2.GetComponent<PlayerMovement>().selected = false;
+            CameraFollow.S.poi = player1;
+        }
+        else if (player1.GetComponent<PlayerMovement>().selected)
+        {
+            player2.GetComponent<PlayerMovement>().selected = true;
+            player1.GetComponent<PlayerMovement>().selected = false;
+            CameraFollow.S.poi = player2;
         }
     }
 }

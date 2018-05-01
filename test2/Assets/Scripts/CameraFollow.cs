@@ -4,22 +4,45 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour
 {
 
-    public GameObject player;       //Public variable to store a reference to the player game object
+    public static CameraFollow S; // Singleton Instance
+
+    // Fields shown in Unity Inspector pane
+    public float easing = 0.05f;
+
+    // Fields set dynamically	
+    public GameObject poi; // The Point Of Interest
+    private float camZ; // Desired Camera Z Position
 
 
-    private Vector3 offset;         //Private variable to store the offset distance between the player and camera
-
-    // Use this for initialization
-    void Start()
+    void Awake()
     {
-        //Calculate and store the offset value by getting the distance between the player's position and camera's position.
-        offset = transform.position - player.transform.position;
+        S = this;
+        camZ = this.transform.position.z;
     }
 
-    // LateUpdate is called after Update each frame
-    void LateUpdate()
+    void FixedUpdate()
     {
-        // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
-        transform.position = player.transform.position + offset;
+
+        Vector3 destination;
+
+        // If the point of interest is empty, set it to (0,0,0)
+        if (poi == null)
+        {
+            destination = Vector3.zero;
+        }
+        else
+        {
+            // Otherwise, get the poi's position
+            destination = poi.transform.position;
+        }
+
+        // Interpolate between current camera position and poi
+        destination = Vector3.Lerp(transform.position, destination, easing);
+
+        // Save the camZ in this destination
+        destination.z = camZ;
+
+        // Set camera to this destination
+        transform.position = destination;
     }
 }

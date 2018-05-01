@@ -7,10 +7,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 position;
 
-    bool selected;
     public float speed;
     public float maxSpeed;
-    public float jumpSpeed;
+    public float jumpVel;
     public bool grounded;
 
     private Animator anim;
@@ -18,15 +17,15 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sr;
 
 
-    Selected sel;
+    public bool selected;
 
     // Use this for initialization
     void Start()
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        sel = gameObject.GetComponent<Selected>();
         sr = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -39,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        selected = sel.selected;
+
         if (selected)
         {
             if (Input.GetAxis("Horizontal") > 0f) //move right
@@ -79,21 +78,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        selected = sel.selected;
         if (selected)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && grounded) //jump
+            if (Input.GetKey(KeyCode.Space) && grounded) //jump
             {
-                anim.SetBool("Jumping", true);
-                anim.SetBool("Grounded", false);
-                anim.SetBool("IsWalking", false);
                 if (rb2d.gravityScale > 0)
                 {
-                    rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Force);
+                    rb2d.velocity = new Vector2(0, jumpVel);
+
                 }
                 else if (rb2d.gravityScale < 0)
                 {
-                    rb2d.AddForce(-Vector2.up * jumpSpeed, ForceMode2D.Force);
+                    rb2d.velocity = new Vector2(0, -jumpVel);
+                }
+                if(rb2d.velocity.y != 0)
+                {
+                    anim.SetBool("Jumping", true);
+                    anim.SetBool("Grounded", false);
+                    anim.SetBool("IsWalking", false);
                 }
             }
         }
@@ -101,30 +103,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void Fall()
     {
-        if(rb2d.gravityScale > 0)
+        if (selected)
         {
-            if (rb2d.velocity.y < 0f)
+            if (rb2d.gravityScale > 0)
             {
-                anim.SetBool("Jumping", false);
-                anim.SetBool("Falling", true);
+                if (rb2d.velocity.y < 0f)
+                {
+                    anim.SetBool("Jumping", false);
+                    anim.SetBool("Falling", true);
+                }
             }
-        }
-        else if(rb2d.gravityScale < 0)
-        {
-            if (rb2d.velocity.y > 0f)
+            else if (rb2d.gravityScale < 0)
             {
-                anim.SetBool("Jumping", false);
-                anim.SetBool("Falling", true);
+                if (rb2d.velocity.y > 0f)
+                {
+                    anim.SetBool("Jumping", false);
+                    anim.SetBool("Falling", true);
+                }
             }
-        }
-        if (grounded)
-        {
-            anim.SetBool("Grounded", true);
-            anim.SetBool("Falling", false);
-        }
-        else if (!grounded)
-        {
-            anim.SetBool("Grounded", false);
+            if (rb2d.velocity.y == 0)
+            {
+                anim.SetBool("Grounded", true);
+                anim.SetBool("Falling", false); ;
+            }
+            else if (!grounded)
+            {
+                anim.SetBool("Grounded", false);
+            }
         }
     }
 }

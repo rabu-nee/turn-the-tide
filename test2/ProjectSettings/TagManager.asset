@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Bounce
+  - Player2
+  - Player1
+  - Obstacle
   layers:
   - Default
   - TransparentFX
