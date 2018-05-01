@@ -1645,6 +1645,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1433936924}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
 --- !u!1 &1475227672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1675,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of efecee6... test commit
 --- !u!1 &1572698958
 GameObject:
   m_ObjectHideFlags: 0
