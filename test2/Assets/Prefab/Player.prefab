@@ -24,10 +24,9 @@ GameObject:
   - component: {fileID: 50500241113502830}
   - component: {fileID: 61357320534634276}
   - component: {fileID: 114316724721986708}
-  - component: {fileID: 114908956086327868}
   m_Layer: 0
   m_Name: p2
-  m_TagString: Player
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,10 +44,9 @@ GameObject:
   - component: {fileID: 50619213971067144}
   - component: {fileID: 61519226466911278}
   - component: {fileID: 114644032512341562}
-  - component: {fileID: 114186510696691676}
   m_Layer: 0
   m_Name: p1
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260718373941830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.59, z: 0}
+  m_LocalPosition: {x: -10.74, y: -1.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4309862717914732}
@@ -124,8 +122,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061914308386284}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0.27, y: -5.28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -9.22, y: -7.85, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 0}
   m_Children:
   - {fileID: 4443542457863466}
   m_Father: {fileID: 4904296965963420}
@@ -164,8 +162,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918478019402146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5388564, y: 0.5906172, z: -1.4078543}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.12, y: 2.17, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4167922540123070}
   - {fileID: 4261524940224130}
@@ -205,7 +203,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -357,20 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f137d2a343d5b40b8bff821a76160a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
-  mainPlayer: {fileID: 0}
---- !u!114 &114186510696691676
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1260718373941830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ffd186be14b994ebedf1b75b0b7f5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: 1
 --- !u!114 &114230006508915994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -393,10 +377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705cbec9571f3f4e9211332600dd688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 100
   maxSpeed: 0
-  jumpSpeed: 300
+  jumpVel: 6
   grounded: 0
+  selected: 0
 --- !u!114 &114644032512341562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,10 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705cbec9571f3f4e9211332600dd688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 200
   maxSpeed: 0
-  jumpSpeed: 300
+  jumpVel: 7
   grounded: 0
+  selected: 0
 --- !u!114 &114887991487995144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -423,18 +409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ad2ce3e21ebab4cb4764aec6e92bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114908956086327868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061914308386284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ffd186be14b994ebedf1b75b0b7f5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: 0
 --- !u!212 &212612738599149924
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -468,7 +442,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e3fa0d579038b3e46bb608f72478b028, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -512,7 +486,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c393fe148f348bb4297138797412c27e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
