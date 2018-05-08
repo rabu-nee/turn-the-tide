@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb2d;
+    private SpriteRenderer[] sp;
+
 	private bool disabledUntilContact = false;
 
 
@@ -28,9 +30,11 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sel = gameObject.GetComponent<Selected>();
+        sp = GetComponentsInChildren<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -69,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
 				anim.SetFloat ("State", 0);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = 1 * InvertControls * speed;
+
+                foreach (SpriteRenderer s in sp) {
+                    s.flipX = false;
+                }
+
 				if (isHuggingWall (1 * InvertControls)) {
 					addVel.x = 0;
 				}
@@ -76,7 +85,13 @@ public class PlayerMovement : MonoBehaviour
 				anim.SetFloat ("State", 1);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = -1 * InvertControls * speed;
-				if (isHuggingWall (-1 * InvertControls)) {
+
+                foreach (SpriteRenderer s in sp)
+                {
+                    s.flipX = true;
+                }
+
+                if (isHuggingWall (-1 * InvertControls)) {
 					addVel.x = 0;
 				}
 			} else {
@@ -116,9 +131,11 @@ public class PlayerMovement : MonoBehaviour
 		RaycastHit2D r = Physics2D.BoxCast(nPos, CastSize, 0, Vector2.down, groundedDistance, IgnoreLayers);
 
 		if (r.collider != null) {
+            anim.SetBool("Grounded", true);
 			return true;
 		} else {
-			return false;
+            anim.SetBool("Grounded", false);
+            return false;
 		}
 	}
 
