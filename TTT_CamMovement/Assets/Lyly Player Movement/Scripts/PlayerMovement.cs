@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
 			Vector2 addVel = new Vector2 (0, -gravity);
 
 			if (Input.GetAxis ("Horizontal") > 0f) { //move right
-				anim.SetFloat ("State", 0);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = 1 * InvertControls * speed;
 
@@ -82,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
 					addVel.x = 0;
 				}
 			} else if (Input.GetAxis ("Horizontal") < 0f) { //move left
-				anim.SetFloat ("State", 1);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = -1 * InvertControls * speed;
 
