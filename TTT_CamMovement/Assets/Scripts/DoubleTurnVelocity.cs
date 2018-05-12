@@ -46,7 +46,7 @@ public class DoubleTurnVelocity : MonoBehaviour {
 				GetComponent<CameraPositioning> ().yOffset = standardYoffset;
 				aimMode = false;
 				enableInput ();
-				addVelocity(performAimMode (), appliedForce);
+				//addVelocity(performAimMode (), appliedForce);
 				GetComponent<CameraPositioning> ().advanceScreen (TriggerPressed);
 				GetComponent<CameraPositioning> ().advanceScreen (TriggerPressed);
 				TriggerPressed = 0;
@@ -57,7 +57,7 @@ public class DoubleTurnVelocity : MonoBehaviour {
 
 	void FixedUpdate() {
 		if (aimMode) {
-			performAimMode ();
+			//performAimMode ();
 		}
 	}
 
@@ -65,29 +65,6 @@ public class DoubleTurnVelocity : MonoBehaviour {
 
 	//}
 
-	Vector2 performAimMode() {
-		//if ((Input.GetAxis ("LTrigger") > 0)) {
-
-		//}
-
-		//Test Dotted Line
-		float grav = 1.35f * (Input.GetAxis("Vertical") * 0.22f);
-		float fric = 1.35f * Input.GetAxis("Horizontal") * -0.3f;
-		Vector2[] Trajectory = Players[ps.currentPlayer()].GetComponent<PlayerMovement>().calculateTrajectory(numberOfDots, dir, grav, fric);
-		Vector2 v2PlayerPos = Players[ps.currentPlayer()].transform.position;
-		for (int i = 0; i < numberOfDots; i++) {
-			GameObject nPrefab = dotPrefab;
-			if (ps.currentPlayer () == 0) {
-				nPrefab.layer = 9;
-			} else {
-				nPrefab.layer = 8;
-			}
-			Instantiate (nPrefab, (v2PlayerPos + Trajectory [i]), dotPrefab.transform.rotation);
-		}
-		aimMode = false;
-
-		return Trajectory [1];
-	}
 
 	void addVelocity(Vector2 addVel, float force) {
 		Players [ps.currentPlayer()].GetComponent<Rigidbody2D> ().AddForce (addVel * force);
