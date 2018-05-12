@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb2d;
-    private SpriteRenderer[] sp;
+    private Transform tf;
 
 	private bool disabledUntilContact = false;
 
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sel = gameObject.GetComponent<Selected>();
-        sp = GetComponentsInChildren<SpriteRenderer>();
+        tf = GetComponent<Transform>();
 
     }
 
@@ -70,26 +70,19 @@ public class PlayerMovement : MonoBehaviour
 			Vector2 addVel = new Vector2 (0, -gravity);
 
 			if (Input.GetAxis ("Horizontal") > 0f) { //move right
-				anim.SetFloat ("State", 0);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = 1 * InvertControls * speed;
 
-                foreach (SpriteRenderer s in sp) {
-                    s.flipX = false;
-                }
+                tf.localScale = new Vector3(1, 1, 1);
 
 				if (isHuggingWall (1 * InvertControls)) {
 					addVel.x = 0;
 				}
 			} else if (Input.GetAxis ("Horizontal") < 0f) { //move left
-				anim.SetFloat ("State", 1);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = -1 * InvertControls * speed;
 
-                foreach (SpriteRenderer s in sp)
-                {
-                    s.flipX = true;
-                }
+                tf.localScale = new Vector3(-1, 1, 1);
 
                 if (isHuggingWall (-1 * InvertControls)) {
 					addVel.x = 0;
