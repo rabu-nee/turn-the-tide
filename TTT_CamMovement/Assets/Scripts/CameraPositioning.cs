@@ -42,9 +42,9 @@ public class CameraPositioning : MonoBehaviour {
 		transform.rotation = Quaternion.Euler (curEuler);
 
 		//Keep curEuler & desiredEuler as low as possible to avoid potential overflow
-		while (Mathf.Abs (curEuler.z) >= 360) {
-			curEuler.z -= (360 * getSign (curEuler.z));
-			desiredEuler.z -= (360 * getSign (desiredEuler.z));
+		while (Mathf.Abs (curEuler.y) >= 360) {
+			curEuler.y -= (360 * getSign (curEuler.z));
+			desiredEuler.y -= (360 * getSign (desiredEuler.y));
 		}
 
 		//Change camera height based on current screen
@@ -84,7 +84,7 @@ public class CameraPositioning : MonoBehaviour {
 	}
 
 	Vector3 addEulerRotation(Vector3 euler, int dir) {
-		euler.z += 180 * (dir);
+		euler.y += 180 * (dir);
 
 		return euler;
 	}

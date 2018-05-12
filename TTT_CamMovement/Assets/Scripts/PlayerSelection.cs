@@ -12,7 +12,7 @@ public class PlayerSelection : MonoBehaviour {
 
 	void Start () {
 		Players = GameObject.FindGameObjectsWithTag ("Player");
-		camPos = GameObject.FindWithTag ("MainCamera").GetComponent<CameraPositioning> ();
+		camPos = GameObject.Find("RotatingPiece").GetComponent<CameraPositioning> ();
 	}
 
 	void FixedUpdate() {

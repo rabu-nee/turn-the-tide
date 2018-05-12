@@ -4270,13 +4270,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimMode: 0
-  Players:
-  - {fileID: 1102353628}
-  - {fileID: 2126484460}
-  ps: {fileID: 1211870707}
+  Players: []
+  ps: {fileID: 0}
   numberOfDots: 5
-  dotPrefab: {fileID: 1071726546811520, guid: e7b70ce0d99f71e43874fd993c010861, type: 2}
-  appliedForce: 900
+  dotPrefab: {fileID: 0}
+  appliedForce: 30
 --- !u!114 &469915711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4291,10 +4289,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Players: []
   maxTurns: 1
-  rotationSpeed: 8
-  movementSpeed: 3.25
+  rotationSpeed: 2
+  movementSpeed: 2
   velocityIntensity: 2
-  yOffset: 0.45
+  yOffset: 1
 --- !u!20 &469915712
 Camera:
   m_ObjectHideFlags: 0
@@ -4363,7 +4361,7 @@ Transform:
   m_GameObject: {fileID: 472136121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.55, y: 4.46, z: 0}
-  m_LocalScale: {x: 1.022533, y: 1.0225334, z: 1.0225334}
+  m_LocalScale: {x: -1.022533, y: -1.022533, z: 1.0225334}
   m_Children: []
   m_Father: {fileID: 1886771450}
   m_RootOrder: 1
@@ -4380,7 +4378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ffd186be14b994ebedf1b75b0b7f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: 1
+  selected: 0
 --- !u!61 &472136124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4440,15 +4438,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705cbec9571f3f4e9211332600dd688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
+  speed: 0
   maxSpeed: 0
-  jumpSpeed: 1070
-  groundedDistance: 0.05
-  gravity: 53
+  jumpSpeed: 0
+  groundedDistance: 0
+  gravity: 0
   IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 512
-  CastSize: {x: 1, y: 0.01}
+    m_Bits: 0
+  CastSize: {x: 0, y: 0}
   castOffset: 0.7
   InvertControls: 1
 --- !u!95 &472136127
@@ -7763,7 +7761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ffd186be14b994ebedf1b75b0b7f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: 1
+  selected: 0
 --- !u!61 &1007668935
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7823,15 +7821,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705cbec9571f3f4e9211332600dd688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
+  speed: 0
   maxSpeed: 0
-  jumpSpeed: 1070
-  groundedDistance: 0.05
-  gravity: 53
+  jumpSpeed: 0
+  groundedDistance: 0
+  gravity: 0
   IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 256
-  CastSize: {x: 1, y: 0.01}
+    m_Bits: 0
+  CastSize: {x: 0, y: 0}
   castOffset: 0.7
   InvertControls: 1
 --- !u!95 &1007668938
@@ -8354,7 +8352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ffd186be14b994ebedf1b75b0b7f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: 1
+  selected: 0
 --- !u!61 &1054355210
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8414,15 +8412,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705cbec9571f3f4e9211332600dd688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
-  maxSpeed: 0
-  jumpSpeed: 1070
-  groundedDistance: 0.05
+  speed: 350
+  maxSpeed: 350
+  jumpSpeed: 20
+  groundedDistance: 0.02
   gravity: 53
   IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 256
-  CastSize: {x: 1, y: 0.01}
+    m_Bits: 0
+  CastSize: {x: 0.2, y: 0}
   castOffset: 0.7
   InvertControls: 1
 --- !u!95 &1054355213
@@ -9565,12 +9563,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!114 &1211870707 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114573499019994958, guid: 6e0584dec17f91249b3e32244dbd9a38,
-    type: 2}
-  m_PrefabInternal: {fileID: 47879214}
-  m_Script: {fileID: 11500000, guid: 6664d90ece5eb93419b648c5680a4acd, type: 3}
 --- !u!1 &1215894022
 GameObject:
   m_ObjectHideFlags: 0
@@ -12490,7 +12482,6 @@ GameObject:
   - component: {fileID: 1713540177}
   - component: {fileID: 1713540176}
   - component: {fileID: 1713540175}
-  - component: {fileID: 1713540174}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -12498,25 +12489,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1713540174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1713540173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12b0822836f7ad94e817ff71446cae79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Players:
-  - {fileID: 1054355207}
-  - {fileID: 472136121}
-  maxTurns: 1
-  rotationSpeed: 2
-  movementSpeed: 2
-  velocityIntensity: 2
-  yOffset: 0
 --- !u!124 &1713540175
 Behaviour:
   m_ObjectHideFlags: 0
@@ -13158,6 +13130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CAM: {fileID: 0}
+  TextureSize: {x: 0, y: 0}
 --- !u!4 &1847096322
 Transform:
   m_ObjectHideFlags: 0
@@ -13586,7 +13559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Players: []
   maxTurns: 1
-  rotationSpeed: 2
+  rotationSpeed: 5
   movementSpeed: 2
   velocityIntensity: 2
   yOffset: 0
@@ -14734,6 +14707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CAM: {fileID: 60126178}
+  TextureSize: {x: 1080, y: 1080}
 --- !u!1 &2089698519
 GameObject:
   m_ObjectHideFlags: 0
