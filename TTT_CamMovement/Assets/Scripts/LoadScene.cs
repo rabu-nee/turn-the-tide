@@ -8,4 +8,10 @@ public class LoadScene : MonoBehaviour {
 	public void LoadCamMovScene(){
 		SceneManager.LoadScene ("CamMovementScene");
 	}
+
+	public void Update() {
+		if (Input.GetButton ("Jump")) {
+			SceneManager.LoadScene ("CamMovementScene");
+		}
+	}
 }

@@ -1,9 +1,24 @@
 fileFormatVersion: 2
 guid: 791c57af62dc536419d9af1c51b5088c
-timeCreated: 1526128242
+timeCreated: 1526130055
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: grandpa_0
+    21300002: grandpa_1
+    21300004: grandpa_2
+    21300006: grandpa_3
+    21300008: grandpa_4
+    21300010: grandpa_5
+    21300012: grandpa_6
+    21300014: grandpa_7
+    21300016: grandpa_8
+    21300018: grandpa_9
+    21300020: grandpa_10
+    21300022: grandpa_11
+    21300024: grandpa_12
+    21300026: grandpa_13
+    21300028: grandpa_14
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -30,7 +45,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -39,12 +54,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  alignment: 9
+  spritePivot: {x: 0.7256944, y: 0.49485597}
+  spriteBorder: {x: 718, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -63,9 +78,227 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: grandpa_0
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 792
+        width: 296
+        height: 288
+      alignment: 9
+      pivot: {x: 0.5165133, y: 0.44059753}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_1
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 495
+        width: 276
+        height: 299
+      alignment: 9
+      pivot: {x: 0.5265649, y: 0.5326955}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_2
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 64
+        width: 172
+        height: 564
+      alignment: 9
+      pivot: {x: 0.5142088, y: 0.66466606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_3
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 607
+        width: 149
+        height: 119
+      alignment: 9
+      pivot: {x: 0.86085784, y: 0.82860404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_4
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 610
+        width: 149
+        height: 126
+      alignment: 9
+      pivot: {x: 0.12273965, y: 0.8879356}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_5
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 428
+        width: 112
+        height: 156
+      alignment: 9
+      pivot: {x: 0.71821266, y: 0.87599885}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_6
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 299
+        width: 112
+        height: 165
+      alignment: 9
+      pivot: {x: 0.5872846, y: 0.8703016}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_7
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 297
+        width: 112
+        height: 161
+      alignment: 9
+      pivot: {x: 0.5872846, y: 0.8643217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_8
+      rect:
+        serializedVersion: 2
+        x: 1748
+        y: 412
+        width: 112
+        height: 157
+      alignment: 9
+      pivot: {x: 0.3472508, y: 0.9047377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_9
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 239
+        width: 89
+        height: 106
+      alignment: 9
+      pivot: {x: 0.52746034, y: 0.93807405}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_10
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 156
+        width: 108
+        height: 125
+      alignment: 9
+      pivot: {x: 0.36422276, y: 0.89103806}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_11
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 115
+        width: 107
+        height: 129
+      alignment: 9
+      pivot: {x: 0.36295384, y: 0.8789137}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_12
+      rect:
+        serializedVersion: 2
+        x: 1780
+        y: 235
+        width: 92
+        height: 109
+      alignment: 9
+      pivot: {x: 0.5265662, y: 0.8363286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_13
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 20
+        width: 129
+        height: 88
+      alignment: 9
+      pivot: {x: 0.6705105, y: 0.8888161}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandpa_14
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 12
+        width: 129
+        height: 89
+      alignment: 9
+      pivot: {x: 0.6705095, y: 0.8020663}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

@@ -6,14 +6,20 @@ public class CameraPositioning : MonoBehaviour {
 
 	Quaternion standardRotation;
 	Vector3 CurEuler = Vector3.zero;
+	public GameObject[] Players;
 	Vector3 curEuler;
 	Vector3 desiredEuler;
+	public int maxTurns = 1;
 	public float rotationSpeed = 2f;
 	public float movementSpeed = 2f;
+	public float velocityIntensity = 2f;
 	Vector3 standardPosition;
 	public float yOffset = 1;
 	int curScreen = 1;
+	private bool buttonHit = false;
+
 	private bool allowInput = true;
+	private PlayerSelection ps;
 
 	//BUILT-IN-FUNCTIONS===================================================================================================================
 
@@ -23,6 +29,7 @@ public class CameraPositioning : MonoBehaviour {
 		curEuler = standardRotation.eulerAngles;
 
 		standardPosition = transform.position;
+		ps = GameObject.Find ("Players").GetComponent<PlayerSelection> ();
 	}
 
 	void Update () {
@@ -50,6 +57,30 @@ public class CameraPositioning : MonoBehaviour {
 	public void advanceScreen(int dir) {
 		desiredEuler = addEulerRotation (desiredEuler, dir);
 		curScreen = -curScreen;
+		turnVelocity (dir);
+	}
+
+	public void turnVelocity(int dir) {
+		Vector2 vel = new Vector2 (1, 1);
+		vel.x *= dir;
+		vel *= velocityIntensity;
+		//Adding velocity to Physics Objects
+		GameObject[] po = GameObject.FindGameObjectsWithTag("PhysObj");
+		foreach (GameObject g in po) {
+			int nDir = (int) Mathf.Clamp (g.GetComponent<Rigidbody2D> ().gravityScale, -1, 1);
+			g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir * 0.3f);
+		}
+
+		//Adding velocity to Players
+		foreach (GameObject g in Players) {
+			if ((!g.GetComponent<PlayerMovement> ().isGrounded ()) && (g.GetComponent<PlayerMovement> ().getTurns() < maxTurns)) {
+				int nDir = g.GetComponent<PlayerMovement>().getGravityWeight();
+				g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir);
+				g.GetComponent<PlayerMovement> ().disableUntilContact ();
+				g.GetComponent<PlayerMovement> ().addTurn ();
+			}
+		}
+
 	}
 
 	Vector3 addEulerRotation(Vector3 euler, int dir) {
@@ -78,13 +109,19 @@ public class CameraPositioning : MonoBehaviour {
 	void debugInput() {
 		if (allowInput) { 
 			//Turn Screen to the left
-			if (Input.GetButtonDown ("LBumper")) {
+			if ((Input.GetButtonDown ("LBumper") || (Input.GetAxis ("LTrigger") > 0)) && (buttonHit == false)) {
 				advanceScreen (-1);
+				buttonHit = true;
 			}
 
 			//Turn Screen to the right
-			if (Input.GetButtonDown ("RBumper")) {
+			if ((Input.GetButtonDown ("RBumper") || (Input.GetAxis ("RTrigger") > 0)) && (buttonHit == false)) {
 				advanceScreen (1);
+				buttonHit = true;
+			}
+
+			if ((Input.GetAxis ("LTrigger") == 0) && (Input.GetAxis ("RTrigger") == 0)) {
+				buttonHit = false;
 			}
 		}
 	}
