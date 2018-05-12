@@ -1,24 +1,24 @@
 fileFormatVersion: 2
 guid: 791c57af62dc536419d9af1c51b5088c
-timeCreated: 1526130055
+timeCreated: 1526131840
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: grandpa_0
-    21300002: grandpa_1
-    21300004: grandpa_2
-    21300006: grandpa_3
-    21300008: grandpa_4
-    21300010: grandpa_5
-    21300012: grandpa_6
-    21300014: grandpa_7
-    21300016: grandpa_8
-    21300018: grandpa_9
-    21300020: grandpa_10
-    21300022: grandpa_11
-    21300024: grandpa_12
-    21300026: grandpa_13
-    21300028: grandpa_14
+    21300000: grandpa_head
+    21300002: grandpa_torso
+    21300004: grandpa_stick
+    21300006: grandpa_shoulder_l
+    21300008: grandpa_shoulder_r
+    21300010: grandpa_arm_l
+    21300012: grandpa_thigh_l
+    21300014: grandpa_thigh_r
+    21300016: grandpa_arm_right
+    21300018: grandpa_hand_l
+    21300020: grandpa_leg_l
+    21300022: grandpa_leg_r
+    21300024: grandpa_hand_r
+    21300026: grandpa_foot_l
+    21300028: grandpa_foot_r
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -90,7 +90,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grandpa_0
+      name: grandpa_head
       rect:
         serializedVersion: 2
         x: 1256
@@ -104,7 +104,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_1
+      name: grandpa_torso
       rect:
         serializedVersion: 2
         x: 1336
@@ -112,13 +112,13 @@ TextureImporter:
         width: 276
         height: 299
       alignment: 9
-      pivot: {x: 0.5265649, y: 0.5326955}
+      pivot: {x: 0.55099136, y: 0.5191673}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_2
+      name: grandpa_stick
       rect:
         serializedVersion: 2
         x: 760
@@ -132,7 +132,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_3
+      name: grandpa_shoulder_l
       rect:
         serializedVersion: 2
         x: 1076
@@ -146,7 +146,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_4
+      name: grandpa_shoulder_r
       rect:
         serializedVersion: 2
         x: 1667
@@ -160,7 +160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_5
+      name: grandpa_arm_l
       rect:
         serializedVersion: 2
         x: 1033
@@ -174,7 +174,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_6
+      name: grandpa_thigh_l
       rect:
         serializedVersion: 2
         x: 1353
@@ -188,7 +188,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_7
+      name: grandpa_thigh_r
       rect:
         serializedVersion: 2
         x: 1548
@@ -202,7 +202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_8
+      name: grandpa_arm_right
       rect:
         serializedVersion: 2
         x: 1748
@@ -216,7 +216,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_9
+      name: grandpa_hand_l
       rect:
         serializedVersion: 2
         x: 1023
@@ -230,7 +230,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_10
+      name: grandpa_leg_l
       rect:
         serializedVersion: 2
         x: 1324
@@ -244,7 +244,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_11
+      name: grandpa_leg_r
       rect:
         serializedVersion: 2
         x: 1563
@@ -258,7 +258,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_12
+      name: grandpa_hand_r
       rect:
         serializedVersion: 2
         x: 1780
@@ -272,7 +272,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_13
+      name: grandpa_foot_l
       rect:
         serializedVersion: 2
         x: 1299
@@ -286,7 +286,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grandpa_14
+      name: grandpa_foot_r
       rect:
         serializedVersion: 2
         x: 1567
