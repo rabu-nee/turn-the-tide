@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
 	public float castOffset = 0.7f;
 	public int InvertControls = 1;
 
+	private Vector2 startPos;
     private Animator anim;
     private Rigidbody2D rb2d;
-    private SpriteRenderer[] sp;
-
 	private bool disabledUntilContact = false;
+	private int turnVelocityAdded = 0;
 
 
     Selected sel;
@@ -30,11 +30,10 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+		startPos = transform.position;
+        anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sel = gameObject.GetComponent<Selected>();
-        sp = GetComponentsInChildren<SpriteRenderer>();
-
     }
 
     // Update is called once per frame
@@ -73,11 +72,6 @@ public class PlayerMovement : MonoBehaviour
 				anim.SetFloat ("State", 0);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = 1 * InvertControls * speed;
-
-                foreach (SpriteRenderer s in sp) {
-                    s.flipX = false;
-                }
-
 				if (isHuggingWall (1 * InvertControls)) {
 					addVel.x = 0;
 				}
@@ -85,13 +79,7 @@ public class PlayerMovement : MonoBehaviour
 				anim.SetFloat ("State", 1);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = -1 * InvertControls * speed;
-
-                foreach (SpriteRenderer s in sp)
-                {
-                    s.flipX = true;
-                }
-
-                if (isHuggingWall (-1 * InvertControls)) {
+				if (isHuggingWall (-1 * InvertControls)) {
 					addVel.x = 0;
 				}
 			} else {
@@ -117,25 +105,20 @@ public class PlayerMovement : MonoBehaviour
 
 	private void checkJump(){
 		if (Input.GetButtonDown ("Jump") && isGrounded ()) { //jump
-			if (rb2d.gravityScale >= 0) {
-				rb2d.AddForce (Vector2.up * jumpSpeed, ForceMode2D.Force);
-			} else if (rb2d.gravityScale < 0) {
-				rb2d.AddForce (-Vector2.up * jumpSpeed, ForceMode2D.Force);
-			}
+			rb2d.AddForce (Vector2.up * jumpSpeed * getGravityWeight(), ForceMode2D.Force);
 		}
 	}
 
 	public bool isGrounded(){
 		Vector3 nPos = transform.position;
-		nPos.y -= castOffset;
-		RaycastHit2D r = Physics2D.BoxCast(nPos, CastSize, 0, Vector2.down, groundedDistance, IgnoreLayers);
+		nPos.y -= castOffset * getGravityWeight();
+		RaycastHit2D r = Physics2D.BoxCast(nPos, CastSize, 0, Vector2.down * getGravityWeight(), groundedDistance, IgnoreLayers);
 
 		if (r.collider != null) {
-            anim.SetBool("Grounded", true);
+			turnVelocityAdded = 0;
 			return true;
 		} else {
-            anim.SetBool("Grounded", false);
-            return false;
+			return false;
 		}
 	}
 
@@ -152,30 +135,18 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
+	public void setToStartPosition() {
+		rb2d.velocity = Vector2.zero;
+		transform.position = startPos;
+	}
+
+	public int getGravityWeight(){
+		return (int)Mathf.Clamp (gravity, -1, 1);
+	}
+
 	private Vector2 flipV2(Vector2 input) {
 		Vector2 res = new Vector2 (input.y, input.x);
 		return res;
-	}
-
-	public Vector2[] calculateTrajectory(int stepAmount, int dir, float grav, float fric){
-		//Calculate direction
-		Vector2 nDirection = Vector2.up - (dir * InvertControls * Vector2.right);
-
-		//Setup Array and calculate trajectory
-		Vector2[] nTrajectory = new Vector2[stepAmount];
-		nTrajectory [0] = nDirection;
-		for (int i = 1; i < stepAmount; i++) {
-			nTrajectory [i] = applyFriction (nTrajectory [i - 1]*1.62f, grav, fric);
-		}
-
-		return nTrajectory;
-	}
-
-	private Vector2 applyFriction(Vector2 input, float grav, float fric) {
-		input.x -= fric;
-		input.y += grav;
-
-		return input;
 	}
 
 	public void disableUntilContact() {
@@ -184,5 +155,13 @@ public class PlayerMovement : MonoBehaviour
 
 	public bool getDisableUntilContact() {
 		return disabledUntilContact;
+	}
+
+	public void addTurn() {
+		turnVelocityAdded++;
+	}
+
+	public int getTurns() {
+		return turnVelocityAdded;
 	}
 }
