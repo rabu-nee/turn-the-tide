@@ -118,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
 			turnVelocityAdded = 0;
 			return true;
 		} else {
+			Debug.Log ("nix");
 			return false;
 		}
 	}
