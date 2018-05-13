@@ -66,9 +66,11 @@ public class CameraPositioning : MonoBehaviour {
 		vel *= velocityIntensity;
 		//Adding velocity to Physics Objects
 		GameObject[] po = GameObject.FindGameObjectsWithTag("PhysObj");
-		foreach (GameObject g in po) {
-			int nDir = (int) Mathf.Clamp (g.GetComponent<Rigidbody2D> ().gravityScale, -1, 1);
-			g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir * 0.3f);
+		if (po != null) {
+			foreach (GameObject g in po) {
+				int nDir = (int)Mathf.Clamp (g.GetComponent<Rigidbody2D> ().gravityScale, -1, 1);
+				g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir * 0.3f);
+			}
 		}
 
 		//Adding velocity to Players
