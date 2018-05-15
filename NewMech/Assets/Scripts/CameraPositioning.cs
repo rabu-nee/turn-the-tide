@@ -75,7 +75,7 @@ public class CameraPositioning : MonoBehaviour {
 
 		//Adding velocity to Players
 		foreach (GameObject g in Players) {
-			if ((!g.GetComponent<PlayerMovement> ().grounded /*isGrounded()*/) && (g.GetComponent<PlayerMovement> ().getTurns() < maxTurns)) {
+			if ((!g.GetComponent<PlayerMovement> ().isGrounded()) && (g.GetComponent<PlayerMovement> ().getTurns() < maxTurns)) {
 				int nDir = g.GetComponent<PlayerMovement>().getGravityWeight();
 				g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir);
 				g.GetComponent<PlayerMovement> ().disableUntilContact ();

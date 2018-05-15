@@ -10,16 +10,7 @@ public class GroundCheck : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        pm = gameObject.GetComponentInParent<PlayerMovement>();
+        //pm = gameObject.GetComponentInParent<PlayerMovement>();
     }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        pm.grounded = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        pm.grounded = false;
-    }
+		
 }

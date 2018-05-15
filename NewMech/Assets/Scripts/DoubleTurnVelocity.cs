@@ -23,7 +23,7 @@ public class DoubleTurnVelocity : MonoBehaviour {
 	}
 
 	void Update () {
-		if (((Input.GetAxis ("LTrigger") > 0) || (Input.GetAxis ("RTrigger") > 0)) && (!Players[ps.currentPlayer()].GetComponent<PlayerMovement>().grounded /*isGrounded()*/)) {
+		if (((Input.GetAxis ("LTrigger") > 0) || (Input.GetAxis ("RTrigger") > 0)) && (!Players[ps.currentPlayer()].GetComponent<PlayerMovement>().isGrounded())) {
 			if (!Players[ps.currentPlayer()].GetComponent<PlayerMovement>().getDisableUntilContact()) {
 				if (Input.GetAxis ("LTrigger") > 0) {
 					dir =  1;
