@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed;
 	public float groundedDistance;
 	public float gravity;
+    public bool grounded;
 	public LayerMask IgnoreLayers;
 	public Vector2 CastSize;
 	public float castOffset = 0.7f;
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 			} else {
 				Vector2 addVel = new Vector2 (0, -gravity);
 				rb2d.AddForce (addVel, ForceMode2D.Force);
-				if (isGrounded () == true) {
+				if (/*isGrounded () == true*/ grounded) {
                     disabledUntilContact = false;
 				}
 			}
@@ -106,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 	private void checkJump(){
-		if (Input.GetButtonDown ("Jump") && isGrounded ()) { //jump
+		if (Input.GetButtonDown ("Jump") && /*isGrounded()*/ grounded) { //jump
 			rb2d.AddForce (Vector2.up * jumpSpeed * getGravityWeight(), ForceMode2D.Force);
             anim.SetBool("IsJumping", true);
 		}
@@ -116,7 +117,8 @@ public class PlayerMovement : MonoBehaviour
         }
 	}
 
-	public bool isGrounded(){
+	/*
+     public bool isGrounded(){
 		Vector3 nPos = transform.position;
 		nPos.y -= castOffset * getGravityWeight();
 		RaycastHit2D r = Physics2D.BoxCast(nPos, CastSize, 0, Vector2.down * getGravityWeight(), groundedDistance, IgnoreLayers);
@@ -130,6 +132,8 @@ public class PlayerMovement : MonoBehaviour
 			return false;
 		}
 	}
+    */
+
 
 	public bool isHuggingWall(int dir){
 		Vector3 nPos = transform.position;
