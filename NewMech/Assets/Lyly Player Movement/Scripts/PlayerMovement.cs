@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    Vector2 position;
-
     bool selected;
     public float speed;
     public float maxSpeed;
