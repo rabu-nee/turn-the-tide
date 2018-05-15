@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class RemoveBarriers : MonoBehaviour {
 
-	//BUILT-IN-FUNCTIONS===================================================================================================================
-
+	public string desiredTag = "Player";
+	
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.CompareTag ("Player")) {
+		if (col.gameObject.CompareTag (desiredTag)) {
 			GameObject[] del = GameObject.FindGameObjectsWithTag (this.tag);
 			foreach (GameObject g in del) {
 				if (g != this.gameObject) {

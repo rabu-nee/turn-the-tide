@@ -43,7 +43,7 @@ public class CameraPositioning : MonoBehaviour {
 
 		//Keep curEuler & desiredEuler as low as possible to avoid potential overflow
 		while (Mathf.Abs (curEuler.y) >= 360) {
-			curEuler.y -= (360 * getSign (curEuler.z));
+			curEuler.y -= (360 * getSign (curEuler.y));
 			desiredEuler.y -= (360 * getSign (desiredEuler.y));
 		}
 

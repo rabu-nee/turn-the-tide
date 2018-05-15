@@ -137,7 +137,6 @@ public class PlayerMovement : MonoBehaviour
 
 		if (r.collider != null) {
 			anim.SetBool("IsWalking", false);
-			Debug.Log (r.collider.gameObject.name);
 			return true;
 		} else {
 			return false;

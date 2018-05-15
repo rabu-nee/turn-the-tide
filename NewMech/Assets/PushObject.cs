@@ -8,7 +8,7 @@ public class PushObject : MonoBehaviour {
 	int numberCol = 0;
 	public float shiftDistance = 0.3f;
 
-
+	/*
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.CompareTag ("Player")) {
 			playercols [numberCol] = other.gameObject;
@@ -26,6 +26,16 @@ public class PushObject : MonoBehaviour {
 				numberCol--;
 			} else {
 				numberCol++;
+			}
+		}
+	}*/
+
+	void OnCollisionEnter2D(Collision2D other) {
+		if (other.gameObject.CompareTag ("Player")) {
+			if (other.gameObject.name == "PL1") {
+				Debug.Log ("test");
+				transform.position = new Vector3 (transform.position.x, transform.position.y - shiftDistance, transform.position.z);
+				GameObject.Find ("PL2").GetComponent<Rigidbody2D> ().AddForce (new Vector2(0,1500));
 			}
 		}
 	}

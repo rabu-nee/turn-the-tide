@@ -504,8 +504,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45520562}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 76.652, y: -13.48, z: 2.214}
-  m_LocalScale: {x: 1.0963811, y: 0.09254158, z: 0.12763003}
+  m_LocalPosition: {x: 76.413, y: -13.48, z: 2.214}
+  m_LocalScale: {x: 1.0562392, y: 0.09254158, z: 0.12763003}
   m_Children: []
   m_Father: {fileID: 1141654203}
   m_RootOrder: 6
@@ -5401,7 +5401,7 @@ GameObject:
   - component: {fileID: 484309578}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: PhysObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7655,6 +7655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda8b66112bce34429349adf8d40cd43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desiredTag: Player
 --- !u!61 &813245338
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12667,8 +12668,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1454255394}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 81.08, y: -13.48, z: -0.13}
-  m_LocalScale: {x: 1.09638, y: 0.09254001, z: 0.12763003}
+  m_LocalPosition: {x: 81.293, y: -13.48, z: -0.157}
+  m_LocalScale: {x: 1.0607122, y: 0.08762338, z: 0.12763003}
   m_Children: []
   m_Father: {fileID: 1141654203}
   m_RootOrder: 24
@@ -12890,7 +12891,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489531595}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 89.54, y: -13.48, z: -2.52}
+  m_LocalPosition: {x: 89.54, y: -12.97, z: -2.52}
   m_LocalScale: {x: 0.74103683, y: 1.0185684, z: 0.12763003}
   m_Children: []
   m_Father: {fileID: 1141654203}
@@ -12976,6 +12977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4a5a6591a34d145a0f2786c6635ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shiftDistance: 0.3
 --- !u!1 &1513039618
 GameObject:
   m_ObjectHideFlags: 0
@@ -14188,7 +14190,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591352777}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 72.75305, y: -0, z: -16.733004}
+  m_LocalPosition: {x: 72.75305, y: 0, z: -14.55}
   m_LocalScale: {x: 2.3629, y: 2.3629, z: 2.3629}
   m_Children: []
   m_Father: {fileID: 1141654203}
@@ -14996,7 +14998,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1713540173}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 523.897, y: 312.52, z: 13.484308}
+  m_LocalPosition: {x: 523.897, y: 312.463, z: 13.484308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16313,6 +16315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda8b66112bce34429349adf8d40cd43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desiredTag: Player
 --- !u!61 &1941225551
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17252,6 +17255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda8b66112bce34429349adf8d40cd43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desiredTag: PhysObj
 --- !u!61 &2044397812
 BoxCollider2D:
   m_ObjectHideFlags: 0
