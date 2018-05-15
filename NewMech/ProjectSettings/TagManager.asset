@@ -7,6 +7,7 @@ TagManager:
   - BlueBarrier
   - RedBarrier
   - GreyBarrier
+  - PhysObj
   layers:
   - Default
   - TransparentFX

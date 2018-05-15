@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb2d;
 	private bool disabledUntilContact = false;
 	private int turnVelocityAdded = 0;
+    private Transform tf;
 
 
     Selected sel;
@@ -31,9 +32,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 		startPos = transform.position;
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sel = gameObject.GetComponent<Selected>();
+        tf = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -48,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 				Vector2 addVel = new Vector2 (0, -gravity);
 				rb2d.AddForce (addVel, ForceMode2D.Force);
 				if (isGrounded () == true) {
-					disabledUntilContact = false;
+                    disabledUntilContact = false;
 				}
 			}
 		}
@@ -69,14 +71,14 @@ public class PlayerMovement : MonoBehaviour
 			Vector2 addVel = new Vector2 (0, -gravity);
 
 			if (Input.GetAxis ("Horizontal") > 0f) { //move right
-				anim.SetFloat ("State", 0);
+                tf.localScale = new Vector3(-1, tf.localScale.y, tf.localScale.z);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = 1 * InvertControls * speed;
 				if (isHuggingWall (1 * InvertControls)) {
 					addVel.x = 0;
 				}
 			} else if (Input.GetAxis ("Horizontal") < 0f) { //move left
-				anim.SetFloat ("State", 1);
+                tf.localScale = new Vector3(1, tf.localScale.y, tf.localScale.z);
 				anim.SetBool ("IsWalking", true);
 				addVel.x = -1 * InvertControls * speed;
 				if (isHuggingWall (-1 * InvertControls)) {
@@ -97,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 				rb2d.velocity = new Vector2 (-maxSpeed, rb2d.velocity.y);
 			}
 		} else {
-			anim.SetBool ("IsWalking", false);
+			//anim.SetBool ("IsWalking", false);
 			Vector2 addVel = new Vector2 (0, -gravity);
 			rb2d.AddForce (addVel, ForceMode2D.Force);
 		}
@@ -106,7 +108,12 @@ public class PlayerMovement : MonoBehaviour
 	private void checkJump(){
 		if (Input.GetButtonDown ("Jump") && isGrounded ()) { //jump
 			rb2d.AddForce (Vector2.up * jumpSpeed * getGravityWeight(), ForceMode2D.Force);
+            anim.SetBool("IsJumping", true);
 		}
+        else if (rb2d.velocity.y == 0)
+        {
+            anim.SetBool("IsJumping", false);
+        }
 	}
 
 	public bool isGrounded(){
@@ -116,7 +123,8 @@ public class PlayerMovement : MonoBehaviour
 
 		if (r.collider != null) {
 			turnVelocityAdded = 0;
-			return true;
+            anim.SetBool("IsJumping", false);
+            return true;
 		} else {
 			Debug.Log ("nix");
 			return false;
