@@ -17,12 +17,16 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	void Update () {
+		controllerInput ();
 		turnLevel ();
 	}
 
-	//####> CUSTOM FUNCTIONS <##############################################################################################
+	//####> CUSTOM FUNCTIONS <###############################################################################################
 	void turnLevel() {
 		elapsedTurnTime += Time.deltaTime;
+
+		Vector3 newEuler = Vector3.Lerp (transform.rotation.eulerAngles, desiredRotation, Time.deltaTime * standardTurnTime);
+		transform.rotation = Quaternion.Euler(newEuler);
 	}
 
 	void resetOvershootRotation() {
@@ -51,25 +55,28 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	void controllerInput() {
-		if (Input.GetKeyDown ("Q")) {
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			Debug.Log ("hit q");
 			advanceScreen (-1);
 		}
 
-		if (Input.GetKeyDown ("W")) {
+		if (Input.GetKeyDown (KeyCode.W)) {
+			Debug.Log ("hit w");
 			advanceScreen (1);
 		}
 	}
 
 	public int getNumberWeight(float num) {
+		int ret = 0;
+
 		if (num > 0) {
-			return 1;
-		}
+			ret = 1;
+		} 
 		if (num < 0) {
-			return -1;
+			ret = -1;
 		}
-		if (num == 0) {
-			return 0;
-		}
+
+		return ret;
 	}
 
 	public bool isDivBy(float input, float div) {
