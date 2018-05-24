@@ -3,87 +3,157 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelRotation : MonoBehaviour {
+	
+	public float rotationSpeed;
+	public float movementSpeed = 2f;
+	public float velocityIntensity = 2f;
 
-	public float standardTurnTime = 2f;
-
+	private Quaternion standardRotation;
+	private Vector3 curEuler;
+	private Vector3 desiredEuler;
+	private Vector3 standardPosition;
+	private int curScreen = 1;
+	private bool buttonHit = false;
+	private bool allowInput = true;
 	private float elapsedTurnTime = 0;
-	private Vector3 desiredRotation;
-	private Vector3 normalRotation;
+	private CameraEffects CamFX;
 
-	//####> BUILT-IN FUNCTIONS <#############################################################################################
-	void Start () {
-		normalRotation = transform.rotation.eulerAngles;
-		desiredRotation = normalRotation;
+	//BUILT-IN FUNCTIONS===================================================================================================================
+
+	void Start() {
+		CamFX = Camera.main.GetComponent<CameraEffects> ();
+
+		standardRotation = transform.rotation;
+		desiredEuler = standardRotation.eulerAngles;
+		curEuler = standardRotation.eulerAngles;
+		standardPosition = transform.position;
 	}
 
 	void Update () {
 		controllerInput ();
-		turnLevel ();
+
+		turnScreen ();
+		resetOvershootRotation ();
 	}
 
-	//####> CUSTOM FUNCTIONS <###############################################################################################
-	void turnLevel() {
-		elapsedTurnTime += Time.deltaTime;
+	//CUSTOM FUNCTIONS===================================================================================================================
 
-		Vector3 newEuler = Vector3.Lerp (transform.rotation.eulerAngles, desiredRotation, Time.deltaTime * standardTurnTime);
-		transform.rotation = Quaternion.Euler(newEuler);
-	}
-
-	void resetOvershootRotation() {
-		//Remove any rotation amount over 360, to remove redundancy and high rotation values
-		Vector3 dr = desiredRotation;
-		Vector3 cr = transform.rotation.eulerAngles;
-		while (Mathf.Abs (cr.z) > 360) {
-			dr.z += (getNumberWeight (dr.z) * 360);
-			cr.z += (getNumberWeight (dr.z) * 360);
-		}
-			
-		desiredRotation = dr;
-		transform.rotation = Quaternion.Euler (cr);
-	}
-
-	void advanceScreen(int dir) {
-		if (isDivBy (transform.rotation.eulerAngles.z, 180)) {
+	public void advanceScreen(int dir) {
+		//Check if last turn animation completed
+		if (isDivBy (curEuler.z, 180)) {
+			//Initiate screen turning
 			elapsedTurnTime = 0;
-			resetOvershootRotation ();
-
-			//Add 180 Degrees to desiredRotation in given direction
-			Vector3 dr = desiredRotation;
-			dr.z += (dir * 180);
-			desiredRotation = dr;
+			desiredEuler = addEulerRotation (desiredEuler, dir);
+			curScreen = -curScreen;
+			turnVelocity (dir);
 		}
 	}
 
-	void controllerInput() {
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			Debug.Log ("hit q");
-			advanceScreen (-1);
-		}
+	private void turnScreen() {
+		//Control rotation speed with a square function;
+		elapsedTurnTime += Time.deltaTime;
+		float newRotSpeed = (elapsedTurnTime * elapsedTurnTime * elapsedTurnTime) * rotationSpeed;
 
-		if (Input.GetKeyDown (KeyCode.W)) {
-			Debug.Log ("hit w");
-			advanceScreen (1);
+		//Change camera rotation to frame current screen
+		curEuler = Vector3.Lerp(curEuler, desiredEuler, Time.deltaTime * newRotSpeed);
+		transform.rotation = Quaternion.Euler (curEuler);
+	}
+
+	private void resetOvershootRotation() {
+		//Keep curEuler & desiredEuler as low as possible to avoid potential overflow
+		while (Mathf.Abs (curEuler.y) >= 360) {
+			curEuler.y -= (360 * getSign (curEuler.z));
+			desiredEuler.y -= (360 * getSign (desiredEuler.y));
 		}
 	}
 
-	public int getNumberWeight(float num) {
-		int ret = 0;
+	private void turnVelocity(int dir) {
+		//Calculating Velocity direction
+		Vector2 vel = new Vector2 (1, 1);
+		vel.x *= dir;
+		vel *= velocityIntensity;
 
-		if (num > 0) {
-			ret = 1;
-		} 
-		if (num < 0) {
-			ret = -1;
+		//Adding velocity to Physics Objects
+		GameObject[] po = GameObject.FindGameObjectsWithTag("PhysObj");
+		if (po != null) {
+			foreach (GameObject g in po) {
+				int nDir = (int)Mathf.Clamp (g.GetComponent<Rigidbody2D> ().gravityScale, -1, 1);
+				g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir * 0.3f);
+			}
 		}
-
-		return ret;
 	}
 
-	public bool isDivBy(float input, float div) {
+	private Vector3 addEulerRotation(Vector3 euler, int dir) {
+		euler.z += 180 * (dir);
+
+		return euler;
+	}
+
+	private int getSign(float num) {
+		if (num >= 0) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	private bool isDivBy(float input, float div) {
 		if ((input % div) == 0) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+
+	//GETTER===================================================================================================================
+
+	public int getCurScreen() {
+		return curScreen;
+	}
+
+	//DEBUG===================================================================================================================
+
+	void controllerInput() {
+		if (allowInput) { 
+			/*
+			//Turn Screen to the left
+			if ((Input.GetButtonDown ("LBumper") || (Input.GetAxis ("LTrigger") > 0)) && (buttonHit == false)) {
+				advanceScreen (-1);
+				buttonHit = true;
+			}
+
+			//Turn Screen to the right
+			if ((Input.GetButtonDown ("RBumper") || (Input.GetAxis ("RTrigger") > 0)) && (buttonHit == false)) {
+				advanceScreen (1);
+				buttonHit = true;
+			}
+
+			if ((Input.GetAxis ("LTrigger") == 0) && (Input.GetAxis ("RTrigger") == 0)) {
+				buttonHit = false;
+			}
+			*/
+
+
+			if ((Input.GetKeyDown(KeyCode.Q)) && (buttonHit == false)) {
+				advanceScreen (-1);
+				buttonHit = true;
+			}
+
+			//Turn Screen to the right
+			if ((Input.GetKeyDown(KeyCode.W)) && (buttonHit == false)) {
+				advanceScreen (1);
+				buttonHit = true;
+			}
+
+			if (!(Input.GetKeyDown(KeyCode.Q)) && !(Input.GetKeyDown(KeyCode.Q))) {
+				buttonHit = false;
+			}
+
+		}
+	}
+
+	public void setAllowInput(bool input) {
+		allowInput = input;
 	}
 }
