@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Grandpa : Player {
+
+    public float throwDistance, speedWithoutStick;
+
 
 	// Use this for initialization
 	void Start () {
-		
+        base.Start();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () {
+        Move();
+        Jump();
 	}
+
+    
 }
