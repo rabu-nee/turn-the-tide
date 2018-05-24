@@ -54,7 +54,7 @@ public class LevelRotation : MonoBehaviour {
 			desiredEuler = addEulerRotation (desiredEuler, dir);
 			curScreen = -curScreen;
 			turnVelocity (dir);
-			CamFX.addCameraShake (0.753f, 0.18f, 0.075f);
+			CamFX.addCameraShake (0.753f, 0.14f, 0.075f);
 		}
 	}
 
