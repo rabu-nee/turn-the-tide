@@ -13,7 +13,7 @@ public class Grandpa : Player {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Move();
         Jump();
 	}
