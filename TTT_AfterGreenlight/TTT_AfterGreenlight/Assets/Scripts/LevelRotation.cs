@@ -19,7 +19,7 @@ public class LevelRotation : MonoBehaviour {
 	private bool buttonHit = false;
 	private bool allowInput = true;
 	private bool joltAdded = true;
-	private bool addedExtraAmount = false;
+	private bool addedExtraRotation = false;
 	private float elapsedTurnTime = 0;
 	private CameraEffects CamFX;
 
@@ -50,7 +50,7 @@ public class LevelRotation : MonoBehaviour {
 			elapsedTurnTime = 0;
 			lastDir = dir;
 			joltAdded = false;
-			addedExtraAmount = false;
+			addedExtraRotation = false;
 			desiredEuler = addEulerRotation (desiredEuler, dir);
 			curScreen = -curScreen;
 			turnVelocity (dir);
@@ -65,15 +65,15 @@ public class LevelRotation : MonoBehaviour {
 
 		//Change camera rotation to frame current screen
 		Vector3 extraRotation;
-		if (((curEuler.z * lastDir) < ((desiredEuler.z * lastDir) + ((extraRotationAmount) * 0.9f))) && (!addedExtraAmount)) {
+		if (((curEuler.z * lastDir) < ((desiredEuler.z * lastDir) + ((extraRotationAmount) * 0.9f))) && (!addedExtraRotation)) {
 			extraRotation = new Vector3 (0, 0, extraRotationAmount * lastDir);
 		} else {
 			extraRotation = Vector3.zero;
-			addedExtraAmount = true;
+			addedExtraRotation = true;
 		}
 
 		float slowDownTime;
-		if (!addedExtraAmount) {
+		if (!addedExtraRotation) {
 			slowDownTime = 1f;
 		} else {
 			slowDownTime = 0.1f;
