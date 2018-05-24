@@ -10,15 +10,16 @@ public class Player : MonoBehaviour
     public float speed, jumpVelocity;
     private float maxSpeed;
 
-    //private Animator anim;
-    private Rigidbody2D rb2d;
-    private SpriteRenderer sr;
+    //public Animator anim;
+    public Rigidbody2D rb2d;
+    public float x, y; //localscale
 
     public void Start()
     {
         //anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        x = this.transform.localScale.x;
+        y = this.transform.localScale.y;
     }
 
     public void Move()
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
                 {
                     //anim.SetBool("IsWalking", true);
                 }
-                sr.flipX = false;
+                this.transform.localScale = new Vector2(x,y);
                 rb2d.AddForce(Vector2.right * speed, ForceMode2D.Force);
             }
             else if (Input.GetAxis("Horizontal") < 0f) //move left
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
                 {
                     //anim.SetBool("IsWalking", true);
                 }
-                sr.flipX = true;
+                this.transform.localScale = new Vector2(-x,y);
                 rb2d.AddForce(-Vector2.right * speed, ForceMode2D.Force);
             }
             else
