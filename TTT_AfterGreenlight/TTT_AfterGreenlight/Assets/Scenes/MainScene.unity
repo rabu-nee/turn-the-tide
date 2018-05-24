@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c661fe8d8bde6664ba76ef7dd0ce5127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementFriction: 3
+  movementSpeed: 3
 --- !u!1 &1202912519
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f821dc74f19588439e3e109380481f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 105
+  rotationSpeed: 100
   movementSpeed: 2
   velocityIntensity: 2
 --- !u!65 &1202912521

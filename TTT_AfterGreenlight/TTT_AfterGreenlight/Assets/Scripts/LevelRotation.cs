@@ -15,6 +15,7 @@ public class LevelRotation : MonoBehaviour {
 	private int curScreen = 1;
 	private bool buttonHit = false;
 	private bool allowInput = true;
+	private bool turnCompleted = true;
 	private float elapsedTurnTime = 0;
 	private CameraEffects CamFX;
 
@@ -43,6 +44,7 @@ public class LevelRotation : MonoBehaviour {
 		if (isDivBy (curEuler.z, 180)) {
 			//Initiate screen turning
 			elapsedTurnTime = 0;
+			turnCompleted = false;
 			desiredEuler = addEulerRotation (desiredEuler, dir);
 			curScreen = -curScreen;
 			turnVelocity (dir);
@@ -57,6 +59,13 @@ public class LevelRotation : MonoBehaviour {
 		//Change camera rotation to frame current screen
 		curEuler = Vector3.Lerp(curEuler, desiredEuler, Time.deltaTime * newRotSpeed);
 		transform.rotation = Quaternion.Euler (curEuler);
+
+		//Check if rotation is close to completion
+
+	}
+
+	private void onTurnCompleted () {
+		CamFX.addCameraJolt (new Vector3(0,1,0));
 	}
 
 	private void resetOvershootRotation() {

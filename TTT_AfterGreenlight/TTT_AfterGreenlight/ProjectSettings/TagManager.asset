@@ -4,13 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
   - PhysObj
-=======
-  - Player1
-  - Player2
-  - Wall
->>>>>>> fc366e4c6c7921174eb8687cd1e7edc2c9be9dbe
   layers:
   - Default
   - TransparentFX

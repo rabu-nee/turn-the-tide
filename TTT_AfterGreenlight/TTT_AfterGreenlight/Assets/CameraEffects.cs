@@ -13,7 +13,7 @@ public class CameraEffects : MonoBehaviour {
 	//BUILT-IN-FUNCTIONS===================================================================================================================
 
 	void Start () {
-		setStandardPosition (null);
+		setStandardPosition (transform.position);
 	}
 
 	void Update () {
@@ -32,16 +32,12 @@ public class CameraEffects : MonoBehaviour {
 
 	private void applyMovement() {
 		curVelocity = Vector3.Lerp (curVelocity, Vector3.zero, Time.deltaTime * movementFriction);
-		transform.position = Vector3.Lerp (transform.position, standardPosition, Time.deltaTime * movementSpeed);
+		transform.position = Vector3.Lerp (transform.position, (standardPosition + curVelocity), Time.deltaTime * movementSpeed);
 	}
 
-	//SETTER===================================================================================================================
+	//SETTER============================================================================================================================
 
 	public void setStandardPosition(Vector3 pos) {
-		if (pos == null) {
-			standardPosition = transform.position;
-		} else {
-			standardPosition = pos;
-		}
+		standardPosition = pos;
 	}
 }
