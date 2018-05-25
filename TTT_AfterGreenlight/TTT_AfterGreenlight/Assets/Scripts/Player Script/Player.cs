@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public bool outsideForce;
     private bool hanging = false;
 
-    //public Animator anim;
+    public Animator anim;
     public Rigidbody2D rb;
 
     public float speed = 5f; //move speed
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         scaleX = this.transform.localScale.x;
         scaleY = this.transform.localScale.y;
