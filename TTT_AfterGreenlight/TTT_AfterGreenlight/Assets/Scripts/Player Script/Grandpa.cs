@@ -8,15 +8,8 @@ public class Grandpa : Player {
 
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
         base.Start();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        Move();
-        Jump();
-	}
-
     
 }
