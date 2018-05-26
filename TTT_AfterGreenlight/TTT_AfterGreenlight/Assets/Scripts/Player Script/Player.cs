@@ -66,8 +66,8 @@ public class Player : MonoBehaviour
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
                 //anim.SetBool("Moving", true);
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed + BaseSpeed, rb.velocity.y);
-                transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal") * scaleX, scaleY);
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY)  + BaseSpeed, rb.velocity.y);
+                transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal") * scaleX * Mathf.Sign(scaleY), scaleY);
             }
             else
             {

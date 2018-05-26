@@ -6,7 +6,6 @@ public class Boy : Player {
 
     public float distance = 1f;
     public float wallJumpSpeed = 2f;
-    private bool walljumping;
 
     // Use this for initialization
     new void  Start () {
@@ -16,9 +15,11 @@ public class Boy : Player {
     new void Update()
     {
         base.Update();
-        WallJump();
+        if (selected)
+        {
+            WallJump();
+        }
     }
-
 
     void WallJump()
     {
