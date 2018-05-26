@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     private float previousAxispos;
     public float scaleX, scaleY;
 
+    public bool canMove;
+
 
     public void Start()
     {
@@ -41,7 +43,7 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        if (selected)
+        if (selected && canMove)
         {
             Move();
             Jump();
@@ -66,7 +68,7 @@ public class Player : MonoBehaviour
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
                 //anim.SetBool("Moving", true);
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY)  + BaseSpeed, rb.velocity.y);
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal") * scaleX * Mathf.Sign(scaleY), scaleY);
             }
             else
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
             }
         }
+
     }
 
     public void Jump()
@@ -99,7 +102,7 @@ public class Player : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (selected)
+        if (selected && canMove)
         {
             if (grounded && Input.GetButtonDown("Jump"))
             {
@@ -120,6 +123,10 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         outsideForce = false;
+        if(other.gameObject.tag != "Stick")
+        {
+            canMove = true;
+        }
 
         if (other.gameObject.tag == "Platform")
             BaseSpeed = other.gameObject.GetComponent<Rigidbody2D>().velocity.x;
