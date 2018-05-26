@@ -58,7 +58,7 @@ public class Grandpa : Player {
 
         if (aimingMode)
         {
-            float angle = Input.GetAxisRaw("Vertical") * rotationSpeed;
+            float angle = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
             launchPos.RotateAround(this.transform.position, Vector3.forward, angle);
             throwDirection = launchPos.transform.position - this.transform.position;
             Debug.Log(angle);
