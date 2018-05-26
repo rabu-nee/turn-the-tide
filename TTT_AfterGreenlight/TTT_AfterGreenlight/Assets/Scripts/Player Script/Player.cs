@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        if (selected)
+        if (selected && canMove)
         {
             Move();
             Jump();
@@ -52,39 +52,32 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
-        if (canMove)
+        if (!grounded && Input.GetAxisRaw("Horizontal") != previousAxispos)
         {
-            Debug.Log("a");
-            if (!grounded && Input.GetAxisRaw("Horizontal") != previousAxispos)
+            BaseSpeed = 0;
+            outsideForce = false;
+        }
+        previousAxispos = Input.GetAxisRaw("Horizontal");
+
+        //MOVING CODE
+
+        //anim.SetFloat("velocityY", rb.velocity.y);
+        if (!outsideForce && hanging == false)
+        {
+
+            if (Input.GetAxisRaw("Horizontal") != 0)
             {
-                BaseSpeed = 0;
-                outsideForce = false;
+                //anim.SetBool("Moving", true);
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
+                transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal") * scaleX * Mathf.Sign(scaleY), scaleY);
             }
-            previousAxispos = Input.GetAxisRaw("Horizontal");
-
-            //MOVING CODE
-
-            //anim.SetFloat("velocityY", rb.velocity.y);
-            if (!outsideForce && hanging == false)
+            else
             {
-
-                if (Input.GetAxisRaw("Horizontal") != 0)
-                {
-                    //anim.SetBool("Moving", true);
-                    rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
-                    transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal") * scaleX * Mathf.Sign(scaleY), scaleY);
-                }
-                else
-                {
-                    //anim.SetBool("Moving", false);
-                    rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
-                }
+                //anim.SetBool("Moving", false);
+                rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
             }
         }
-        else
-        {
-            Debug.Log("A");
-        }
+
     }
 
     public void Jump()
@@ -109,7 +102,7 @@ public class Player : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (selected)
+        if (selected && canMove)
         {
             if (grounded && Input.GetButtonDown("Jump"))
             {
@@ -130,7 +123,10 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         outsideForce = false;
-        canMove = true;
+        if(other.gameObject.tag != "Stick")
+        {
+            canMove = true;
+        }
 
         if (other.gameObject.tag == "Platform")
             BaseSpeed = other.gameObject.GetComponent<Rigidbody2D>().velocity.x;
