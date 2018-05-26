@@ -30,8 +30,8 @@ public class Grandpa : Player {
 
     new void Update()
     {
+        Debug.DrawRay(this.transform.position, Vector3.forward * throwPower);
         base.Update();
-        Debug.DrawRay(this.transform.position, throwDirection);
         if (selected)
         {
             if (!noStick)
@@ -58,10 +58,26 @@ public class Grandpa : Player {
 
         if (aimingMode)
         {
-            float angle = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
-            launchPos.RotateAround(this.transform.position, Vector3.forward, angle);
-            throwDirection = launchPos.transform.position - this.transform.position;
+            float angle = Vector3.SignedAngle(launchPos.transform.position - this.transform.position, (Vector3.up * scaleY), Vector3.forward);
+            if(this.transform.localScale.x < 0)
+            {
+                angle = -angle;
+            }
+
             Debug.Log(angle);
+
+            float rot = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
+            
+            float newAngle = Mathf.Clamp(angle + rot, minThrowAngle, maxThrowAngle);
+
+            float newRot = newAngle - angle;
+            
+            launchPos.RotateAround(this.transform.position, Vector3.forward, newRot);
+            
+            throwDirection = launchPos.transform.position - this.transform.position;
+            
+
+            
         }
 
         //THROWING
@@ -70,7 +86,6 @@ public class Grandpa : Player {
             aimingMode = false;
             noStick = true;
             canPick = false;
-            launchPos = initLaunchPos;
             Debug.Log("throwing");
 
             //animation
@@ -80,6 +95,7 @@ public class Grandpa : Player {
 
     IEnumerator Throw()
     {
+        //ANIMATION CONTROLLER
         float aniLength = 0.1f; //FILLER
 
         yield return new WaitForSeconds(aniLength);
@@ -90,6 +106,8 @@ public class Grandpa : Player {
         Stick.transform.position = launchPos.position;
         Stick.transform.localScale = new Vector2(Stick.transform.localScale.x * -(Mathf.Sign(this.transform.localScale.x)), Stick.transform.localScale.y * Mathf.Sign(scaleY));
         Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
+
+        launchPos = initLaunchPos;
 
         canPick = true;
         canMove = true;
