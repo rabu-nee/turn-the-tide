@@ -5,8 +5,11 @@ using UnityEngine;
 public class Grandpa : Player {
 
     public float throwDistance, speedWithoutStick;
-    public bool noStick; //public for testing
+    
+    //public for testing
+    public bool noStick;
     public Transform launchPos;
+    public GameObject Stick;
 
 
 	// Use this for initialization
@@ -36,16 +39,31 @@ public class Grandpa : Player {
         if(Input.GetButtonDown("Throw"))
         {
             Debug.Log("Throw stick");
+            Aim();
+            StartCoroutine(ThrowAnimation());
             noStick = true;
         }
     }
 
+    private void Aim()
+    {
+
+    }
+
+
     private void PickStick()
     {
-        if(Input.GetButtonDown("Throw"))
+        if(Input.GetButtonDown("Throw")) //same button as throw
         {
             Debug.Log("Got stick");
             noStick = false;
         }
+    }
+
+    IEnumerator ThrowAnimation()
+    {
+        float aniLength = 1; //FILLER
+
+        yield return new WaitForSeconds(aniLength);
     }
 }
