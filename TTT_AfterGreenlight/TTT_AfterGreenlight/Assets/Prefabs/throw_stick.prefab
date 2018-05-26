@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4501956690294120}
   - component: {fileID: 50398487441852872}
-  - component: {fileID: 61516594266223596}
+  - component: {fileID: 114618738840001608}
+  - component: {fileID: 61287307241906688}
   m_Layer: 8
   m_Name: throw_stick
   m_TagString: Stick
@@ -91,7 +92,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61516594266223596
+--- !u!61 &61287307241906688
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -99,11 +100,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 1380721550427268}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c59314463eca02a4cbc487147fa15f7c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.53968215, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -114,8 +115,19 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0793638, y: 0.6473365}
   m_EdgeRadius: 0
+--- !u!114 &114618738840001608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380721550427268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460376a73d54c4948b45476f0aec7abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212173271186385008
 SpriteRenderer:
   m_ObjectHideFlags: 1
