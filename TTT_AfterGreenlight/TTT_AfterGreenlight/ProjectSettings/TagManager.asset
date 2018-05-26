@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - PhysObj
+  - Wall
   - Player1
   - Player2
-  - Wall
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - ground
   - 
   - 
   - 

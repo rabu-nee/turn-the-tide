@@ -4,40 +4,46 @@ using UnityEngine;
 
 public class Boy : Player {
 
-    public bool canWallJump;
-    public float wallJumpVelocity;
+    public float distance = 1f;
+    public float wallJumpSpeed = 2f;
+    private bool walljumping;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    new void  Start () {
         base.Start();
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () {
-        Move();
-        Jump();
-        WallJump();
-	}
-
-    private void WallJump()
+    new void Update()
     {
-        if (selected)
-        {
-            if (Input.GetKey(KeyCode.Space) && canWallJump)
-            {
-                if (this.transform.localScale.x > 0) //facing right, jump left
-                {
-                    rb2d.velocity = new Vector2(-1,1) * wallJumpVelocity;
-                }
-                
+        base.Update();
+        WallJump();
+    }
 
-                if (rb2d.velocity.y != 0)
-                {
-                    //anim.SetBool("Jumping", true);
-                    //anim.SetBool("Grounded", false);
-                    //anim.SetBool("IsWalking", false);
-                }
+
+    void WallJump()
+    {
+        Physics2D.queriesStartInColliders = false;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+        if (Input.GetButtonDown("Jump") && !grounded && hit.collider != null)
+        {
+            {
+                outsideForce = true;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(wallJumpSpeed * hit.normal.x, wallJumpSpeed);
+
+                StartCoroutine("TurnIt");
             }
         }
+    }
+
+    IEnumerator TurnIt()
+    {
+        yield return new WaitForFixedUpdate();
+        transform.localScale = transform.localScale.x > 0 ? new Vector2(-scaleX, scaleY) : new Vector2(scaleX, scaleY);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distance);
     }
 }
