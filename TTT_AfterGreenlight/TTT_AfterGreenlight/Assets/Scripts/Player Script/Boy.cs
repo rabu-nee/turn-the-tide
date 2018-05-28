@@ -21,26 +21,19 @@ public class Boy : Player {
         }
     }
 
-
     void WallJump()
     {
         Physics2D.queriesStartInColliders = false;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
         if (Input.GetButtonDown("Jump") && !grounded && hit.collider != null && hit.collider.CompareTag("Wall"))
         {
-            anim.SetBool("IsWallSliding", false);
-            anim.SetBool("Jumping", true);
-            outsideForce = true;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(wallJumpSpeed * hit.normal.x, wallJumpSpeed);
-            canMove = false;
+            {
+                outsideForce = true;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(wallJumpSpeed * hit.normal.x, wallJumpSpeed);
+                canMove = false;
 
-            StartCoroutine("TurnIt");
-        }
-
-        if (grounded)
-        {
-            anim.SetBool("IsWallSliding", false);
-            //anim.SetBool("Jumping", false);
+                StartCoroutine("TurnIt");
+            }
         }
     }
 
@@ -54,15 +47,5 @@ public class Boy : Player {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distance);
-    }
-
-    private new void OnCollisionEnter2D(Collision2D collision)
-    {
-        base.OnCollisionEnter2D(collision);
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            anim.SetBool("IsWallSliding", true);
-            anim.SetBool("Jumping", false);
-        }
     }
 }
