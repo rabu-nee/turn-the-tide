@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4461134284518134}
   - component: {fileID: 61550964421236064}
   - component: {fileID: 114611179807542920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bouncy String
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,8 @@ GameObject:
   - component: {fileID: 4820956582827936}
   - component: {fileID: 33987281437066690}
   - component: {fileID: 23168069809609532}
-  m_Layer: 0
+  - component: {fileID: 61638134423433036}
+  m_Layer: 8
   m_Name: VisualString
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1689301814052768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.439, y: 0.004, z: -0.739}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.54, y: -1.6, z: -0.1012038}
+  m_LocalScale: {x: 21.003578, y: 15.505658, z: 15.505658}
   m_Children:
   - {fileID: 4820956582827936}
   m_Father: {fileID: 0}
@@ -87,7 +88,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3f28c9ff03573b2439f5862c1974d6c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,10 +124,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0004506111, y: 0.0062227696}
+  m_Offset: {x: -0.0004506111, y: 0.004718719}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -137,7 +138,32 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2577538, y: 0.06920107}
+  m_Size: {x: 0.2577538, y: 0.10252647}
+  m_EdgeRadius: 0
+--- !u!61 &61638134423433036
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960068883921340}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1.0000001}
   m_EdgeRadius: 0
 --- !u!114 &114611179807542920
 MonoBehaviour:
@@ -151,5 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityMultiplier: 1
-  shiftAmount: 0.2
+  shiftAmount: 0.6
   shiftDirection: 0
+  playerObjs:
+  - {fileID: 0}
+  - {fileID: 0}
