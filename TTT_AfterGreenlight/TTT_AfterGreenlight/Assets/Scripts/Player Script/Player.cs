@@ -52,12 +52,12 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
-        if (!grounded && Input.GetAxisRaw("Horizontal") != previousAxispos)
+        if (!grounded && Input.GetAxis("Horizontal") != previousAxispos)
         {
             BaseSpeed = 0;
             outsideForce = false;
         }
-        previousAxispos = Input.GetAxisRaw("Horizontal");
+        previousAxispos = Input.GetAxis("Horizontal");
 
         //MOVING CODE
 
@@ -65,11 +65,11 @@ public class Player : MonoBehaviour
         if (!outsideForce && hanging == false)
         {
 
-            if (Input.GetAxisRaw("Horizontal") != 0)
+            if (Input.GetAxis("Horizontal") != 0)
             {
                 anim.SetBool("Walking", true);
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
-                transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal") * scaleX * Mathf.Sign(scaleY), scaleY);
+                rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
+                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxis("Horizontal")) * scaleX * Mathf.Sign(scaleY), scaleY);
             }
             else
             {

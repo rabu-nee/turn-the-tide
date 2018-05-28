@@ -9,6 +9,8 @@ public class Grandpa : Player
     public float rotationSpeed = 5f;
     public GameObject StickPrefab;
 
+    public float test;
+
 
 
     private float initSpeed;
@@ -16,10 +18,11 @@ public class Grandpa : Player
     private bool canThrow, canPick, aimingMode;
     private float rot, angle;
 
-    private Transform launchPos;
+    public Transform aim;
+    public Transform launchPos;
 
     private GameObject Stick;
-    private SpriteRenderer stickSprite;
+    public SpriteRenderer stickSprite;
     private Vector3 throwDirection;
 
 
@@ -27,15 +30,16 @@ public class Grandpa : Player
     new void Start()
     {
         base.Start();
-        launchPos = this.transform.Find("launchPos");
-        stickSprite = GameObject.FindGameObjectWithTag("Stick").GetComponent<SpriteRenderer>();
+        aim = this.transform.parent.Find("grandpa_aim");
+        launchPos = aim.transform.Find("launchPos");
         initSpeed = speed;
+        aim.gameObject.SetActive(false);
     }
 
     new void Update()
     {
-        Debug.DrawRay(this.transform.position, Vector3.forward * throwPower);
         base.Update();
+        aim.transform.position = this.transform.position;
         if (selected)
         {
             if (!noStick)
@@ -54,6 +58,8 @@ public class Grandpa : Player
         //AIMING
         if (Input.GetButtonDown("Throw"))
         {
+            anim.SetBool("Walking", false);
+
             canMove = false;
             Debug.Log("aiming");
             canThrow = true;
@@ -62,25 +68,41 @@ public class Grandpa : Player
 
         if (aimingMode)
         {
-            angle = Vector3.SignedAngle(launchPos.transform.position - this.transform.position, (Vector3.up * scaleY), Vector3.forward);
-            //if(this.transform.localScale.x < 0)
-            //{
-            //   angle = -angle;
-            //}
+            //NEW CODE
+            aim.gameObject.SetActive(true);
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
+            if (x != 0.0f || y != 0.0f)
+            {
+                angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+                Debug.Log(angle);
 
-            Debug.Log(angle);
+                aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-            rot = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
+                throwDirection = launchPos.transform.position - this.transform.position;
+            }
 
-            /*
-             * float newAngle = Mathf.Clamp(angle + rot, minThrowAngle, maxThrowAngle);
+                /* PREVIOUS CODE
+                angle = Vector3.SignedAngle(launchPos.transform.position - this.transform.position, (Vector3.up * scaleY), Vector3.forward);
+                if(this.transform.localScale.x < 0)
+                {
+                   angle = -angle;
+                }
 
-            float newRot = newAngle - angle;
-            */
+                Debug.Log(angle);
 
-            launchPos.RotateAround(this.transform.position, Vector3.forward, rot);
+                rot = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
 
-            throwDirection = launchPos.transform.position - this.transform.position;
+
+                float newAngle = Mathf.Clamp(angle + rot, minThrowAngle, maxThrowAngle);
+
+                float newRot = newAngle - angle;
+
+
+                launchPos.RotateAround(this.transform.position, Vector3.forward, rot);
+                
+                throwDirection = launchPos.transform.position - this.transform.position;
+                */
         }
 
         //THROWING
@@ -106,6 +128,7 @@ public class Grandpa : Player
 
         yield return new WaitForSeconds(info.Length);
 
+        aim.gameObject.SetActive(false);
         anim.SetBool("Throwing", false);
 
 
@@ -113,10 +136,10 @@ public class Grandpa : Player
         stickSprite.enabled = false;
         Stick = Instantiate(StickPrefab) as GameObject;
         Stick st = Stick.GetComponent<Stick>();
-        st.hitAngle *= -Mathf.Sign(angle);
+        //st.hitAngle *= -Mathf.Sign(angle);
         Stick.transform.position = launchPos.position;
 
-        Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+        Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
         Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
 
         speed = speedWithoutStick;
