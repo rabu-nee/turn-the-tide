@@ -7,7 +7,6 @@ public class Grandpa : Player
 
     public float throwPower, speedWithoutStick;
     public float rotationSpeed = 5f;
-    public float maxThrowAngle, minThrowAngle;
     public GameObject StickPrefab;
 
 
