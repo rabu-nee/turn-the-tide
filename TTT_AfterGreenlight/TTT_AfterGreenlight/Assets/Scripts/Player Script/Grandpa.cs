@@ -12,9 +12,9 @@ public class Grandpa : Player {
     //public for testing
     public bool noStick;
     private bool canThrow, canPick, aimingMode;
+    private float rot, angle;
 
     public Transform launchPos;
-    private Transform initLaunchPos;
 
     public GameObject Stick;
     private Vector3 throwDirection;
@@ -24,8 +24,6 @@ public class Grandpa : Player {
 	new void Start () {
         base.Start();
         launchPos = this.transform.Find("launchPos");
-        initLaunchPos = launchPos;
-
 	}
 
     new void Update()
@@ -58,26 +56,25 @@ public class Grandpa : Player {
 
         if (aimingMode)
         {
-            float angle = Vector3.SignedAngle(launchPos.transform.position - this.transform.position, (Vector3.up * scaleY), Vector3.forward);
-            if(this.transform.localScale.x < 0)
-            {
-                angle = -angle;
-            }
+            angle = Vector3.SignedAngle(launchPos.transform.position - this.transform.position, (Vector3.up * scaleY), Vector3.forward);
+            //if(this.transform.localScale.x < 0)
+            //{
+            //   angle = -angle;
+            //}
 
             Debug.Log(angle);
 
-            float rot = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
+            rot = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
             
-            float newAngle = Mathf.Clamp(angle + rot, minThrowAngle, maxThrowAngle);
+            /*
+             * float newAngle = Mathf.Clamp(angle + rot, minThrowAngle, maxThrowAngle);
 
             float newRot = newAngle - angle;
-            
-            launchPos.RotateAround(this.transform.position, Vector3.forward, newRot);
-            
-            throwDirection = launchPos.transform.position - this.transform.position;
-            
+            */
 
-            
+            launchPos.RotateAround(this.transform.position, Vector3.forward, rot);
+
+            throwDirection = launchPos.transform.position - this.transform.position;
         }
 
         //THROWING
@@ -104,10 +101,9 @@ public class Grandpa : Player {
         //instantiate stick
         Stick = Instantiate(StickPrefab) as GameObject;
         Stick.transform.position = launchPos.position;
-        Stick.transform.localScale = new Vector2(Stick.transform.localScale.x * -(Mathf.Sign(this.transform.localScale.x)), Stick.transform.localScale.y * Mathf.Sign(scaleY));
-        Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
 
-        launchPos = initLaunchPos;
+        Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+        Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
 
         canPick = true;
         canMove = true;
