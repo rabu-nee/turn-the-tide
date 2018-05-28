@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    //some types are public for child classes for access
+
     public bool selected;
     public bool outsideForce;
     private bool hanging = false;
@@ -25,9 +27,8 @@ public class Player : MonoBehaviour
     private bool canJump;
     private float maxTime = 0.1f;
 
-
     private float previousAxispos;
-    public float scaleX, scaleY;
+    public float scaleX, scaleY; //mostly used for sign of scale for gravity and control
 
     public bool canMove;
 
@@ -38,7 +39,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         scaleX = this.transform.localScale.x;
         scaleY = this.transform.localScale.y;
-        // anim.SetBool("Grounded", true);
     }
 
     public void Update()
@@ -67,19 +67,13 @@ public class Player : MonoBehaviour
 
             if (Input.GetAxis("Horizontal") != 0)
             {
-<<<<<<< HEAD
                 anim.SetBool("Walking", true);
                 rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(Mathf.Sign(Input.GetAxis("Horizontal")) * scaleX * Mathf.Sign(scaleY), scaleY);
-=======
-                //anim.SetBool("Moving", true);
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
-                transform.localScale = new Vector2(Input.GetAxisRaw("Horizontal") * scaleX * Mathf.Sign(scaleY), scaleY);
->>>>>>> d698f11947f3f1f9edf01d9f0209a10bef2006a8
             }
             else
             {
-                //anim.SetBool("Moving", false);
+                anim.SetBool("Walking", false);
                 rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
             }
         }
@@ -91,9 +85,6 @@ public class Player : MonoBehaviour
         //JUMPCODE
         grounded = Physics2D.OverlapArea(footPoint1.position, footPoint2.position, onlyGroundMask);
 
-
-        //anim.SetBool("Grounded", grounded);
-
         if ((grounded || hanging) && Input.GetButtonDown("Jump"))
         {
             hanging = false;
@@ -102,6 +93,11 @@ public class Player : MonoBehaviour
             timer = 0;
             canJump = true;
             rb.AddForce(new Vector2(0, jumpForce * 3 * Mathf.Sign(scaleY)));
+            anim.SetBool("Jumping", true);
+        }
+        else if (grounded)
+        {
+            anim.SetBool("Jumping", false);
         }
     }
 
@@ -126,7 +122,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
         outsideForce = false;
         if(other.gameObject.tag != "Stick")
