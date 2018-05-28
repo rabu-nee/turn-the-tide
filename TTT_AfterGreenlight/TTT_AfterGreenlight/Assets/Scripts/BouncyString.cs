@@ -10,7 +10,7 @@ public class BouncyString : MonoBehaviour {
 
 	private int shiftPosition = -1;
 	private Vector3 standardPosition;
-	private GameObject[] playerObjs = new GameObject[2];
+	public GameObject[] playerObjs = new GameObject[2];
 	private int playerIndex = 0;
 
 	//BUILT-IN FUNCTIONS===================================================================================================================
@@ -22,23 +22,31 @@ public class BouncyString : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter2D(Collision2D other) {
+	void OnTriggerEnter2D(Collider2D other) {
 		if (isPlayerTag(other.gameObject.tag)) {
-			playerObjs [playerIndex] = other.gameObject;
-			playerIndex++;
-
-			if (playerIndex == 2) {
-				addVelocities (playerObjs [0], playerObjs [1]);
-				playerObjs [0] = playerObjs [1];
-				playerObjs [1] = null;
-				playerIndex--;
+			Debug.Log (other.gameObject.name);
+			//addShift (2 * getPlayerGravity(other.gameObject));
+			if (playerIndex == 0) {
+				playerObjs [playerIndex] = other.gameObject;
+				playerIndex++;
+			} else {
+				if (playerIndex == 1) {
+					playerObjs [playerIndex] = other.gameObject;
+					playerIndex++;
+				}
+				if (playerIndex == 2) {
+					addVelocities (playerObjs [0], playerObjs [1]);
+					playerObjs [0] = playerObjs [1];
+					playerObjs [1] = null;
+					playerIndex--;
+				}
 			}
-		}
 
-		addShift (2 * getPlayerGravity(other.gameObject));
+		}
+			
 	}
 
-	void OnCollisionExit2D(Collision2D other) {
+	void OnTriggerExit2D(Collider2D other) {
 		if (playerObjs [0] == other.gameObject) {
 			playerObjs [0] = playerObjs [1];
 			playerObjs [1] = null;
@@ -52,7 +60,8 @@ public class BouncyString : MonoBehaviour {
 	private void addVelocities(GameObject addObj, GameObject velObj) {
 		Rigidbody2D rb1 = addObj.GetComponent<Rigidbody2D> ();
 		Rigidbody2D rb2 = velObj.GetComponent<Rigidbody2D> ();
-		Vector2 newVel = new Vector2(0, rb2.velocity.y) * velocityMultiplier;
+		Vector2 newVel = new Vector2(0, -20 * getPlayerGravity(addObj)) * velocityMultiplier;
+		Debug.Log (newVel.y);
 		rb1.velocity = newVel;
 		rb2.velocity = Vector2.zero;
 	}
