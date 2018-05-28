@@ -2,29 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grandpa : Player {
+public class Grandpa : Player
+{
 
     public float throwPower, speedWithoutStick;
     public float rotationSpeed = 5f;
     public float maxThrowAngle, minThrowAngle;
     public GameObject StickPrefab;
-    
-    //public for testing
-    public bool noStick;
+
+
+
+    private float initSpeed;
+    private bool noStick;
     private bool canThrow, canPick, aimingMode;
     private float rot, angle;
 
-    public Transform launchPos;
+    private Transform launchPos;
 
-    public GameObject Stick;
+    private GameObject Stick;
+    private SpriteRenderer stickSprite;
     private Vector3 throwDirection;
 
 
-	// Use this for initialization
-	new void Start () {
+    // Use this for initialization
+    new void Start()
+    {
         base.Start();
         launchPos = this.transform.Find("launchPos");
-	}
+        stickSprite = GameObject.FindGameObjectWithTag("Stick").GetComponent<SpriteRenderer>();
+        initSpeed = speed;
+    }
 
     new void Update()
     {
@@ -42,7 +49,7 @@ public class Grandpa : Player {
             }
         }
     }
-    
+
     private void ThrowStick()
     {
         //AIMING
@@ -65,7 +72,7 @@ public class Grandpa : Player {
             Debug.Log(angle);
 
             rot = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
-            
+
             /*
              * float newAngle = Mathf.Clamp(angle + rot, minThrowAngle, maxThrowAngle);
 
@@ -93,17 +100,27 @@ public class Grandpa : Player {
     IEnumerator Throw()
     {
         //ANIMATION CONTROLLER
-        float aniLength = 0.1f; //FILLER
+        anim.SetBool("Throwing", true);
 
-        yield return new WaitForSeconds(aniLength);
+        AnimatorClipInfo[] info = anim.GetCurrentAnimatorClipInfo(0);
+        Debug.Log(info.Length);
+
+        yield return new WaitForSeconds(info.Length);
+
+        anim.SetBool("Throwing", false);
 
 
         //instantiate stick
+        stickSprite.enabled = false;
         Stick = Instantiate(StickPrefab) as GameObject;
+        Stick st = Stick.GetComponent<Stick>();
+        st.hitAngle *= -Mathf.Sign(angle);
         Stick.transform.position = launchPos.position;
 
         Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -angle));
         Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
+
+        speed = speedWithoutStick;
 
         canPick = true;
         canMove = true;
@@ -112,11 +129,13 @@ public class Grandpa : Player {
 
     private void PickStick()
     {
-        if(Input.GetButtonDown("Throw") && canPick) //same button as throw
+        if (Input.GetButtonDown("Throw") && canPick) //same button as throw
         {
             Debug.Log("Got stick");
             noStick = false;
             Destroy(Stick);
+            stickSprite.enabled = true;
+            speed = initSpeed;
         }
     }
 }
