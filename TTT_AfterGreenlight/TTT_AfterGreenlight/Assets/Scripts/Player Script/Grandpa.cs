@@ -9,10 +9,6 @@ public class Grandpa : Player
     public float rotationSpeed = 5f;
     public GameObject StickPrefab;
 
-    public float test;
-
-
-
     private float initSpeed;
     private bool noStick;
     private bool canThrow, canPick, aimingMode;
