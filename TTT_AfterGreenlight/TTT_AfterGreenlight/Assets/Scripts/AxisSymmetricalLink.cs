@@ -10,6 +10,7 @@ public class AxisSymmetricalLink : MonoBehaviour {
 	public bool y = true;
 	[HideInInspector]
 	public GameObject copyObj;
+
 	private GameObject originalObj;
 
 	//BUILT-IN FUNCTIONS===================================================================================================================
