@@ -9,6 +9,8 @@ public class LevelRotation : MonoBehaviour {
 	public float extraRotationAmount = 10f;
 	public float velocityIntensity = 2f;
 	public float joltTiming = 15f;
+	public float turnAgainTiming = 1f;
+	public float turnAgainTolerance = 5f;
 
 	private Quaternion standardRotation;
 	private Vector3 curEuler;
@@ -35,26 +37,26 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	void Update () {
+		checkAllowInput ();
 		controllerInput ();
 
 		turnScreen ();
-		resetOvershootRotation ();
 	}
 
 	//CUSTOM FUNCTIONS===================================================================================================================
 
 	public void advanceScreen(int dir) {
 		//Check if last turn animation completed
-		if (isDivBy (curEuler.z, 180)) {
+		if (isDivBy (roundToMultiple(curEuler.z, 180, turnAgainTolerance), 180)) {
 			//Initiate screen turning
 			elapsedTurnTime = 0;
 			lastDir = dir;
 			joltAdded = false;
 			addedExtraRotation = false;
 			desiredEuler = addEulerRotation (desiredEuler, dir);
+			resetOvershootRotation ();
 			curScreen = -curScreen;
 			turnVelocity (dir);
-			CamFX.addCameraShake (0.753f, 0.14f, 0.075f);
 		}
 	}
 
@@ -92,9 +94,9 @@ public class LevelRotation : MonoBehaviour {
 
 	private void resetOvershootRotation() {
 		//Keep curEuler & desiredEuler as low as possible to avoid potential overflow
-		while (Mathf.Abs (curEuler.y) >= 360) {
-			curEuler.y -= (360 * getSign (curEuler.z));
-			desiredEuler.y -= (360 * getSign (desiredEuler.y));
+		while (Mathf.Abs (curEuler.z) >= 360) {
+			curEuler.z -= (360 * getSign (curEuler.z));
+			desiredEuler.z -= (360 * getSign (desiredEuler.z));
 		}
 	}
 
@@ -112,6 +114,15 @@ public class LevelRotation : MonoBehaviour {
 				g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir * 0.3f);
 			}
 		}
+	}
+
+	private void checkAllowInput() {
+		if (elapsedTurnTime > turnAgainTiming) {
+			allowInput = true;
+		} else {
+			allowInput = false;
+		}
+		Debug.Log (allowInput);
 	}
 
 	private Vector3 addEulerRotation(Vector3 euler, int dir) {
@@ -133,6 +144,35 @@ public class LevelRotation : MonoBehaviour {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	private float roundToMultiple(float input, float divider, float tolerance) {
+		float[] multiplierPossibilities = new float[10];
+		float closestDistance = divider;
+		int returnIndex = 0;
+
+		for (int i = 0; i < 5; i++) {
+			multiplierPossibilities [i + 5] = divider * i;
+			int negativeIndex = 4 - i;
+			multiplierPossibilities [negativeIndex] = -multiplierPossibilities [i + 5];
+		}
+			
+		for (int i = 0; i < 10; i++) {
+			float curValue = multiplierPossibilities [i];
+			float difference = Mathf.Abs (Mathf.Abs(curValue) - Mathf.Abs(input));
+
+			if (difference < closestDistance) {
+				closestDistance = difference;
+				returnIndex = i;
+			}
+		}
+
+		//ReturnConditions
+		if (closestDistance < tolerance) {
+			return multiplierPossibilities [returnIndex];
+		} else {
+			return input;
 		}
 	}
 
