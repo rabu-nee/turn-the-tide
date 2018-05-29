@@ -1,19 +1,21 @@
 fileFormatVersion: 2
 guid: 1528a151efdc09240bdd7c1ff0d98da8
+timeCreated: 1527583972
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: begeige_0
-    21300002: begeige_1
-    21300004: begeige_2
-    21300006: begeige_3
-    21300008: begeige_4
-    21300010: begeige_5
-    21300012: begeige_6
-    21300014: begeige_7
-    21300016: begeige_8
-    21300018: begeige_9
+    21300000: crystal_2_sprite
+    21300002: crystal_1_sprite
+    21300004: link_receiver_sprite
+    21300006: link_transmitter_sprite
+    21300008: platform_1_sprite
+    21300010: aimindicator_disabled
+    21300012: aimindicator_white
+    21300014: aimindicator_red
+    21300016: boulder_sprite
+    21300018: circle_sprite
   externalObjects: {}
-  serializedVersion: 5
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -53,21 +55,18 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
-  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
-    buildTarget: DefaultTexturePlatform
+  - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -76,9 +75,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
+  - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -87,12 +84,11 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: begeige_0
+      name: crystal_2_sprite
       rect:
         serializedVersion: 2
         x: 50
@@ -100,59 +96,41 @@ TextureImporter:
         width: 135
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: e32b7432b8e25724783265385f27d739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_1
+      name: crystal_1_sprite
       rect:
         serializedVersion: 2
-        x: 408
+        x: 410
         y: 1151
         width: 173
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: ecf56ed9d96e32640a33ff6af21b1460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_2
+      name: link_receiver_sprite
       rect:
         serializedVersion: 2
         x: 765
-        y: 1145
+        y: 1143
         width: 248
         height: 248
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 66960b6731290e84b99d78a5ea4c3591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_3
+      name: link_transmitter_sprite
       rect:
         serializedVersion: 2
         x: 1164
@@ -160,19 +138,13 @@ TextureImporter:
         width: 248
         height: 249
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 3066a0656f0dec9439c44bc2e0759e53
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_4
+      name: platform_1_sprite
       rect:
         serializedVersion: 2
         x: 64
@@ -180,19 +152,13 @@ TextureImporter:
         width: 700
         height: 284
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 45d77d006d1ef314cbb0e5f3ede16295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_5
+      name: aimindicator_disabled
       rect:
         serializedVersion: 2
         x: 994
@@ -200,19 +166,13 @@ TextureImporter:
         width: 176
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 4709ec69be906a94a8e18723d05397da
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_6
+      name: aimindicator_white
       rect:
         serializedVersion: 2
         x: 1216
@@ -220,19 +180,13 @@ TextureImporter:
         width: 184
         height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 324bec68aac107847928a8cc79e1e8f9
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_7
+      name: aimindicator_red
       rect:
         serializedVersion: 2
         x: 1462
@@ -240,19 +194,13 @@ TextureImporter:
         width: 178
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: faa4ba6f69299574a97984ad74478d73
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_8
+      name: boulder_sprite
       rect:
         serializedVersion: 2
         x: 102
@@ -260,19 +208,13 @@ TextureImporter:
         width: 494
         height: 486
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: f18d2856dea64e74a847b8d286d843f4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
-      name: begeige_9
+      name: circle_sprite
       rect:
         serializedVersion: 2
         x: 784
@@ -280,25 +222,13 @@ TextureImporter:
         width: 624
         height: 625
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-      bones: []
-      spriteID: 902ec65bbe056414fb968f6668ea1a5f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
-    bones: []
-    spriteID: 545d5dc89cbeb5549a882e249c14b102
-    vertices: []
-    indices: 
-    edges: []
-    weights: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
