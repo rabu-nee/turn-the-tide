@@ -21,6 +21,7 @@ public class LevelRotation : MonoBehaviour {
 	private bool buttonHit = false;
 	private bool allowInput = true;
 	private bool joltAdded = true;
+	private bool shakeAdded = true;
 	private bool addedExtraRotation = false;
 	private float elapsedTurnTime = 0;
 	private CameraEffects CamFX;
@@ -40,6 +41,7 @@ public class LevelRotation : MonoBehaviour {
 		checkAllowInput ();
 		controllerInput ();
 
+		addCameraEffects ();
 		turnScreen ();
 	}
 
@@ -52,11 +54,12 @@ public class LevelRotation : MonoBehaviour {
 			elapsedTurnTime = 0;
 			lastDir = dir;
 			joltAdded = false;
+			shakeAdded = false;
 			addedExtraRotation = false;
 			desiredEuler = addEulerRotation (desiredEuler, dir);
 			resetOvershootRotation ();
 			curScreen = -curScreen;
-			turnVelocity (dir);
+			//turnVelocity (dir);
 		}
 	}
 
@@ -83,13 +86,6 @@ public class LevelRotation : MonoBehaviour {
 
 		curEuler = Vector3.Lerp(curEuler, desiredEuler + extraRotation, Time.deltaTime * newRotSpeed * slowDownTime);
 		transform.rotation = Quaternion.Euler (curEuler);
-
-		//Check if rotation is close to completion
-		float eulerDifference = Mathf.Abs(Mathf.Abs(curEuler.z) - Mathf.Abs(desiredEuler.z));
-		if ((eulerDifference < joltTiming) && (!joltAdded)) {
-			CamFX.addCameraJolt (new Vector3(0,0.71f,0));
-			joltAdded = true;
-		}
 	}
 
 	private void resetOvershootRotation() {
@@ -97,6 +93,19 @@ public class LevelRotation : MonoBehaviour {
 		while (Mathf.Abs (curEuler.z) >= 360) {
 			curEuler.z -= (360 * getSign (curEuler.z));
 			desiredEuler.z -= (360 * getSign (desiredEuler.z));
+		}
+	}
+
+	private void addCameraEffects() {
+		if ((elapsedTurnTime > turnAgainTiming) && (!shakeAdded)) {
+			shakeAdded = true;
+			CamFX.addStandardCameraShake ();
+		}
+
+		float eulerDifference = Mathf.Abs(Mathf.Abs(curEuler.z) - Mathf.Abs(desiredEuler.z));
+		if ((eulerDifference < joltTiming) && (!joltAdded)) {
+			CamFX.addStandardCameraJolt ();
+			joltAdded = true;
 		}
 	}
 
