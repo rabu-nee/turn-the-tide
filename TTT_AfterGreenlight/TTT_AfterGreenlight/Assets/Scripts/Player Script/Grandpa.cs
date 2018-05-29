@@ -57,7 +57,6 @@ public class Grandpa : Player
             anim.SetBool("Walking", false);
 
             canMove = false;
-            Debug.Log("aiming");
             canThrow = true;
             aimingMode = true;
         }
@@ -71,7 +70,6 @@ public class Grandpa : Player
             if (x != 0.0f || y != 0.0f)
             {
                 angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
-                Debug.Log(angle);
 
                 aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
@@ -107,7 +105,6 @@ public class Grandpa : Player
             aimingMode = false;
             noStick = true;
             canPick = false;
-            Debug.Log("throwing");
 
             //animation
             StartCoroutine(Throw());
@@ -120,7 +117,6 @@ public class Grandpa : Player
         anim.SetBool("Throwing", true);
 
         AnimatorClipInfo[] info = anim.GetCurrentAnimatorClipInfo(0);
-        Debug.Log(info.Length);
 
         yield return new WaitForSeconds(info.Length);
 
@@ -149,7 +145,6 @@ public class Grandpa : Player
     {
         if (Input.GetButtonDown("Throw") && canPick) //same button as throw
         {
-            Debug.Log("Got stick");
             noStick = false;
             Destroy(Stick);
             stickSprite.enabled = true;

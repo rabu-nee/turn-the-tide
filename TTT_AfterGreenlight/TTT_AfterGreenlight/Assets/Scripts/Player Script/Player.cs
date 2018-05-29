@@ -83,7 +83,6 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
             }
         }
-        Debug.Log((int)Input.GetAxis("Horizontal"));
     }
 
     public void Jump()

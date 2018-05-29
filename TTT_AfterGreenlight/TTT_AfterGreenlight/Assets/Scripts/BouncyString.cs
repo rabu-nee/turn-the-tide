@@ -36,7 +36,7 @@ public class BouncyString : MonoBehaviour {
     }
 
 	void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        if (other.gameObject == player1 || other.gameObject == player2)
         {
             playerObjs[playerIndex] = other.gameObject;
             playerIndex++;
@@ -44,8 +44,27 @@ public class BouncyString : MonoBehaviour {
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        if (other.gameObject == player1 || other.gameObject == player2)
         {
+            if (playerObjs[0] == other.gameObject)
+            {
+                if (playerObjs[1] == null)
+                {
+                    playerObjs[0] = null;
+                }
+                else
+                {
+                    playerObjs[0] = playerObjs[1];
+                    playerObjs[1] = null;
+                }
+            }
+            else if(playerObjs[1] == other.gameObject)
+            {
+                playerObjs[1] = null;
+            }
+            playerIndex--;
+
+            /*
             //1 player, player in slot 0
             if ((playerObjs[0] = other.gameObject) && (playerIndex == 1))
             {
@@ -71,6 +90,7 @@ public class BouncyString : MonoBehaviour {
                 playerObjs[1] = null;
                 playerIndex--;
             }
+            */
         }
     }
 
