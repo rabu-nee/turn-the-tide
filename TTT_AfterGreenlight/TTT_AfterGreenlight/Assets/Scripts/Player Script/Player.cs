@@ -48,16 +48,22 @@ public class Player : MonoBehaviour
             Move();
             Jump();
         }
+        else
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("IsWallSliding", false);
+            anim.SetBool("Jumping", false);
+        }
     }
 
     public void Move()
     {
-        if (!grounded && Input.GetAxis("Horizontal") != previousAxispos)
+        if (!grounded && Input.GetAxisRaw("Horizontal") != previousAxispos)
         {
             BaseSpeed = 0;
             outsideForce = false;
         }
-        previousAxispos = Input.GetAxis("Horizontal");
+        previousAxispos = Input.GetAxisRaw("Horizontal");
 
         //MOVING CODE
 
@@ -65,19 +71,19 @@ public class Player : MonoBehaviour
         if (!outsideForce && hanging == false)
         {
 
-            if (Input.GetAxis("Horizontal") != 0)
+            if (Input.GetAxisRaw("Horizontal") != 0)
             {
                 anim.SetBool("Walking", true);
-                rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
-                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxis("Horizontal")) * scaleX * Mathf.Sign(scaleY), scaleY);
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
+                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * scaleX * Mathf.Sign(scaleY), scaleY);
             }
-            else
+            else if((int)Input.GetAxisRaw("Horizontal") == 0)
             {
                 anim.SetBool("Walking", false);
                 rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
             }
         }
-
+        Debug.Log((int)Input.GetAxis("Horizontal"));
     }
 
     public void Jump()
