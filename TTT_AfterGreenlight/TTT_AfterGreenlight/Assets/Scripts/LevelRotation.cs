@@ -143,6 +143,10 @@ public class LevelRotation : MonoBehaviour {
 		return curScreen;
 	}
 
+	public int getLastDir() {
+		return lastDir;
+	}
+
 	//DEBUG===================================================================================================================
 
 	void controllerInput() {
