@@ -6,7 +6,10 @@ public class CameraEffects : MonoBehaviour {
 
 	public float movementFriction;
 	public float movementSpeed;
-	public float fovShift = 2;
+	public Vector3 standardJoltAmount;
+	public float standardShakeDuration = 2f;
+	public float standardShakeIntensity = 2f;
+	public float standardShakeDelay = 0f;
 
 	private Vector3 standardPosition;
 	private Vector3 joltPosition;
@@ -40,6 +43,14 @@ public class CameraEffects : MonoBehaviour {
 
 	//CUSTOM FUNCTIONS===================================================================================================================
 
+	public void addStandardCameraJolt() {
+		addCameraJolt (standardJoltAmount);
+	}
+
+	public void addStandardCameraShake() {
+		addCameraShake (standardShakeDuration, standardShakeIntensity, standardShakeDelay);
+	}
+
 	public void addCameraJolt(Vector3 amount) {
 		curVelocity = amount;
 	}
@@ -64,7 +75,6 @@ public class CameraEffects : MonoBehaviour {
 				} else {
 					camShakeIntensity = (1 - ((elapsedTime - midTime) / midTime)) * camShakeMaxIntensity;
 				}
-				cam.fieldOfView = standardFOV + (camShakeIntensity * fovShift);
 				shakePosition = standardPosition + Random.insideUnitSphere * camShakeIntensity;
 
 			} else {
