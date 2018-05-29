@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
                 anim.SetBool("Walking", true);
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(scaleY) + BaseSpeed, rb.velocity.y);
-                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * scaleX * Mathf.Sign(scaleY), scaleY);
+                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
+                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale), scaleY);
             }
             else if((int)Input.GetAxisRaw("Horizontal") == 0)
             {
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
             GetComponent<Rigidbody2D>().isKinematic = false;
             timer = 0;
             canJump = true;
-            rb.AddForce(new Vector2(0, jumpForce * 3 * Mathf.Sign(scaleY)));
+            rb.AddForce(new Vector2(0, jumpForce * 3 * Mathf.Sign(rb.gravityScale)));
             anim.SetBool("Jumping", true);
         }
         else if (grounded)
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
             else if (Input.GetButtonDown("Jump") && canJump && timer < maxTime)
             {
                 timer += Time.deltaTime;
-                rb.AddForce(new Vector2(0, jumpForce * Mathf.Sign(scaleY)));
+                rb.AddForce(new Vector2(0, jumpForce * Mathf.Sign(rb.gravityScale)));
             }
             else
             {
