@@ -12,6 +12,7 @@ TagManager:
   - CurrentLevel
   - Gears
   - Gate
+  - StickButton
   layers:
   - Default
   - TransparentFX
