@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Stick : MonoBehaviour {
 
-    public float hitAngle = 90f;
+    public float hitAngle;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Wall")
         {
-            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            this.GetComponent<Rigidbody2D>().isKinematic = true;
+            Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
+            BoxCollider2D col = this.GetComponent<BoxCollider2D>();
+            col.enabled = false;
 
-            this.transform.localRotation = Quaternion.Euler(new Vector3(0,0,hitAngle));
-            this.GetComponent<Rigidbody2D>().freezeRotation = true;
+            this.transform.localRotation = Quaternion.Euler(new Vector3(0,0, hitAngle));
+            col.enabled = true;
+            rb.freezeRotation = true;
         }
     }
 }

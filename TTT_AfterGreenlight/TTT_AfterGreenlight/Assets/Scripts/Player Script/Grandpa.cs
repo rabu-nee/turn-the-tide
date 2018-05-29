@@ -47,6 +47,7 @@ public class Grandpa : Player
                 PickStick();
             }
         }
+        Debug.Log(angle);
     }
 
     private void ThrowStick()
@@ -128,11 +129,11 @@ public class Grandpa : Player
         stickSprite.enabled = false;
         Stick = Instantiate(StickPrefab) as GameObject;
         Stick st = Stick.GetComponent<Stick>();
-        //st.hitAngle *= -Mathf.Sign(angle);
         Stick.transform.position = launchPos.position;
 
         Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
         Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
+        st.hitAngle = angle + 90;
 
         speed = speedWithoutStick;
 
