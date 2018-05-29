@@ -122,7 +122,6 @@ public class LevelRotation : MonoBehaviour {
 		} else {
 			allowInput = false;
 		}
-		Debug.Log (allowInput);
 	}
 
 	private Vector3 addEulerRotation(Vector3 euler, int dir) {
