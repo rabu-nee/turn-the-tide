@@ -11,50 +11,68 @@ public class BouncyString : MonoBehaviour {
 	private int shiftPosition = -1;
 	private Vector3 standardPosition;
 	public GameObject[] playerObjs = new GameObject[2];
-	private int playerIndex = 0;
+	public int playerIndex = 0;
 
-	//BUILT-IN FUNCTIONS===================================================================================================================
-	void Start () {
-		standardPosition = transform.localPosition;
-	}
+    public GameObject player1;
+    public GameObject player2;
+
+    private Rigidbody2D rb1;
+    private Rigidbody2D rb2;
+
+    //BUILT-IN FUNCTIONS===================================================================================================================
+    void Start() {
+        standardPosition = transform.localPosition;
+
+        player1 = GameObject.FindGameObjectWithTag("Player1");
+        rb1 = player1.GetComponent<Rigidbody2D>();
+
+        player2 = GameObject.FindGameObjectWithTag("Player2");
+        rb2 = player2.GetComponent<Rigidbody2D>();
+    }
 
 	void Update () {
-		
-	}
+
+
+    }
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (isPlayerTag(other.gameObject.tag)) {
-			Debug.Log (other.gameObject.name);
-			//addShift (2 * getPlayerGravity(other.gameObject));
-			if (playerIndex == 0) {
-				playerObjs [playerIndex] = other.gameObject;
-				playerIndex++;
-			} else {
-				if (playerIndex == 1) {
-					playerObjs [playerIndex] = other.gameObject;
-					playerIndex++;
-				}
-				if (playerIndex == 2) {
-					addVelocities (playerObjs [0], playerObjs [1]);
-					playerObjs [0] = playerObjs [1];
-					playerObjs [1] = null;
-					playerIndex--;
-				}
-			}
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        {
+            playerObjs[playerIndex] = other.gameObject;
+            playerIndex++;
+        }
+    }
 
-		}
-			
-	}
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        {
+            //1 player, player in slot 0
+            if ((playerObjs[0] = other.gameObject) && (playerIndex == 1))
+            {
+                playerObjs[0] = null;
+                playerIndex--;
+            }
+            //2 players, player in slot 0
+            if ((playerObjs[0] = other.gameObject) && (playerIndex == 2))
+            {
+                playerObjs[0] = null;
+                playerIndex--;
+                //move player slot
+                if (playerObjs[1] != null)
+                {
+                    playerObjs[0] = playerObjs[1];
+                    playerObjs[1] = null;
+                }
+            }
 
-	void OnTriggerExit2D(Collider2D other) {
-		if (playerObjs [0] == other.gameObject) {
-			playerObjs [0] = playerObjs [1];
-			playerObjs [1] = null;
-		}
-		if (playerObjs [1] == other.gameObject) {
-			playerObjs [1] = null;
-		}
-	}
+            //2 players, player in slot 1
+            if ((playerObjs[1] = other.gameObject) && (playerIndex == 2))
+            {
+                playerObjs[1] = null;
+                playerIndex--;
+            }
+        }
+    }
 
 	//CUSTOM FUNCTIONS===================================================================================================================
 	private void addVelocities(GameObject addObj, GameObject velObj) {
