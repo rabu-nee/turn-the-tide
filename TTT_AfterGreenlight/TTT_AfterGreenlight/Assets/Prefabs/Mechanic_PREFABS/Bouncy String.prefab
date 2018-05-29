@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityMultiplier: 1
-  shiftAmount: 0.6
+  shiftAmount: 0
   shiftDirection: 0
   playerObjs:
   - {fileID: 0}
