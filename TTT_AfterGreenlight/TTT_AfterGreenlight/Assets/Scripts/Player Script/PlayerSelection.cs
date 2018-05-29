@@ -6,6 +6,8 @@ public class PlayerSelection : MonoBehaviour
 {
 
     private GameObject player1, player2;
+	private LevelRotation lr;
+	private int lastScreen;
 
     // Use this for initialization
     void Start()
@@ -15,28 +17,38 @@ public class PlayerSelection : MonoBehaviour
 
         player2 = GameObject.FindGameObjectWithTag("Player2");
         player2.GetComponent<Player>().selected = false;
+
+		lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
+		lastScreen = lr.getCurScreen ();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.JoystickButton5) || Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ChangeCharacter();
-        }
+        ChangeCharacter();
+		if (lr.getCurScreen () != lastScreen) {
+			lastScreen = lr.getCurScreen ();
+			reversePlayerGravity ();
+		}
     }
 
     void ChangeCharacter()
     {
-        if (!player1.GetComponent<Player>().selected)
-        {
-            player1.GetComponent<Player>().selected = true;
-            player2.GetComponent<Player>().selected = false;
-        }
-        else if (player1.GetComponent<Player>().selected)
-        {
-            player2.GetComponent<Player>().selected = true;
-            player1.GetComponent<Player>().selected = false;
-        }
+		player1.GetComponent<Player>().selected = screenToBool(lr.getCurScreen());
+		player2.GetComponent<Player>().selected = !screenToBool(lr.getCurScreen());
+
     }
+
+	void reversePlayerGravity() {
+		player1.GetComponent<Player> ().reverseGravity ();
+		player2.GetComponent<Player> ().reverseGravity ();
+	}
+
+	private bool screenToBool(int input) {
+		if (input == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

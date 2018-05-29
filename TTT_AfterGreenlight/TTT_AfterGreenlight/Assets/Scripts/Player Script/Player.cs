@@ -138,4 +138,8 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Platform")
             BaseSpeed = other.gameObject.GetComponent<Rigidbody2D>().velocity.x;
     }
+
+	public void reverseGravity() {
+		GetComponent<Rigidbody2D> ().gravityScale *= -1;
+	}
 }
