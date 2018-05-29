@@ -152,7 +152,6 @@ public class LevelRotation : MonoBehaviour {
 	void controllerInput() {
 		//Add Input Handler!!
 		if (allowInput) { 
-			/*
 			//Turn Screen to the left
 			if ((Input.GetButtonDown ("LBumper") || (Input.GetAxis ("LTrigger") > 0)) && (buttonHit == false)) {
 				advanceScreen (-1);
@@ -168,7 +167,7 @@ public class LevelRotation : MonoBehaviour {
 			if ((Input.GetAxis ("LTrigger") == 0) && (Input.GetAxis ("RTrigger") == 0)) {
 				buttonHit = false;
 			}
-			*/
+
 
 
 			if ((Input.GetKeyDown(KeyCode.Q)) && (buttonHit == false)) {
