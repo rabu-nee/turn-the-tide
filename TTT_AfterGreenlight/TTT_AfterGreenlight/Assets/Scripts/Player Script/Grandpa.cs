@@ -47,6 +47,7 @@ public class Grandpa : Player
                 PickStick();
             }
         }
+        Debug.Log(angle);
     }
 
     private void ThrowStick()

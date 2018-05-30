@@ -145,9 +145,12 @@ public class Player : MonoBehaviour
 	public void reverseGravity() {
 		GetComponent<Rigidbody2D> ().gravityScale *= -1;
 	}
+<<<<<<< HEAD
 
 	public void resetPlayerPosition() {
 		this.transform.position = standardPosition;
 		rb.velocity = Vector3.zero;
 	}
+=======
+>>>>>>> e7174d0a3fa3012130ce5352aaa97eb4bd0e3d2e
 }

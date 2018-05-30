@@ -10,7 +10,10 @@ public class activateDoor : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Stick")) {
 			if (door != null) {
 				Destroy (door);
+<<<<<<< HEAD
 				Destroy (other.gameObject);
+=======
+>>>>>>> e7174d0a3fa3012130ce5352aaa97eb4bd0e3d2e
 			}
 		}
 	}

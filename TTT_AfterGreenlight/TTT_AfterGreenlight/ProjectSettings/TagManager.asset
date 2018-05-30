@@ -13,8 +13,11 @@ TagManager:
   - Gears
   - Gate
   - StickButton
+<<<<<<< HEAD
   - MovingPlatform
   - Platform
+=======
+>>>>>>> e7174d0a3fa3012130ce5352aaa97eb4bd0e3d2e
   layers:
   - Default
   - TransparentFX
