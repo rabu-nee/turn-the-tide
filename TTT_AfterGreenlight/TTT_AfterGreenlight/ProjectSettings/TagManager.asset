@@ -3,21 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - PhysObj
-  - Wall
-  - Player1
-  - Player2
-  - Stick
-  - CurrentLevel
-  - Gears
-  - Gate
-  - StickButton
-<<<<<<< HEAD
-  - MovingPlatform
-  - Platform
-=======
->>>>>>> e7174d0a3fa3012130ce5352aaa97eb4bd0e3d2e
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -27,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - ground
+  - 
   - 
   - 
   - 
