@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 50722863416897230}
   - component: {fileID: 61129402260921372}
   - component: {fileID: 114186633011696360}
+  - component: {fileID: 114130663260921714}
   m_Layer: 0
   m_Name: boy
   m_TagString: Player1
@@ -583,6 +584,7 @@ GameObject:
   - component: {fileID: 50221638226709152}
   - component: {fileID: 61599563855902104}
   - component: {fileID: 114897994497410156}
+  - component: {fileID: 114073649563513550}
   m_Layer: 0
   m_Name: grandpa 1
   m_TagString: Player2
@@ -689,7 +691,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1048549631889882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -0.3400001, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.41, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4089930971951682}
@@ -804,7 +806,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1513072780896090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.54, y: -0.3, z: 0}
+  m_LocalPosition: {x: -28.09, y: -0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4562717037998044}
@@ -821,7 +823,7 @@ Transform:
   m_GameObject: {fileID: 1961594167463190}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0.1495425, y: -0.459594, z: 0}
-  m_LocalScale: {x: 0.3914726, y: 0.1185132, z: 1}
+  m_LocalScale: {x: -0.3914726, y: 0.1185132, z: 1}
   m_Children:
   - {fileID: 4841657676520152}
   - {fileID: 4984006157769184}
@@ -892,8 +894,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052724500337204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.622813, y: 0.68619245, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.70285165, y: 0.138, z: -10}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
   m_Children:
   - {fileID: 4234712125390480}
   - {fileID: 4936748488744610}
@@ -1124,7 +1126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433620727627284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.51, y: -5.44, z: 0}
+  m_LocalPosition: {x: -27.85, y: -3.7, z: 0}
   m_LocalScale: {x: -0.89542663, y: -0.8954265, z: 0}
   m_Children:
   - {fileID: 4598393748936954}
@@ -1178,8 +1180,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952796744559946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -5.61, z: 0}
-  m_LocalScale: {x: -1.2772285, y: -4.2189407, z: 1}
+  m_LocalPosition: {x: -28.11, y: -3.8700001, z: 0}
+  m_LocalScale: {x: 1.277228, y: -4.2189407, z: 1}
   m_Children:
   - {fileID: 4900742689693060}
   - {fileID: 4066705561804856}
@@ -1248,7 +1250,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 4.7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1340,6 +1342,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114073649563513550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952796744559946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e26076e938190848b0bf44a3c973504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114130663260921714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1513072780896090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e26076e938190848b0bf44a3c973504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114186633011696360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1355,19 +1379,19 @@ MonoBehaviour:
   outsideForce: 0
   anim: {fileID: 0}
   rb: {fileID: 50722863416897230}
-  speed: 5
+  speed: 9
   grounded: 0
   footPoint1: {fileID: 4562717037998044}
   footPoint2: {fileID: 4567388347475606}
   onlyGroundMask:
     serializedVersion: 2
     m_Bits: 256
-  jumpForce: 175
+  jumpForce: 300
   scaleX: 0
   scaleY: 0
   canMove: 0
   distance: 1
-  wallJumpSpeed: 10
+  wallJumpSpeed: 20
 --- !u!114 &114469650989394196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1394,7 +1418,7 @@ MonoBehaviour:
   outsideForce: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
-  speed: 5
+  speed: 8
   grounded: 0
   footPoint1: {fileID: 4900742689693060}
   footPoint2: {fileID: 4066705561804856}

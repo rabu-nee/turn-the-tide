@@ -6,6 +6,7 @@ public class PlayerSelection : MonoBehaviour
 {
 
     private GameObject player1, player2;
+	private LevelRotation lr;
 
     // Use this for initialization
     void Start()
@@ -15,28 +16,27 @@ public class PlayerSelection : MonoBehaviour
 
         player2 = GameObject.FindGameObjectWithTag("Player2");
         player2.GetComponent<Player>().selected = false;
+
+		lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton4) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.JoystickButton5) || Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ChangeCharacter();
-        }
+        ChangeCharacter();
     }
 
     void ChangeCharacter()
     {
-        if (!player1.GetComponent<Player>().selected)
-        {
-            player1.GetComponent<Player>().selected = true;
-            player2.GetComponent<Player>().selected = false;
-        }
-        else if (player1.GetComponent<Player>().selected)
-        {
-            player2.GetComponent<Player>().selected = true;
-            player1.GetComponent<Player>().selected = false;
-        }
+		player1.GetComponent<Player>().selected = !screenToBool(lr.getCurScreen());
+		player2.GetComponent<Player>().selected = screenToBool(lr.getCurScreen());
     }
+
+	private bool screenToBool(int input) {
+		if (input == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

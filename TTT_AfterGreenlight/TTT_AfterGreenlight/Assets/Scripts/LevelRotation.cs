@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class LevelRotation : MonoBehaviour {
@@ -9,6 +10,8 @@ public class LevelRotation : MonoBehaviour {
 	public float extraRotationAmount = 10f;
 	public float velocityIntensity = 2f;
 	public float joltTiming = 15f;
+	public float turnAgainTiming = 1f;
+	public float turnAgainTolerance = 5f;
 
 	private Quaternion standardRotation;
 	private Vector3 curEuler;
@@ -19,6 +22,7 @@ public class LevelRotation : MonoBehaviour {
 	private bool buttonHit = false;
 	private bool allowInput = true;
 	private bool joltAdded = true;
+	private bool shakeAdded = true;
 	private bool addedExtraRotation = false;
 	private float elapsedTurnTime = 0;
 	private CameraEffects CamFX;
@@ -35,26 +39,28 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	void Update () {
+		checkAllowInput ();
 		controllerInput ();
 
+		addCameraEffects ();
 		turnScreen ();
-		resetOvershootRotation ();
 	}
 
 	//CUSTOM FUNCTIONS===================================================================================================================
 
 	public void advanceScreen(int dir) {
 		//Check if last turn animation completed
-		if (isDivBy (curEuler.z, 180)) {
+		if (isDivBy (roundToMultiple(curEuler.z, 180, turnAgainTolerance), 180)) {
 			//Initiate screen turning
 			elapsedTurnTime = 0;
 			lastDir = dir;
 			joltAdded = false;
+			shakeAdded = false;
 			addedExtraRotation = false;
 			desiredEuler = addEulerRotation (desiredEuler, dir);
+			resetOvershootRotation ();
 			curScreen = -curScreen;
-			turnVelocity (dir);
-			CamFX.addCameraShake (0.753f, 0.14f, 0.075f);
+			//turnVelocity (dir);
 		}
 	}
 
@@ -81,20 +87,26 @@ public class LevelRotation : MonoBehaviour {
 
 		curEuler = Vector3.Lerp(curEuler, desiredEuler + extraRotation, Time.deltaTime * newRotSpeed * slowDownTime);
 		transform.rotation = Quaternion.Euler (curEuler);
-
-		//Check if rotation is close to completion
-		float eulerDifference = Mathf.Abs(Mathf.Abs(curEuler.z) - Mathf.Abs(desiredEuler.z));
-		if ((eulerDifference < joltTiming) && (!joltAdded)) {
-			CamFX.addCameraJolt (new Vector3(0,0.71f,0));
-			joltAdded = true;
-		}
 	}
 
 	private void resetOvershootRotation() {
 		//Keep curEuler & desiredEuler as low as possible to avoid potential overflow
-		while (Mathf.Abs (curEuler.y) >= 360) {
-			curEuler.y -= (360 * getSign (curEuler.z));
-			desiredEuler.y -= (360 * getSign (desiredEuler.y));
+		while (Mathf.Abs (curEuler.z) >= 360) {
+			curEuler.z -= (360 * getSign (curEuler.z));
+			desiredEuler.z -= (360 * getSign (desiredEuler.z));
+		}
+	}
+
+	private void addCameraEffects() {
+		if ((elapsedTurnTime > turnAgainTiming) && (!shakeAdded)) {
+			shakeAdded = true;
+			CamFX.addStandardCameraShake ();
+		}
+
+		float eulerDifference = Mathf.Abs(Mathf.Abs(curEuler.z) - Mathf.Abs(desiredEuler.z));
+		if ((eulerDifference < joltTiming) && (!joltAdded)) {
+			CamFX.addStandardCameraJolt ();
+			joltAdded = true;
 		}
 	}
 
@@ -111,6 +123,14 @@ public class LevelRotation : MonoBehaviour {
 				int nDir = (int)Mathf.Clamp (g.GetComponent<Rigidbody2D> ().gravityScale, -1, 1);
 				g.GetComponent<Rigidbody2D> ().AddForce (vel * nDir * 0.3f);
 			}
+		}
+	}
+
+	private void checkAllowInput() {
+		if (elapsedTurnTime > turnAgainTiming) {
+			allowInput = true;
+		} else {
+			allowInput = false;
 		}
 	}
 
@@ -136,6 +156,34 @@ public class LevelRotation : MonoBehaviour {
 		}
 	}
 
+	private float roundToMultiple(float input, float divider, float tolerance) {
+		float[] multiplierPossibilities = new float[10];
+		float closestDistance = divider;
+		int returnIndex = 0;
+
+		for (int i = 0; i < 5; i++) {
+			multiplierPossibilities [i + 5] = divider * i;
+			int negativeIndex = 4 - i;
+			multiplierPossibilities [negativeIndex] = -multiplierPossibilities [i + 5];
+		}
+			
+		for (int i = 0; i < 10; i++) {
+			float curValue = multiplierPossibilities [i];
+			float difference = Mathf.Abs (Mathf.Abs(curValue) - Mathf.Abs(input));
+
+			if (difference < closestDistance) {
+				closestDistance = difference;
+				returnIndex = i;
+			}
+		}
+
+		//ReturnConditions
+		if (closestDistance < tolerance) {
+			return multiplierPossibilities [returnIndex];
+		} else {
+			return input;
+		}
+	}
 
 	//GETTER===================================================================================================================
 
@@ -152,23 +200,22 @@ public class LevelRotation : MonoBehaviour {
 	void controllerInput() {
 		//Add Input Handler!!
 		if (allowInput) { 
-			/*
 			//Turn Screen to the left
 			if ((Input.GetButtonDown ("LBumper") || (Input.GetAxis ("LTrigger") > 0)) && (buttonHit == false)) {
-				advanceScreen (-1);
+				advanceScreen (1);
 				buttonHit = true;
 			}
 
 			//Turn Screen to the right
 			if ((Input.GetButtonDown ("RBumper") || (Input.GetAxis ("RTrigger") > 0)) && (buttonHit == false)) {
-				advanceScreen (1);
+				advanceScreen (-1);
 				buttonHit = true;
 			}
 
 			if ((Input.GetAxis ("LTrigger") == 0) && (Input.GetAxis ("RTrigger") == 0)) {
 				buttonHit = false;
 			}
-			*/
+
 
 
 			if ((Input.GetKeyDown(KeyCode.Q)) && (buttonHit == false)) {

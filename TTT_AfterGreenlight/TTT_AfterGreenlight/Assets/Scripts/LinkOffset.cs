@@ -17,8 +17,8 @@ public class LinkOffset : MonoBehaviour {
 
 	void FixedUpdate () {
 		GameObject.Destroy (copyObj);
-		Vector3 newOffset = Quaternion.Euler (0, 0, originalObj.transform.rotation.eulerAngles.z) * offset;
-		Vector3 newPos = originalObj.transform.position + newOffset;
+		Vector3 newPos = originalObj.transform.position + offset;
 		copyObj = Instantiate (originalObj, newPos, originalObj.transform.rotation, this.gameObject.transform) as GameObject;
+		copyObj.tag = "MovingPlatform";
 	}
 }
