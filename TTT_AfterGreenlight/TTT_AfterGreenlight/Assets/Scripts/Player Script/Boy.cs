@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boy : Player {
 
+    [Header("Wall Jump", order = 2)]
     public float distance = 1f;
     public float wallJumpSpeed = 2f;
 
@@ -31,7 +32,8 @@ public class Boy : Player {
             anim.SetBool("IsWallSliding", false);
             anim.SetBool("Jumping", true);
             outsideForce = true;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(wallJumpSpeed * hit.normal.x, wallJumpSpeed);
+            SoundManager.instance.PlaySound(ThrowOrWallJumpSound);
+            rb.velocity = new Vector2(wallJumpSpeed * hit.normal.x, wallJumpSpeed);
             canMove = false;
 
             StartCoroutine("TurnIt");

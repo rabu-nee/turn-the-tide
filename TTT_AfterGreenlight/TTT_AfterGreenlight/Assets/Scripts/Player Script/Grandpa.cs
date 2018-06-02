@@ -5,20 +5,21 @@ using UnityEngine;
 public class Grandpa : Player
 {
 
+    [Header("Throw", order = 2)]
     public float throwPower, speedWithoutStick;
-    public float rotationSpeed = 5f;
+    //public float rotationSpeed = 5f;
     public GameObject StickPrefab;
+    public SpriteRenderer stickSprite;
 
     private float initSpeed;
     private bool noStick;
     private bool canThrow, canPick, aimingMode;
     private float rot, angle;
 
-    public Transform aim;
-    public Transform launchPos;
+    private Transform aim;
+    private Transform launchPos;
 
     private GameObject Stick;
-    public SpriteRenderer stickSprite;
     private Vector3 throwDirection;
 
 
@@ -125,6 +126,7 @@ public class Grandpa : Player
 
 
         //instantiate stick
+        SoundManager.instance.PlaySound(ThrowOrWallJumpSound);
         stickSprite.enabled = false;
         Stick = Instantiate(StickPrefab) as GameObject;
         Stick st = Stick.GetComponent<Stick>();

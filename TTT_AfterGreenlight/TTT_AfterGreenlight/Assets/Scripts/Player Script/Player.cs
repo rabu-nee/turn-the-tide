@@ -4,34 +4,35 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    //some types are public for child classes for access
 
+    [Header("Player parameters", order = 0)]
+    public float speed = 5f; //move speed
+    public float jumpForce;
+    public LayerMask onlyGroundMask;
+
+    //some data types are public for child classes for access
+    [Header("Do not touch", order = 1)]
     public bool selected;
     public bool outsideForce;
     private bool hanging = false;
-	private Vector3 standardPosition;
-
+    private Vector3 standardPosition;
+    public bool grounded;
     public Animator anim;
     public Rigidbody2D rb;
-
-    public float speed = 5f; //move speed
-    private float BaseSpeed;
-
-    //JumpVariables
-    public bool grounded;
-    public Transform footPoint1;
-    public Transform footPoint2;
-    public LayerMask onlyGroundMask;
-    public float jumpForce;
-
+    public float scaleX, scaleY; //mostly used for sign of scale for gravity and control
+    public bool canMove;
     private float timer;
     private bool canJump;
     private float maxTime = 0.1f;
-
     private float previousAxispos;
-    public float scaleX, scaleY; //mostly used for sign of scale for gravity and control
+    private Transform footPoint1;
+    private Transform footPoint2;
+    private float BaseSpeed;
 
-    public bool canMove;
+    [Header("Sound names", order = 3)]
+    public string MoveSound;
+    public string JumpSound;
+    public string ThrowOrWallJumpSound;
 
 
     public void Start()
@@ -40,6 +41,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         scaleX = this.transform.localScale.x;
         scaleY = this.transform.localScale.y;
+        footPoint1 = this.transform.Find("foot1");
+        footPoint2 = this.transform.Find("foot2");
 
 		standardPosition = transform.position;
     }
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour
 
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
+                SoundManager.instance.PlaySound(MoveSound);
                 anim.SetBool("Walking", true);
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale), scaleY);
@@ -100,6 +104,7 @@ public class Player : MonoBehaviour
             GetComponent<Rigidbody2D>().isKinematic = false;
             timer = 0;
             canJump = true;
+            SoundManager.instance.PlaySound(JumpSound);
             rb.AddForce(new Vector2(0, jumpForce * 3 * Mathf.Sign(rb.gravityScale)));
             anim.SetBool("Jumping", true);
         }
