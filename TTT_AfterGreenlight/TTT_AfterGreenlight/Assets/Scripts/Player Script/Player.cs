@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
                 SoundManager.instance.PlaySound(MoveSound);
                 anim.SetBool("Walking", true);
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
-                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale), scaleY);
+                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale) * scaleX, scaleY);
             }
             else if((int)Input.GetAxisRaw("Horizontal") == 0)
             {
