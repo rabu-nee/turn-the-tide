@@ -1361,6 +1361,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 61550964421236064, guid: bb71efe3f433b3b42bec6d92c3d77715,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.0030767303
+      objectReference: {fileID: 0}
+    - target: {fileID: 61550964421236064, guid: bb71efe3f433b3b42bec6d92c3d77715,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.03630362
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb71efe3f433b3b42bec6d92c3d77715, type: 2}
   m_IsPrefabParent: 0
@@ -3446,6 +3456,22 @@ Prefab:
     - target: {fileID: 1052724500337204, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
       propertyPath: m_Name
       value: Players
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952796744559946, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
+      propertyPath: m_Name
+      value: OBJ-grandpa
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513072780896090, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
+      propertyPath: m_Name
+      value: OBJ-boy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048549631889882, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
+      propertyPath: m_Name
+      value: RIG-boy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961594167463190, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
+      propertyPath: m_Name
+      value: RIG-grandpa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
