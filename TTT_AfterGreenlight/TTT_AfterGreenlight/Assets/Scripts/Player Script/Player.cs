@@ -147,7 +147,19 @@ public class Player : MonoBehaviour
             BaseSpeed = other.gameObject.GetComponent<Rigidbody2D>().velocity.x;
     }
 
-	public void reverseGravity() {
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform") && anim.GetBool("Walking"))
+        {
+            anim.SetBool("IsPushing", true);
+        }
+        else
+        {
+            anim.SetBool("IsPushing", false);
+        }
+    }
+
+    public void reverseGravity() {
 		GetComponent<Rigidbody2D> ().gravityScale *= -1;
 	}
 

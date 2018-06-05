@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 50722863416897230}
   - component: {fileID: 61129402260921372}
   - component: {fileID: 114186633011696360}
-  - component: {fileID: 114130663260921714}
+  - component: {fileID: 114012438757116640}
   m_Layer: 0
   m_Name: boy
   m_TagString: Player1
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 50221638226709152}
   - component: {fileID: 61599563855902104}
   - component: {fileID: 114897994497410156}
-  - component: {fileID: 114073649563513550}
+  - component: {fileID: 114987818367588578}
   m_Layer: 0
   m_Name: grandpa 1
   m_TagString: Player2
@@ -822,7 +822,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961594167463190}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1495425, y: -0.459594, z: 0}
+  m_LocalPosition: {x: -0.466, y: -0.459594, z: 0}
   m_LocalScale: {x: -0.3914726, y: 0.1185132, z: 1}
   m_Children:
   - {fileID: 4841657676520152}
@@ -1126,7 +1126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433620727627284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.85, y: -3.7, z: 0}
+  m_LocalPosition: {x: -28.6, y: -3.7, z: 0}
   m_LocalScale: {x: -0.89542663, y: -0.8954265, z: 0}
   m_Children:
   - {fileID: 4598393748936954}
@@ -1227,7 +1227,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.6
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: -4.7
@@ -1293,7 +1293,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.45878482, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1304,7 +1304,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.6544409, y: 1}
   m_EdgeRadius: 0
 --- !u!95 &95433799612464922
 Animator:
@@ -1342,18 +1342,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114073649563513550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952796744559946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e26076e938190848b0bf44a3c973504, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114130663260921714
+--- !u!114 &114012438757116640
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1361,7 +1350,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513072780896090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e26076e938190848b0bf44a3c973504, type: 3}
+  m_Script: {fileID: 11500000, guid: 06b8afe4efe4d914e9ed4d00ff038b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114186633011696360
@@ -1375,21 +1364,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce76855b1a564df47b0786a3678e2969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: 1
-  outsideForce: 0
-  anim: {fileID: 0}
-  rb: {fileID: 50722863416897230}
   speed: 9
-  grounded: 0
-  footPoint1: {fileID: 4562717037998044}
-  footPoint2: {fileID: 4567388347475606}
+  jumpForce: 300
   onlyGroundMask:
     serializedVersion: 2
     m_Bits: 256
-  jumpForce: 300
+  selected: 1
+  outsideForce: 0
+  grounded: 0
+  anim: {fileID: 0}
+  rb: {fileID: 50722863416897230}
   scaleX: 0
   scaleY: 0
   canMove: 0
+  MoveSound: 
+  JumpSound: boy jump test
+  ThrowOrWallJumpSound: boy jump test
   distance: 1
   wallJumpSpeed: 20
 --- !u!114 &114469650989394196
@@ -1414,29 +1404,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46b5fca4d8a72b4b87832d95a52f3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: 0
-  outsideForce: 0
-  anim: {fileID: 0}
-  rb: {fileID: 0}
   speed: 8
-  grounded: 0
-  footPoint1: {fileID: 4900742689693060}
-  footPoint2: {fileID: 4066705561804856}
+  jumpForce: 250
   onlyGroundMask:
     serializedVersion: 2
     m_Bits: 256
-  jumpForce: 175
+  selected: 0
+  outsideForce: 0
+  grounded: 0
+  anim: {fileID: 0}
+  rb: {fileID: 0}
   scaleX: 0
   scaleY: 0
   canMove: 0
+  MoveSound: 
+  JumpSound: gramps jump test
+  ThrowOrWallJumpSound: 
   throwPower: 10
   speedWithoutStick: 3
-  rotationSpeed: 5
   StickPrefab: {fileID: 1380721550427268, guid: 04da4581dcdbd1942a2b607df84c2f7a,
     type: 2}
-  aim: {fileID: 0}
-  launchPos: {fileID: 0}
   stickSprite: {fileID: 212432157608402896}
+--- !u!114 &114987818367588578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952796744559946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b8afe4efe4d914e9ed4d00ff038b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!122 &122158761403887114
 Halo:
   m_ObjectHideFlags: 1
