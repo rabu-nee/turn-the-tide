@@ -31,7 +31,10 @@ public class BouncyString : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
-
+		if (isPlayerTag (other.gameObject.tag)) {
+			int curIndex = getPlayerIndex (other.gameObject, Players);
+			playerOnTrigger [curIndex] = false;
+		}
 	}
 
 	//CUSTOM FUNCTIONS===================================================================================================================
