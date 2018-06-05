@@ -24,7 +24,7 @@ public class BouncyString : MonoBehaviour {
 			playerOnTrigger [curIndex] = true;
 
 			if (arrayAllTrue (playerOnTrigger)) {
-				addVelocities(Players[(-curIndex) + 1], Players[curIndex])
+				addVelocities (Players [(-curIndex) + 1], Players [curIndex]);
 			}
 			
 		}
@@ -42,6 +42,8 @@ public class BouncyString : MonoBehaviour {
 			vel.x = 0f;
 
 			addObj.GetComponent<Rigidbody2D> ().AddForce (vel, ForceMode2D.Impulse);
+
+
 		}
 	}
 
