@@ -5,6 +5,7 @@ using UnityEngine;
 public class LinkOffset : MonoBehaviour {
 
 	public Vector3 offset = Vector3.zero;
+	public Sprite linkSprite;
 	[HideInInspector]
 	private GameObject originalObj;
 	private GameObject copyObj;
@@ -12,10 +13,14 @@ public class LinkOffset : MonoBehaviour {
 	//BUILT-IN FUNCTIONS===================================================================================================================
 	void Start () {
 		originalObj = transform.GetChild (0).gameObject;
+
 		copyObj = Instantiate (originalObj);
 		copyObj.transform.parent = originalObj.transform.parent;
 		Destroy (copyObj.GetComponent<Rigidbody2D>());
 		copyObj.tag = "MovingPlatform";
+		if (linkSprite != null) {
+			copyObj.GetComponent<SpriteRenderer> ().sprite = linkSprite;
+		}
 	}
 	
 
