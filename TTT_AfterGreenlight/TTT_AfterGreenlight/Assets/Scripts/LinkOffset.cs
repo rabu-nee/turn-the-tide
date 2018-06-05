@@ -14,6 +14,7 @@ public class LinkOffset : MonoBehaviour {
 	void Start () {
 		originalObj = transform.GetChild (0).gameObject;
 
+		//das ist ein test
 		copyObj = Instantiate (originalObj);
 		copyObj.transform.parent = originalObj.transform.parent;
 		Destroy (copyObj.GetComponent<Rigidbody2D>());
