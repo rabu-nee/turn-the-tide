@@ -618,7 +618,7 @@ Prefab:
     - target: {fileID: 50408592239884080, guid: 3bdf246aa25481f4fb5b65b6e596c20c,
         type: 2}
       propertyPath: m_GravityScale
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bdf246aa25481f4fb5b65b6e596c20c, type: 2}
@@ -3427,6 +3427,11 @@ Prefab:
     - target: {fileID: 4832878483531554, guid: ba6fd302acae51046b82bd6ce9b2b3e3, type: 2}
       propertyPath: m_LocalScale.z
       value: 473.37198
+      objectReference: {fileID: 0}
+    - target: {fileID: 114946296149875630, guid: ba6fd302acae51046b82bd6ce9b2b3e3,
+        type: 2}
+      propertyPath: antiAliasing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba6fd302acae51046b82bd6ce9b2b3e3, type: 2}
