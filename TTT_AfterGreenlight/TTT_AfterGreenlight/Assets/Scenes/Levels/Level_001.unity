@@ -3457,22 +3457,6 @@ Prefab:
       propertyPath: m_Name
       value: Players
       objectReference: {fileID: 0}
-    - target: {fileID: 1952796744559946, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
-      propertyPath: m_Name
-      value: OBJ-grandpa
-      objectReference: {fileID: 0}
-    - target: {fileID: 1513072780896090, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
-      propertyPath: m_Name
-      value: OBJ-boy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1048549631889882, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
-      propertyPath: m_Name
-      value: RIG-boy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1961594167463190, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
-      propertyPath: m_Name
-      value: RIG-grandpa
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
   m_IsPrefabParent: 0
