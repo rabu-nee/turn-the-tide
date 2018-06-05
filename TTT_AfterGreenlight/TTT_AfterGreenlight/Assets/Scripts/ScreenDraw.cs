@@ -10,6 +10,8 @@ public class ScreenDraw : MonoBehaviour {
 	RenderTexture TEX;
 	Material MAT;
 
+	//BUILT-IN FUNCTIONS===================================================================================================================
+
 	void Start() {
 		//Initialize Screen
 		SCREEN = GetComponent<Renderer>();
