@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class BouncyString : MonoBehaviour {
 
-	private GameObject lastEnteredPlayer;
+	private GameObject[] Players;
+	private bool[] playerOnTrigger;
 
 	//BUILT-IN FUNCTIONS===================================================================================================================
 	void Start () {
-		lastEnteredPlayer = null;
+		Players = new GameObject[2];
+		Players [0] = GameObject.FindGameObjectWithTag ("Player1");
+		Players [1] = GameObject.FindGameObjectWithTag ("Player2");
+
+		playerOnTrigger = new bool[2];
+		playerOnTrigger [0] = false;
+		playerOnTrigger [1] = false;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (isPlayerTag(other.gameObject.tag)) {
-			Debug.Log (other.gameObject.name);
-			if (lastEnteredPlayer == null) {
-				lastEnteredPlayer = other.gameObject;
-			} else {
-				addVelocities (lastEnteredPlayer, other.gameObject);
-				lastEnteredPlayer = other.gameObject;
+			int curIndex = getPlayerIndex (other.gameObject, Players);
+			playerOnTrigger [curIndex] = true;
+
+			if (arrayAllTrue (playerOnTrigger)) {
+				addVelocities(Players[(-curIndex) + 1], Players[curIndex])
 			}
+			
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
-		if (other.gameObject == lastEnteredPlayer) {
-			lastEnteredPlayer = null;
-		}
+
 	}
 
 	//CUSTOM FUNCTIONS===================================================================================================================
@@ -34,10 +39,7 @@ public class BouncyString : MonoBehaviour {
 		if ((addObj != null) && (velObj != null)) {
 			Vector2 vel = velObj.GetComponent<Rigidbody2D> ().velocity;
 			Vector2 mult = addObj.transform.localScale;
-			//mult = new Vector2 (0, getNumWeight(mult.y));
-			//vel *= mult;
 			vel.x = 0f;
-			//vel *= 10f;
 
 			addObj.GetComponent<Rigidbody2D> ().AddForce (vel, ForceMode2D.Impulse);
 		}
@@ -49,6 +51,28 @@ public class BouncyString : MonoBehaviour {
 		} else {
 			return false;
 		}
+	}
+
+	private bool arrayAllTrue(bool[] a) {
+		bool ret = true;
+		for (int i = 0; i < a.Length; i++) {
+			if (!a [i]) {
+				ret = false;
+			}
+		}
+
+		return ret;
+	}
+
+	private int getPlayerIndex(GameObject n, GameObject[] a) {
+		int ret = 0;
+		for (int i = 0; i < a.Length; i++) {
+			if (n == a [i]) {
+				ret = i;
+			}
+		}
+
+		return ret;
 	}
 
 	private int getNumWeight(float num) {
