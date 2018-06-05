@@ -25,8 +25,6 @@ public class Player : MonoBehaviour
     private bool canJump;
     private float maxTime = 0.1f;
     private float previousAxispos;
-    private Transform footPoint1;
-    private Transform footPoint2;
     private float BaseSpeed;
 
     [Header("Sound names", order = 3)]
@@ -41,8 +39,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         scaleX = this.transform.localScale.x;
         scaleY = this.transform.localScale.y;
-        footPoint1 = this.transform.Find("foot1");
-        footPoint2 = this.transform.Find("foot2");
 
 		standardPosition = transform.position;
     }
@@ -95,7 +91,6 @@ public class Player : MonoBehaviour
     public void Jump()
     {
         //JUMPCODE
-        grounded = Physics2D.OverlapArea(footPoint1.position, footPoint2.position, onlyGroundMask);
 
         if ((grounded || hanging) && Input.GetButtonDown("Jump"))
         {
