@@ -1,22 +1,21 @@
 fileFormatVersion: 2
-guid: d7aee322c626a624cadbc92b60f10d5d
+guid: 490d495fb976d3d4995f14b31bf5d5b1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: grandpa_shoulder_l
-    21300002: grandpa_head
-    21300004: grandpa_shoulder_r
-    21300006: grandpa_arm_l
-    21300008: grandpa_hand_l
-    21300010: grandpa_torso
-    21300012: grandpa_arm_r
-    21300014: grandpa_stick
-    21300016: grandpa_thigh_l
-    21300018: grandpa_hand_r
-    21300020: grandpa_leg_l
-    21300022: grandpa_leg_r
-    21300024: grandpa_thigh_r
-    21300026: grandpa_foot_l
-    21300028: grandpa_foot_r
+    21300000: boy_shoulder_l
+    21300002: boy_head
+    21300004: boy_shoulder_r
+    21300006: boy_arm_l
+    21300008: boy_torso
+    21300010: boy_arm_r
+    21300012: boy_thigh_l
+    21300014: hoy_thigh_r
+    21300016: boy_hand_l
+    21300018: boy_foot_l
+    21300020: boy_leg_l
+    21300022: boy_leg_r
+    21300024: boy_foot_r
+    21300026: boy_hand_r
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -44,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -97,301 +96,281 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grandpa_shoulder_l
+      name: boy_shoulder_l
       rect:
         serializedVersion: 2
-        x: 13
-        y: 215
-        width: 34
-        height: 27
+        x: 388
+        y: 636
+        width: 123
+        height: 125
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49444526da850dc4ca4074416cc1935c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boy_head
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 789
+        width: 300
+        height: 291
       alignment: 9
-      pivot: {x: 0.8299573, y: 0.83508134}
+      pivot: {x: 0.43707886, y: 0.22663045}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58ea4a9809858814a8f7c907c8e70847
+      spriteID: 5026fc0d01e116745a2e2d3db1fe90ff
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_head
+      name: boy_shoulder_r
       rect:
         serializedVersion: 2
-        x: 103
-        y: 184
-        width: 77
-        height: 72
+        x: 846
+        y: 636
+        width: 114
+        height: 122
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17a7868dd6e117349aec7828a61de992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boy_arm_l
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 376
+        width: 110
+        height: 156
       alignment: 9
-      pivot: {x: 0.5469987, y: 0.11297989}
+      pivot: {x: 0.62257415, y: 0.79386336}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d1239fd52ac36840949c0f21fe5cfa3
+      spriteID: 1f3fbdfa99332e040b9b065248e5d623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_shoulder_r
+      name: boy_torso
       rect:
         serializedVersion: 2
-        x: 202
-        y: 209
-        width: 34
-        height: 27
+        x: 561
+        y: 504
+        width: 232
+        height: 276
       alignment: 9
-      pivot: {x: 0.15939869, y: 0.84848475}
+      pivot: {x: 0.45931822, y: 0.504885}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efba27bc1e1150442aa8c901085b2e2e
+      spriteID: 40fa5a308bfd0c742b4679a848068407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_arm_l
+      name: boy_arm_r
       rect:
         serializedVersion: 2
-        x: 13
-        y: 162
-        width: 25
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b55dfcfab52e0442949afd06eae9e35
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grandpa_hand_l
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 165
-        width: 19
-        height: 24
+        x: 875
+        y: 379
+        width: 108
+        height: 137
       alignment: 9
-      pivot: {x: 0.2523916, y: 0.83173054}
+      pivot: {x: 0.37515655, y: 0.8838265}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 611534e47686f7a41866f235bf567c4b
+      spriteID: 20a3c1deb57e7d04fb90047d33e1cdc7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_torso
+      name: boy_thigh_l
       rect:
         serializedVersion: 2
-        x: 121
-        y: 96
-        width: 64
-        height: 70
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 576
+        y: 307
+        width: 96
+        height: 173
+      alignment: 9
+      pivot: {x: 0.5280902, y: 1.0143858}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ace31f53772bac4eb3e871d449366fb
+      spriteID: 32ddfa428c31d5740beddb8bda2d0ec3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_arm_r
+      name: hoy_thigh_r
       rect:
         serializedVersion: 2
-        x: 212
-        y: 144
-        width: 26
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 704
+        y: 304
+        width: 96
+        height: 176
+      alignment: 9
+      pivot: {x: 0.48595557, y: 0.99795705}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24fc912a93e4eeb4087769d79d4cf788
+      spriteID: 8e74810ddc9372f40a24ed365d8b01ed
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_stick
+      name: boy_hand_l
       rect:
         serializedVersion: 2
-        x: 1
+        x: 327
+        y: 132
+        width: 113
+        height: 136
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed1b24fdad863b4cb20e52f9b65dc5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boy_foot_l
+      rect:
+        serializedVersion: 2
+        x: 548
         y: 15
-        width: 38
-        height: 131
+        width: 132
+        height: 82
       alignment: 9
-      pivot: {x: 0.4904766, y: 0.7127131}
+      pivot: {x: 0.33656773, y: 0.86174244}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f24556afdcc85a847bf5fb3482b4f942
+      spriteID: 1337cc3a80c6912458310745488fdefe
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_thigh_l
+      name: boy_leg_l
       rect:
         serializedVersion: 2
-        x: 67
-        y: 94
-        width: 25
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21c813251696e0e44825cc80b3dc45f6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grandpa_hand_r
-      rect:
-        serializedVersion: 2
-        x: 221
-        y: 87
-        width: 22
-        height: 25
+        x: 576
+        y: 116
+        width: 80
+        height: 161
       alignment: 9
-      pivot: {x: 0.64804494, y: 0.8618881}
+      pivot: {x: 0.4157303, y: 0.86848325}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b67ff1c03ebfdd4f9205e2c36f43ae1
+      spriteID: 4646a76de4ae16a48b0b6ba710140c2f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_leg_l
+      name: boy_leg_r
       rect:
         serializedVersion: 2
-        x: 65
-        y: 41
-        width: 26
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf633c3c490fc4445a2b73b3ff5e877e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grandpa_leg_r
-      rect:
-        serializedVersion: 2
-        x: 121
-        y: 47
-        width: 24
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10becbfe3a4a89844b894eec927fcb66
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grandpa_thigh_r
-      rect:
-        serializedVersion: 2
-        x: 182
-        y: 40
-        width: 25
-        height: 36
+        x: 712
+        y: 116
+        width: 80
+        height: 162
       alignment: 9
-      pivot: {x: 0.60132813, y: 0.83173096}
+      pivot: {x: 0.44943848, y: 0.8745317}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5aa7c16e9aed64e4a9fff277045af96c
+      spriteID: e95ecf22bdceda94d89c0c3135973e97
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_foot_l
+      name: boy_foot_r
       rect:
         serializedVersion: 2
-        x: 113
-        y: 5
-        width: 30
-        height: 20
+        x: 739
+        y: 24
+        width: 131
+        height: 76
       alignment: 9
-      pivot: {x: 0.7171331, y: 0.8437935}
+      pivot: {x: 0.29415077, y: 0.8370784}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca6bf5da8d2341849904708719812bfa
+      spriteID: 202be1c575bfd924d91a1456830c02a2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grandpa_foot_r
+      name: boy_hand_r
       rect:
         serializedVersion: 2
-        x: 213
-        y: 4
-        width: 29
-        height: 20
-      alignment: 9
-      pivot: {x: 0.67470473, y: 0.717132}
+        x: 911
+        y: 131
+        width: 113
+        height: 139
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22ea0f1151f0627409ef7f83426ec3d3
+      spriteID: 7a3d8fe1c605f494c88b7935ec3c9448
       vertices: []
       indices: 
       edges: []
@@ -399,7 +378,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5c46637c1b184154ebda291cd735de88
+    spriteID: 
     vertices: []
     indices: 
     edges: []
