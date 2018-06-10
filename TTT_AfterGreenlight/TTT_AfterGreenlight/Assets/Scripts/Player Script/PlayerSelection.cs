@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerSelection : MonoBehaviour
 {
 
-    private GameObject player1, player2;
+    public GameObject player1, player2;
 	private LevelRotation lr;
 
     // Use this for initialization
     void Start()
     {
-        player1 = GameObject.FindGameObjectWithTag("Player1");
+        //player1 = GameObject.FindGameObjectWithTag("Player1");
         player1.GetComponent<Player>().selected = true;
 
-        player2 = GameObject.FindGameObjectWithTag("Player2");
+        //player2 = GameObject.FindGameObjectWithTag("Player2");
         player2.GetComponent<Player>().selected = false;
 
 		lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
