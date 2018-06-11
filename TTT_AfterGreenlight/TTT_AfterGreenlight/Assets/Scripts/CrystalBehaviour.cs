@@ -41,7 +41,6 @@ public class CrystalBehaviour : MonoBehaviour {
 		Vector2 addPos = new Vector2 (0, Mathf.Sin (elapsedTime * yOffsetSpeed) * yOffset);
 		Color nColor = standardGlowColor;
 		nColor.a = (Mathf.Sin (elapsedTime * alphaBlendSpeed)) + alphaRange;
-		Debug.Log (nColor.a);
 
 		//Adding offsets
 		transform.position = standardPosition + addPos;

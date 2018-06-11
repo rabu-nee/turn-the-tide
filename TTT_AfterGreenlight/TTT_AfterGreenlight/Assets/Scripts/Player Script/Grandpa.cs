@@ -14,6 +14,7 @@ public class Grandpa : Player
     private float initSpeed;
     private bool noStick;
     private bool canThrow, canPick, aimingMode;
+    public bool mouseMode;
     private float rot, angle;
 
     private Transform aim;
@@ -50,6 +51,8 @@ public class Grandpa : Player
         }
     }
 
+
+    //WITH BUTTONS OR KEYBOARD
     private void ThrowStick()
     {
         //AIMING
@@ -64,48 +67,30 @@ public class Grandpa : Player
 
         if (aimingMode)
         {
-            //NEW CODE
-            aim.gameObject.SetActive(true);
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
-            if (x != 0.0f || y != 0.0f)
+            if (!mouseMode)
             {
-                angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
-
-                aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-                throwDirection = launchPos.transform.position - this.transform.position;
-            }
-
-                /* PREVIOUS CODE
-                angle = Vector3.SignedAngle(launchPos.transform.position - this.transform.position, (Vector3.up * scaleY), Vector3.forward);
-                if(this.transform.localScale.x < 0)
+                aim.gameObject.SetActive(true);
+                float x = Input.GetAxis("Horizontal");
+                float y = Input.GetAxis("Vertical");
+                if (x != 0.0f || y != 0.0f)
                 {
-                   angle = -angle;
+                    angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+
+                    aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+                    throwDirection = launchPos.transform.position - this.transform.position;
+                    Debug.Log(angle);
                 }
-
-                Debug.Log(angle);
-
-                rot = Input.GetAxisRaw("Vertical") * rotationSpeed * Mathf.Sign(this.transform.localScale.x);
-
-
-                float newAngle = Mathf.Clamp(angle + rot, minThrowAngle, maxThrowAngle);
-
-                float newRot = newAngle - angle;
-
-
-                launchPos.RotateAround(this.transform.position, Vector3.forward, rot);
-                
-                throwDirection = launchPos.transform.position - this.transform.position;
-                */
+            }
         }
 
         //THROWING
-        if (Input.GetButtonUp("Throw") && canThrow)
+        if ((Input.GetButtonUp("Throw") && canThrow))
         {
             aimingMode = false;
             noStick = true;
             canPick = false;
+            mouseMode = false;
 
             //animation
             StartCoroutine(Throw());
