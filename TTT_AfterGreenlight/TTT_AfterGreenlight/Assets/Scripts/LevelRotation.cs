@@ -201,35 +201,35 @@ public class LevelRotation : MonoBehaviour {
 		//Add Input Handler!!
 		if (allowInput) { 
 			//Turn Screen to the left
-			if ((Input.GetButtonDown ("LBumper") || (Input.GetAxis ("LTrigger") > 0)) && (buttonHit == false)) {
+			if ((Input.GetButtonDown ("TurnL")) && (buttonHit == false)) {
 				advanceScreen (1);
 				buttonHit = true;
 			}
 
 			//Turn Screen to the right
-			if ((Input.GetButtonDown ("RBumper") || (Input.GetAxis ("RTrigger") > 0)) && (buttonHit == false)) {
+			if ((Input.GetButtonDown ("TurnR")) && (buttonHit == false)) {
 				advanceScreen (-1);
 				buttonHit = true;
 			}
 
-			if ((Input.GetAxis ("LTrigger") == 0) && (Input.GetAxis ("RTrigger") == 0)) {
+			if ((Input.GetAxis ("TurnL") == 0) && (Input.GetAxis ("TurnR") == 0)) {
 				buttonHit = false;
 			}
 
 
 
-			if ((Input.GetKeyDown(KeyCode.Q)) && (buttonHit == false)) {
+			if ((Input.GetKeyDown(KeyCode.X)) && (buttonHit == false)) {
 				advanceScreen (1);
 				buttonHit = true;
 			}
 
 			//Turn Screen to the right
-			if ((Input.GetKeyDown(KeyCode.W)) && (buttonHit == false)) {
+			if ((Input.GetKeyDown(KeyCode.C)) && (buttonHit == false)) {
 				advanceScreen (-1);
 				buttonHit = true;
 			}
 
-			if (!(Input.GetKeyDown(KeyCode.Q)) && !(Input.GetKeyDown(KeyCode.Q))) {
+			if (!(Input.GetKeyDown(KeyCode.X)) && !(Input.GetKeyDown(KeyCode.C))) {
 				buttonHit = false;
 			}
 

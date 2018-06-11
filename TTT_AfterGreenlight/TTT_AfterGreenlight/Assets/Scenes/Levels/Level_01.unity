@@ -6539,6 +6539,16 @@ Prefab:
       propertyPath: antiAliasing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114946296149875630, guid: ba6fd302acae51046b82bd6ce9b2b3e3,
+        type: 2}
+      propertyPath: TextureSize.x
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114946296149875630, guid: ba6fd302acae51046b82bd6ce9b2b3e3,
+        type: 2}
+      propertyPath: TextureSize.y
+      value: 3000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba6fd302acae51046b82bd6ce9b2b3e3, type: 2}
   m_IsPrefabParent: 0
