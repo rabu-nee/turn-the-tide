@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 264527446}
   - component: {fileID: 264527448}
   - component: {fileID: 264527447}
+  - component: {fileID: 264527449}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -421,7 +422,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -5.6355405, y: -0.25864032}
+  m_Offset: {x: -5.6355405, y: -0.18201351}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -432,7 +433,32 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.05108, y: 0.7727193}
+  m_Size: {x: 15.05108, y: 0.92597294}
+  m_EdgeRadius: 0
+--- !u!61 &264527449
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 264527444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -5.6395726, y: -0.2681942}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.78, y: 1.29}
+    newSize: {x: 3.78, y: 1.29}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 15.059144, y: 0.75361156}
   m_EdgeRadius: 0
 --- !u!1 &310402432
 GameObject:
@@ -2291,7 +2317,7 @@ Tilemap:
   - first: {x: 98, y: -3, z: 0}
     second:
       m_TileIndex: 11
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 8
       m_ObjectToInstantiate: {fileID: 0}
@@ -2408,7 +2434,7 @@ Tilemap:
   - first: {x: 98, y: -2, z: 0}
     second:
       m_TileIndex: 8
-      m_TileSpriteIndex: 11
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 8
       m_ObjectToInstantiate: {fileID: 0}
@@ -2561,7 +2587,7 @@ Tilemap:
   - first: {x: 98, y: -1, z: 0}
     second:
       m_TileIndex: 8
-      m_TileSpriteIndex: 11
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 8
       m_ObjectToInstantiate: {fileID: 0}
@@ -4815,8 +4841,8 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: d3e45ff35cb33ac43ba97102d8d6d9ef, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 21300044, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300040, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: 21300046, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
   - m_RefCount: 53
@@ -4837,8 +4863,8 @@ Tilemap:
     m_Data: {fileID: 21300008, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: 21300006, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 21300040, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300044, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300048, guid: 2fdf186bcd790064a9481aeccdfca434, type: 3}
   - m_RefCount: 2
