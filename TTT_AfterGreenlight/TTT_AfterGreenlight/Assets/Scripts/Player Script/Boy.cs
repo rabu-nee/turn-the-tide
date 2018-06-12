@@ -7,6 +7,7 @@ public class Boy : Player {
     [Header("Wall Jump", order = 2)]
     public float distance = 1f;
     public float wallJumpSpeed = 2f;
+    public float raycastYOffsetVector;
 
     // Use this for initialization
     new void  Start () {
@@ -26,7 +27,7 @@ public class Boy : Player {
     void WallJump()
     {
         Physics2D.queriesStartInColliders = false;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distance);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + raycastYOffsetVector), Vector2.right * transform.localScale.x, distance);
         if (Input.GetButtonDown("Jump") && !grounded && hit.collider != null && hit.collider.CompareTag("Wall"))
         {
             anim.SetBool("IsWallSliding", false);
@@ -55,7 +56,7 @@ public class Boy : Player {
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distance);
+        Gizmos.DrawLine(new Vector2(transform.position.x, transform.position.y + raycastYOffsetVector), new Vector3(transform.position.x, transform.position.y + raycastYOffsetVector) + Vector3.right * transform.localScale.x * distance);
     }
 
     private new void OnCollisionEnter2D(Collision2D collision)

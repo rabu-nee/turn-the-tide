@@ -50,8 +50,9 @@ public class Player : MonoBehaviour
             Move();
             Jump();
         }
-        else
+        else if (!selected)
         {
+            rb.velocity = new Vector2(0, rb.velocity.y);
             anim.SetBool("Walking", false);
             anim.SetBool("IsWallSliding", false);
             anim.SetBool("Jumping", false);
