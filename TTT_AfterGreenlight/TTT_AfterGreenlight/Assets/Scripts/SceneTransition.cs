@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class SceneTransition : MonoBehaviour {
@@ -19,31 +20,23 @@ public class SceneTransition : MonoBehaviour {
 	private float desiredCaneraZoom;
 
 	private bool smoothTransition = true;
+	private bool startAnimFinished = false;
+	private AsyncOperation asyncLoad;
 
 
 	//BUILT-IN FUNCTIONS===================================================================================================================
 	void Start () {
 		//Set Standards
-		standardPosition = transform.position;
-		standardRotation = transform.rotation;
-		standardCameraZoom = mainCam.orthographicSize;
+		setStandardVariables();
 
 		setStartVariables ();
 	}
 
 	void Update () {
-		adjustPlate ();
-
-		if (hasReachedExit ()) {
-			setStartVariables ();
-		}
-
-		//Debug
-		if (Input.GetKeyDown(KeyCode.W)) {
-			setStartVariables();
-		}
-		if (Input.GetKeyDown(KeyCode.Q)) {
-			setExitVariables();
+		if ((hasReachedStandard ()) && (smoothTransition)) {
+			activatePlayerControl ();
+		} else {
+			adjustPlate ();
 		}
 	}
 
@@ -95,13 +88,55 @@ public class SceneTransition : MonoBehaviour {
 		desiredCaneraZoom = standardCameraZoom + cameraZoomAmount;
 
 		smoothTransition = false;
+
+		//Start loading next Level
+		StartCoroutine (LoadNextLevelAsync ());
+	}
+		
+	public void setStandardVariables(){
+		standardPosition = transform.position;
+		standardRotation = transform.rotation;
+		standardCameraZoom = mainCam.orthographicSize;
+	}
+
+	private void activatePlayerControl() {
+		GetComponent<LevelRotation> ().enabled = true;
+		enabled = false;
+		//Plus player controls...
 	}
 
 	private bool hasReachedExit() {
-		if (transform.rotation.eulerAngles.x == 90) {
+		Debug.Log (transform.rotation.eulerAngles.x);
+		if (Mathf.CeilToInt(transform.rotation.eulerAngles.x) == 90) {
 			return true;
 		} else {
 			return false;
 		}
 	}
+
+	private bool hasReachedStandard() {
+		if (transform.rotation == standardRotation) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	IEnumerator LoadNextLevelAsync() {
+		int nextSceneIndex = SceneManager.GetActiveScene ().buildIndex + 1;
+		asyncLoad = SceneManager.LoadSceneAsync (nextSceneIndex);
+		asyncLoad.allowSceneActivation = false;
+
+		while (!asyncLoad.isDone) {
+			if (asyncLoad.progress >= 0.9f) {
+				if (hasReachedExit ()) {
+					asyncLoad.allowSceneActivation = true;
+				}
+			}
+
+			yield return null;
+		}
+			
+	}
+		
 }

@@ -38,7 +38,6 @@ public class AxisSymmetricalLink : MonoBehaviour {
 			//Rotate newPos by rotation of Level
 			Vector3 dir = newPos - midPoint.position;
 			dir = Quaternion.Euler (lr.transform.rotation.eulerAngles) * dir;
-			Debug.Log (lr.transform.rotation.eulerAngles);
 			newPos = dir + midPoint.position;
 			//Apply Position to copied Object
 			copyObj = Instantiate (originalObj, newPos, originalObj.transform.rotation, this.gameObject.transform) as GameObject;
