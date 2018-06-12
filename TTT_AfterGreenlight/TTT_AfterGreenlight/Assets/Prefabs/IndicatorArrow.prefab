@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114757204618122196}
   m_Layer: 0
   m_Name: IndicatorArrow
-  m_TagString: Untagged
+  m_TagString: Indicator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   bounceSpeed: 9
   bounceTime: 3
   fadeTime: 0.4
+  follow: {fileID: 0}
 --- !u!212 &212116416609577336
 SpriteRenderer:
   m_ObjectHideFlags: 1

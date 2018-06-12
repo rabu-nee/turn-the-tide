@@ -15,6 +15,7 @@ TagManager:
   - StickButton
   - MovingPlatform
   - Platform
+  - Indicator
   layers:
   - Default
   - TransparentFX
