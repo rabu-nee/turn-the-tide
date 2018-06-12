@@ -8,17 +8,20 @@ public class IndicatorArrowScript : MonoBehaviour {
 	public float bounceSpeed = 1f;
 	public float bounceTime = 2f;
 	public float fadeTime = 0.4f;
+	[HideInInspector]
+	public Transform follow;
+	[HideInInspector]
+	public float arrowOffset = 0;
 
 	private Vector3 standardPosition;
 	private float elapedTime =0;
 	private SpriteRenderer sprite;
-	[HideInInspector]
-	public Transform follow;
 
 
 	//BUILT-IN FUNCTIONS===================================================================================================================
 	void Start () {
 		standardPosition = follow.position;
+		standardPosition.z = -5;
 		sprite = GetComponent<SpriteRenderer> ();
 	}
 
@@ -27,9 +30,10 @@ public class IndicatorArrowScript : MonoBehaviour {
 
 		//Update Position
 		standardPosition = follow.position;
+		standardPosition.z = -5;
 
 		//Bounce
-		float nY = standardPosition.y + ((Mathf.Sin (elapedTime * bounceSpeed) * bounceAmount));
+		float nY = (standardPosition.y + arrowOffset) + ((Mathf.Sin (elapedTime * bounceSpeed) * bounceAmount));
 		Vector3 nPos = new Vector3 (standardPosition.x, nY, standardPosition.z);
 		transform.position = nPos;
 

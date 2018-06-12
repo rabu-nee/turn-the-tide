@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551610281726636}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 271.78, y: 7.6, z: 10}
+  m_LocalPosition: {x: 271.78, y: 7.6, z: -10}
   m_LocalScale: {x: 1.0180988, y: 1.0180993, z: 0.12726241}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,9 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceAmount: 0.6
   bounceSpeed: 9
-  bounceTime: 3
+  bounceTime: 1.8
   fadeTime: 0.4
   follow: {fileID: 0}
+  arrowOffset: 0
 --- !u!212 &212116416609577336
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -91,7 +92,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300014, guid: 726ebc21dc5d6c74d891b1eb386b2922, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
