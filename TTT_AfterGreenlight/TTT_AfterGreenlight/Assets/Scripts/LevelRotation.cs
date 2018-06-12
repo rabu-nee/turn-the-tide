@@ -60,7 +60,7 @@ public class LevelRotation : MonoBehaviour {
 			desiredEuler = addEulerRotation (desiredEuler, dir);
 			resetOvershootRotation ();
 			curScreen = -curScreen;
-			//turnVelocity (dir);
+			addIndicatorArrow (curScreen);
 		}
 	}
 
@@ -96,6 +96,12 @@ public class LevelRotation : MonoBehaviour {
 			desiredEuler.z -= (360 * getSign (desiredEuler.z));
 		}
 	}
+
+	private void addIndicatorArrow (int pl) {
+		IndicatorArrowSpawner ias = GameObject.Find ("Players").GetComponent<IndicatorArrowSpawner> ();
+		ias.spawnIndicatorArrow (pl);
+	}
+
 
 	private void addCameraEffects() {
 		if ((elapsedTurnTime > turnAgainTiming) && (!shakeAdded)) {
