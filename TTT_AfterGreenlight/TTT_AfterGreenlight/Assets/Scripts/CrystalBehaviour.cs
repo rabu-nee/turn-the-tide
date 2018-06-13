@@ -56,6 +56,7 @@ public class CrystalBehaviour : MonoBehaviour {
 		if ((isPlayerTag (other.gameObject.tag)) && (!isCollected)) {
 			glowRenderer.enabled = false;
 			GetComponent<Renderer> ().enabled = false;
+			GameObject.Find ("Players").GetComponent<CheckWinState> ().addCrystal ();
 			isCollected = true;
 		}
 	}	

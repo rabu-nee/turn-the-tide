@@ -16,6 +16,7 @@ TagManager:
   - MovingPlatform
   - Platform
   - Indicator
+  - Crystal
   layers:
   - Default
   - TransparentFX
