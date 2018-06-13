@@ -38,6 +38,13 @@ public class Sound
     {
         source.Stop();
     }
+
+    public void PlayDelayed(float delay)
+    {
+        source.volume = volume * (1 + Random.Range(-randomVolume / 2f, randomVolume / 2f));
+        source.pitch = pitch * (1 + Random.Range(-randomPitch / 2f, randomPitch / 2f));
+        source.PlayDelayed(delay);
+    }
 }
 
 
@@ -82,6 +89,21 @@ public class SoundManager : MonoBehaviour {
             if(sounds[i].name == _name)
             {
                 sounds[i].Play();
+                return;
+            }
+        }
+
+        //no sounds with _name
+        Debug.LogWarning("AudioManager: Sound not found in list: " + _name);
+    }
+
+    public void PlaySoundDelayed(string _name, float delayTime)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == _name)
+            {
+                sounds[i].PlayDelayed(delayTime);
                 return;
             }
         }

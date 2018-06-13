@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public string MoveSound;
     public string JumpSound;
     public string ThrowOrWallJumpSound;
+    public string LandingGround, WallContact;
 
 
     public void Start()
@@ -76,8 +77,15 @@ public class Player : MonoBehaviour
 
             if (Input.GetAxisRaw("Horizontal") != 0)
             {
-                SoundManager.instance.PlaySound(MoveSound);
                 anim.SetBool("Walking", true);
+
+                /*if (anim.GetBool("Walking"))
+                {
+                    int random = (int)Random.Range(1, 6);
+                    Debug.Log(random);
+                    SoundManager.instance.PlaySoundDelayed(MoveSound + random, 0.4f);
+                }*/
+
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale) * scaleX, scaleY);
             }

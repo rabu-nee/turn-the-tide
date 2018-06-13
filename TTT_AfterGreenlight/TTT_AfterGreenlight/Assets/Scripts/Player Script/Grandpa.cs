@@ -67,8 +67,7 @@ public class Grandpa : Player
 
         if (aimingMode)
         {
-            if (!mouseMode)
-            {
+            rb.velocity = new Vector2(0, rb.velocity.y);
                 aim.gameObject.SetActive(true);
                 float x = Input.GetAxis("Horizontal");
                 float y = Input.GetAxis("Vertical");
@@ -81,7 +80,7 @@ public class Grandpa : Player
                     throwDirection = launchPos.transform.position - this.transform.position;
                     Debug.Log(angle);
                 }
-            }
+            
         }
 
         //THROWING
