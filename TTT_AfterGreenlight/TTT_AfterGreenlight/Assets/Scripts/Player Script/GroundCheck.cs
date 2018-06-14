@@ -5,6 +5,7 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour {
 
     private Player p;
+    public string LandingGroundSound, WallContactSound;
 
     private void Start()
     {
@@ -19,5 +20,17 @@ public class GroundCheck : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         p.grounded = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            SoundManager.instance.PlaySound(WallContactSound);
+        }
+        else
+        {
+            SoundManager.instance.PlaySound(LandingGroundSound);
+        }
     }
 }

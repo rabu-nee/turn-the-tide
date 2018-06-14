@@ -52,22 +52,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: test
-    clip: {fileID: 8300000, guid: d8c40f39ff261e04a87667afe19729e1, type: 3}
+  - name: bgm Conga
+    clip: {fileID: 8300000, guid: 79c1669f56e57fb4ca4d8145cc497360, type: 3}
     loop: 1
     volume: 0.771
     pitch: 1
     randomVolume: 0
     randomPitch: 0
-  - name: gramps jump test
-    clip: {fileID: 8300000, guid: bf1d3009fe55e474a81060a63cc5d011, type: 3}
+  - name: bgm Harp
+    clip: {fileID: 8300000, guid: 34389656b7bf8d74784eee127a109acb, type: 3}
+    loop: 1
+    volume: 0.771
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: boy jump
+    clip: {fileID: 8300000, guid: bf0447588f3dad34a803cd19c0110fb2, type: 3}
     loop: 0
     volume: 0.771
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
-  - name: boy jump test
-    clip: {fileID: 8300000, guid: b50152d3db1b7ab4c96500a5b06907d9, type: 3}
+  - name: boystep1
+    clip: {fileID: 8300000, guid: 95b9d4ec5c12d0144bd24cec0c098924, type: 3}
+    loop: 0
+    volume: 0.064
+    pitch: 1
+    randomVolume: 0.022
+    randomPitch: 0.031
+  - name: boystep2
+    clip: {fileID: 8300000, guid: c93ed62e56642a043ac38857fa323966, type: 3}
+    loop: 0
+    volume: 0.079
+    pitch: 1
+    randomVolume: 0.043
+    randomPitch: 0.031
+  - name: boystep3
+    clip: {fileID: 8300000, guid: c25ebf640691ae247a659bb2bcfbcb34, type: 3}
+    loop: 0
+    volume: 0.09
+    pitch: 1
+    randomVolume: 0.042
+    randomPitch: 0.031
+  - name: boystep4
+    clip: {fileID: 8300000, guid: db6b4cfa69c07b847b9ee5ea0d864120, type: 3}
+    loop: 0
+    volume: 0.084
+    pitch: 1
+    randomVolume: 0.042
+    randomPitch: 0.031
+  - name: boystep5
+    clip: {fileID: 8300000, guid: 6eddb2ecf0509364389e3ae57cf2ff5a, type: 3}
+    loop: 0
+    volume: 0.095
+    pitch: 1
+    randomVolume: 0.045
+    randomPitch: 0.031
+  - name: walljump
+    clip: {fileID: 8300000, guid: 7cdde4372783c6a40990e6e691145420, type: 3}
+    loop: 0
+    volume: 0.771
+    pitch: 1
+    randomVolume: 0.118
+    randomPitch: 0.031
+  - name: wallslide
+    clip: {fileID: 8300000, guid: 95432c709631b2e4abb096bd5b92d369, type: 3}
+    loop: 1
+    volume: 0.492
+    pitch: 1
+    randomVolume: 0.118
+    randomPitch: 0.031
+  - name: wall contact
+    clip: {fileID: 8300000, guid: 63791edf10063314a9a00c7a706e244f, type: 3}
+    loop: 0
+    volume: 0.507
+    pitch: 1
+    randomVolume: 0.118
+    randomPitch: 0.031
+  - name: ground contact
+    clip: {fileID: 8300000, guid: 046d02572bcbf5a48833286ad2741ecc, type: 3}
+    loop: 0
+    volume: 0.516
+    pitch: 1
+    randomVolume: 0.118
+    randomPitch: 0.031
+  - name: push object
+    clip: {fileID: 8300000, guid: b7bb2951536fa8d4cb90acd71e5ce5cc, type: 3}
+    loop: 1
+    volume: 0.771
+    pitch: 1
+    randomVolume: 0.118
+    randomPitch: 0.031
+  - name: bouncy string
+    clip: {fileID: 8300000, guid: caaeab2e4d90caa4788384cad1bd62bc, type: 3}
+    loop: 0
+    volume: 0.771
+    pitch: 1
+    randomVolume: 0.118
+    randomPitch: 0.031
+  - name: throw stick
+    clip: {fileID: 8300000, guid: 3c25f33eebe048b47a21f3ddbeeebd06, type: 3}
     loop: 0
     volume: 0.771
     pitch: 1

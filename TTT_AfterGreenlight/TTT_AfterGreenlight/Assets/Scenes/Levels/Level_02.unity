@@ -6579,6 +6579,7 @@ MonoBehaviour:
   cameraZoomAmount: 4
   camSpeed: 3
   rotSpeed: 120
+  bgmToPlay: bgm Harp
 --- !u!4 &2102430971
 Transform:
   m_ObjectHideFlags: 0

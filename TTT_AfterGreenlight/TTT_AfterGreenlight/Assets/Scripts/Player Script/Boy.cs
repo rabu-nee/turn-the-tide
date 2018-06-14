@@ -8,6 +8,7 @@ public class Boy : Player {
     public float distance = 1f;
     public float wallJumpSpeed = 2f;
     public float raycastYOffsetVector;
+    public string WallslideSound;
 
     // Use this for initialization
     new void  Start () {
@@ -43,6 +44,7 @@ public class Boy : Player {
         if (grounded)
         {
             anim.SetBool("IsWallSliding", false);
+            SoundManager.instance.StopSound(WallslideSound);
             //anim.SetBool("Jumping", false);
         }
     }
@@ -66,6 +68,7 @@ public class Boy : Player {
         {
             anim.SetBool("IsWallSliding", true);
             anim.SetBool("Jumping", false);
+            SoundManager.instance.PlaySound(WallslideSound);
         }
     }
 }

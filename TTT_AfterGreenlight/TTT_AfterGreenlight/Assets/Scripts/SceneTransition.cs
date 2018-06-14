@@ -11,6 +11,8 @@ public class SceneTransition : MonoBehaviour {
 	public float camSpeed = 2f;
 	public float rotSpeed = 20f;
 
+    public string bgmToPlay;
+
 	private Vector3 standardPosition;
 	private Quaternion standardRotation;
 	private float standardCameraZoom;
@@ -30,6 +32,8 @@ public class SceneTransition : MonoBehaviour {
 		setStandardVariables();
 
 		setStartVariables ();
+
+        SoundManager.instance.PlaySound(bgmToPlay);
 	}
 
 	void Update () {
@@ -123,6 +127,8 @@ public class SceneTransition : MonoBehaviour {
 	}
 
 	IEnumerator LoadNextLevelAsync() {
+        SoundManager.instance.StopSound(bgmToPlay);
+
 		int nextSceneIndex = SceneManager.GetActiveScene ().buildIndex + 1;
 		asyncLoad = SceneManager.LoadSceneAsync (nextSceneIndex);
 		asyncLoad.allowSceneActivation = false;

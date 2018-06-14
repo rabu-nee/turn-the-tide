@@ -68,8 +68,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4422741503592322}
   - component: {fileID: 114469650989394196}
-  - component: {fileID: 114419911154389520}
   - component: {fileID: 114605875858688646}
+  - component: {fileID: 114806839012872834}
+  - component: {fileID: 114199732192926548}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2003,9 +2004,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433620727627284}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -28.16, y: -4.29, z: 0}
-  m_LocalScale: {x: -0.89542663, y: -0.8954265, z: 0}
+  m_LocalScale: {x: 0.8954266, y: -0.8954265, z: 0}
   m_Children:
   - {fileID: 4598393748936954}
   m_Father: {fileID: 4422741503592322}
@@ -2330,9 +2331,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 9
   jumpForce: 300
-  onlyGroundMask:
-    serializedVersion: 2
-    m_Bits: 256
   selected: 1
   outsideForce: 0
   grounded: 0
@@ -2341,12 +2339,26 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 0
   canMove: 0
-  MoveSound: 
-  JumpSound: boy jump test
-  ThrowOrWallJumpSound: boy jump test
+  MoveSound: boystep
+  JumpSound: boy jump
+  ThrowOrWallJumpSound: walljump
+  PushingSound: push object
   distance: 1
   wallJumpSpeed: 20
   raycastYOffsetVector: -2.71
+  WallslideSound: wallslide
+--- !u!114 &114199732192926548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052724500337204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3479b5667abe4482eb2c1ad490e78799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitBeforeTransition: 2
 --- !u!114 &114200224799126012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2358,6 +2370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac724151ace6114aac2f96e1015bd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LandingGroundSound: ground contact
+  WallContactSound: wall contact
 --- !u!114 &114396283788414702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2369,20 +2383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac724151ace6114aac2f96e1015bd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114419911154389520
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1052724500337204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8880129b2cb940499003395a0dc6a0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IndicatorArrow: {fileID: 1551610281726636, guid: f581a07ef8b954149803cc1c5d1b3642,
-    type: 2}
-  arrowOffset: -4
+  LandingGroundSound: ground contact
+  WallContactSound: wall contact
 --- !u!114 &114469650989394196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2408,6 +2410,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitBeforeTransition: 2
+--- !u!114 &114806839012872834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052724500337204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8880129b2cb940499003395a0dc6a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IndicatorArrow: {fileID: 1551610281726636, guid: f581a07ef8b954149803cc1c5d1b3642,
+    type: 2}
+  arrowOffset: -4
 --- !u!114 &114897994497410156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2421,9 +2437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   jumpForce: 265
-  onlyGroundMask:
-    serializedVersion: 2
-    m_Bits: 256
   selected: 0
   outsideForce: 0
   grounded: 0
@@ -2433,14 +2446,14 @@ MonoBehaviour:
   scaleY: 0
   canMove: 0
   MoveSound: 
-  JumpSound: gramps jump test
-  ThrowOrWallJumpSound: 
+  JumpSound: boy jump
+  ThrowOrWallJumpSound: throw stick
+  PushingSound: push object
   throwPower: 10
   speedWithoutStick: 3
   StickPrefab: {fileID: 1380721550427268, guid: 04da4581dcdbd1942a2b607df84c2f7a,
     type: 2}
   stickSprite: {fileID: 212208758976368832}
-  mouseMode: 0
 --- !u!114 &114987818367588578
 MonoBehaviour:
   m_ObjectHideFlags: 1

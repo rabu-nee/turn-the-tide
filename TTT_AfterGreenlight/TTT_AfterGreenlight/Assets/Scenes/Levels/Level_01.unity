@@ -113,42 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &27224323 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1052724500337204, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1194180249}
 --- !u!4 &27224324 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4422741503592322, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4,
     type: 2}
   m_PrefabInternal: {fileID: 1194180249}
---- !u!114 &27224325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 27224323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8880129b2cb940499003395a0dc6a0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IndicatorArrow: {fileID: 1551610281726636, guid: f581a07ef8b954149803cc1c5d1b3642,
-    type: 2}
-  arrowOffset: -4
---- !u!114 &27224327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 27224323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3479b5667abe4482eb2c1ad490e78799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitBeforeTransition: 2
 --- !u!1 &119087708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,8 +5895,7 @@ Prefab:
       propertyPath: m_Name
       value: Players
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114419911154389520, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ba6cad2ac5ad37419a2f8e26bd13ba4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1211506737
@@ -7162,6 +7130,7 @@ MonoBehaviour:
   cameraZoomAmount: 4
   camSpeed: 3
   rotSpeed: 120
+  bgmToPlay: bgm Conga
 --- !u!4 &2102430971
 Transform:
   m_ObjectHideFlags: 0

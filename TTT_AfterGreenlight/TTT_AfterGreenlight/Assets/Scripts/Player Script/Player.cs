@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     [Header("Player parameters", order = 0)]
     public float speed = 5f; //move speed
     public float jumpForce;
-    public LayerMask onlyGroundMask;
 
     //some data types are public for child classes for access
     [Header("Do not touch", order = 1)]
@@ -28,10 +27,11 @@ public class Player : MonoBehaviour
     private float BaseSpeed;
 
     [Header("Sound names", order = 3)]
+    bool hasPlayed = false;
     public string MoveSound;
     public string JumpSound;
     public string ThrowOrWallJumpSound;
-    public string LandingGround, WallContact;
+    public string PushingSound;
 
 
     public void Start()
@@ -79,12 +79,20 @@ public class Player : MonoBehaviour
             {
                 anim.SetBool("Walking", true);
 
-                /*if (anim.GetBool("Walking"))
+                int random = (int)Random.Range(1, 6);
+                if (!anim.GetBool("Walking"))
                 {
-                    int random = (int)Random.Range(1, 6);
-                    Debug.Log(random);
-                    SoundManager.instance.PlaySoundDelayed(MoveSound + random, 0.4f);
-                }*/
+                    for (int i = 1; i < 6; i++)
+                    {
+                        SoundManager.instance.StopSound(MoveSound + i);
+                    }
+                    
+                }
+                else if (anim.GetBool("Walking") && grounded)
+                {
+
+                    SoundManager.instance.PlaySoundDelayed(MoveSound + random, 0.3f);
+                }
 
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale) * scaleX, scaleY);
@@ -148,7 +156,7 @@ public class Player : MonoBehaviour
         }
 
         if (other.gameObject.tag == "Platform")
-            BaseSpeed = other.gameObject.GetComponent<Rigidbody2D>().velocity.x;
+        { BaseSpeed = other.gameObject.GetComponent<Rigidbody2D>().velocity.x; }
     }
 
     public void OnCollisionStay2D(Collision2D collision)
@@ -156,11 +164,19 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform") && anim.GetBool("Walking"))
         {
             anim.SetBool("IsPushing", true);
+            if (!hasPlayed)
+            {
+                hasPlayed = true;
+                SoundManager.instance.PlaySound(PushingSound);
+            }
         }
-        else
-        {
-            anim.SetBool("IsPushing", false);
-        }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        hasPlayed = false;
+        anim.SetBool("IsPushing", false);
+        SoundManager.instance.StopSound(PushingSound);
     }
 
     public void reverseGravity() {

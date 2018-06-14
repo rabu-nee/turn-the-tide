@@ -6,6 +6,7 @@ public class BouncyString : MonoBehaviour {
 
 	private GameObject[] Players;
 	private bool[] playerOnTrigger;
+    public string bounceSound;
 
 	//BUILT-IN FUNCTIONS===================================================================================================================
 	void Start () {
@@ -44,6 +45,7 @@ public class BouncyString : MonoBehaviour {
 			Vector2 mult = addObj.transform.localScale;
 			vel.x = 0f;
 
+            SoundManager.instance.PlaySound(bounceSound);
 			addObj.GetComponent<Rigidbody2D> ().AddForce (vel, ForceMode2D.Impulse);
 
 
