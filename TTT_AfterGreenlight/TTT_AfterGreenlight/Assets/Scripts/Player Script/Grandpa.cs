@@ -36,7 +36,6 @@ public class Grandpa : Player
     new void Update()
     {
         base.Update();
-        aim.transform.position = this.transform.position;
         if (selected)
         {
             if (!noStick)
@@ -69,8 +68,15 @@ public class Grandpa : Player
             rb.velocity = new Vector2(0, rb.velocity.y);
 
             aim.gameObject.SetActive(true);
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
+            aim.transform.position = this.transform.position;
+
+            if(this.transform.localScale.x < 0)
+            {
+                aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
+            }
+
+            float x = -Input.GetAxis("Horizontal");
+            float y = -Input.GetAxis("Vertical");
             if (x != 0.0f || y != 0.0f)
             {
                 angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
@@ -115,7 +121,7 @@ public class Grandpa : Player
         Stick st = Stick.GetComponent<Stick>();
         Stick.transform.position = launchPos.position;
 
-        Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+        Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
         st.hitAngle = angle + 90;
 
