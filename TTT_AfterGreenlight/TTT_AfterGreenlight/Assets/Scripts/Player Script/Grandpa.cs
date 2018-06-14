@@ -14,7 +14,6 @@ public class Grandpa : Player
     private float initSpeed;
     private bool noStick;
     private bool canThrow, canPick, aimingMode;
-    public bool mouseMode;
     private float rot, angle;
 
     private Transform aim;
@@ -68,19 +67,20 @@ public class Grandpa : Player
         if (aimingMode)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
-                aim.gameObject.SetActive(true);
-                float x = Input.GetAxis("Horizontal");
-                float y = Input.GetAxis("Vertical");
-                if (x != 0.0f || y != 0.0f)
-                {
-                    angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
-                    aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            aim.gameObject.SetActive(true);
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
+            if (x != 0.0f || y != 0.0f)
+            {
+                angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
-                    throwDirection = launchPos.transform.position - this.transform.position;
-                    Debug.Log(angle);
-                }
-            
+                aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+                throwDirection = launchPos.transform.position - this.transform.position;
+                Debug.Log(angle);
+            }
+
         }
 
         //THROWING
@@ -89,7 +89,6 @@ public class Grandpa : Player
             aimingMode = false;
             noStick = true;
             canPick = false;
-            mouseMode = false;
 
             //animation
             StartCoroutine(Throw());
