@@ -157,3 +157,10 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+  - name: rotation
+    clip: {fileID: 8300000, guid: 2fff5c0f1df56d3419308311076708f4, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.053

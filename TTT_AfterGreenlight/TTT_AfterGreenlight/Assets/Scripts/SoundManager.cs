@@ -93,7 +93,6 @@ public class SoundManager : MonoBehaviour {
                 return;
             }
         }
-
         //no sounds with _name
         Debug.LogWarning("AudioManager: Sound not found in list: " + _name);
     }
