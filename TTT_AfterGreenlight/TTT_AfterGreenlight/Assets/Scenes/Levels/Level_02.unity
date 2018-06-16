@@ -6567,6 +6567,7 @@ MonoBehaviour:
   joltTiming: 20
   turnAgainTiming: 0.5
   turnAgainTolerance: 10
+  rotationSound: rotation
 --- !u!114 &2102430970
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class LevelRotation : MonoBehaviour {
 	public float joltTiming = 15f;
 	public float turnAgainTiming = 1f;
 	public float turnAgainTolerance = 5f;
+    public string rotationSound;
 
 	private Quaternion standardRotation;
 	private Vector3 curEuler;
@@ -208,35 +209,39 @@ public class LevelRotation : MonoBehaviour {
 		if (allowInput) { 
 			//Turn Screen to the left
 			if ((Input.GetButtonDown ("TurnL")) && (buttonHit == false)) {
-				advanceScreen (1);
+                SoundManager.instance.PlaySound(rotationSound);
+                advanceScreen (1);
 				buttonHit = true;
 			}
 
 			//Turn Screen to the right
 			if ((Input.GetButtonDown ("TurnR")) && (buttonHit == false)) {
-				advanceScreen (-1);
+                SoundManager.instance.PlaySound(rotationSound);
+                advanceScreen (-1);
 				buttonHit = true;
 			}
 
 			if ((Input.GetAxis ("TurnL") == 0) && (Input.GetAxis ("TurnR") == 0)) {
-				buttonHit = false;
+                buttonHit = false;
 			}
 
 
 
 			if ((Input.GetKeyDown(KeyCode.X)) && (buttonHit == false)) {
-				advanceScreen (1);
+                SoundManager.instance.PlaySound(rotationSound);
+                advanceScreen (1);
 				buttonHit = true;
 			}
 
 			//Turn Screen to the right
 			if ((Input.GetKeyDown(KeyCode.C)) && (buttonHit == false)) {
-				advanceScreen (-1);
+                SoundManager.instance.PlaySound(rotationSound);
+                advanceScreen (-1);
 				buttonHit = true;
 			}
 
 			if (!(Input.GetKeyDown(KeyCode.X)) && !(Input.GetKeyDown(KeyCode.C))) {
-				buttonHit = false;
+                buttonHit = false;
 			}
 
 		}
