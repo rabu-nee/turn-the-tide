@@ -7,11 +7,8 @@ public class GearParent : MonoBehaviour {
 	public float rotationMultiplier = 2f;
 	public float rotationFriction = 1f;
 	public float velocityAmount = 40f;
-	public float startVelocity = 0f;
-	public bool continuous = false;
 
 	private float velocity = 0f;
-	private float desiredVelocity = 0f;
 	private GearScript childGS;
 	private LevelRotation lr;
 	private int lastScreen;
@@ -21,31 +18,17 @@ public class GearParent : MonoBehaviour {
 		childGS = transform.GetChild (0).gameObject.GetComponent<GearScript> ();
 		lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
 		lastScreen = lr.getCurScreen ();
-		velocity = startVelocity;
-		if (!continuous) {
-			desiredVelocity = 0;
-		} else {
-			desiredVelocity = startVelocity * lr.getCurScreen();
-		}
 	}
 
-	void Update () {
+	void FixedUpdate () {
 		//Apply rotation based on Turning
 		if (lr.getCurScreen () != lastScreen) {
 			lastScreen = lr.getCurScreen ();
-			if (!continuous) {
-				velocity += (velocityAmount * lr.getLastDir ());
-				desiredVelocity = 0;
-			}
-			if (continuous) {
-				desiredVelocity = startVelocity * lr.getLastDir();
-			}
+			velocity += (velocityAmount * lr.getLastDir ());
 		}
 
-		//Apply velocities
-		velocity = Mathf.Lerp (velocity, desiredVelocity, Time.deltaTime * rotationFriction);
-		Debug.Log (desiredVelocity);
-
+		//Apply friction to velocity
+		velocity = Mathf.Lerp(velocity, 0f, Time.deltaTime * rotationFriction);
 
 		//Rotate Gears based on velocity
 		childGS.rotate (Time.deltaTime * (velocity * rotationMultiplier));
