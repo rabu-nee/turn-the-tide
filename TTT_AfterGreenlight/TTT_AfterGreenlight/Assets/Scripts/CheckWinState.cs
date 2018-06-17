@@ -20,7 +20,6 @@ public class CheckWinState : MonoBehaviour {
 	IEnumerator winExec() {
 		bool t = true;
 		while (t) {
-			Debug.Log("is running!!");
 			yield return new WaitForSeconds(waitBeforeTransition);
 
 			GameObject levelContainer = GameObject.FindGameObjectWithTag("CurrentLevel");
