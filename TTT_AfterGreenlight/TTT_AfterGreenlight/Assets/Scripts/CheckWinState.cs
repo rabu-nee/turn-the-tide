@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CheckWinState : MonoBehaviour {
 
-	public float waitBeforeTransition = 2f;
+	public int waitBeforeTransition = 2;
 	private int collectedCrystals = 0;
 
 	public void addCrystal() {
 		collectedCrystals++;
 		GameObject[] totalCrystals = GameObject.FindGameObjectsWithTag ("Crystal");
+		Debug.Log(totalCrystals.Length);
 		if (collectedCrystals == totalCrystals.Length) {
 			//Win state reached!
 			StartCoroutine(winExec());
@@ -19,9 +20,11 @@ public class CheckWinState : MonoBehaviour {
 	IEnumerator winExec() {
 		bool t = true;
 		while (t) {
+			Debug.Log("is running!!");
 			yield return new WaitForSeconds(waitBeforeTransition);
 
 			GameObject levelContainer = GameObject.FindGameObjectWithTag("CurrentLevel");
+			Debug.Log (levelContainer.name);
 			levelContainer.GetComponent<LevelRotation>().enabled = false;
 			levelContainer.GetComponent<SceneTransition>().enabled = true;
 			levelContainer.GetComponent<SceneTransition> ().setStandardVariables ();
