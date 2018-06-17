@@ -8,6 +8,8 @@ public class BouncyString : MonoBehaviour {
 	private bool[] playerOnTrigger;
     public string bounceSound;
 
+    public ParticleSystem particle;
+
 	//BUILT-IN FUNCTIONS===================================================================================================================
 	void Start () {
 		Players = new GameObject[2];
@@ -17,6 +19,8 @@ public class BouncyString : MonoBehaviour {
 		playerOnTrigger = new bool[2];
 		playerOnTrigger [0] = false;
 		playerOnTrigger [1] = false;
+
+        particle.enableEmission = false;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -26,6 +30,10 @@ public class BouncyString : MonoBehaviour {
 
 			if (arrayAllTrue (playerOnTrigger)) {
 				addVelocities (Players [(-curIndex) + 1], Players [curIndex]);
+
+                particle.gravityModifier = Mathf.Sign(Players[(curIndex)].GetComponent<Player>().rb.gravityScale);
+                particle.enableEmission = true;
+                StartCoroutine(stopParticle());
 			}
 			
 		}
@@ -87,4 +95,10 @@ public class BouncyString : MonoBehaviour {
 		Debug.Log (ret);
 		return ret;
 	}
+
+    IEnumerator stopParticle()
+    {
+        yield return new WaitForSeconds(0.5f);
+        particle.enableEmission = false;
+    }
 }
