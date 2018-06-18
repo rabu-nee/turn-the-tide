@@ -376,6 +376,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114695911619869122, guid: 3c25668154868654a937b980d46b0526,
+        type: 2}
+      propertyPath: bgmToPlay
+      value: bgm Conga
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c25668154868654a937b980d46b0526, type: 2}
   m_IsPrefabParent: 0
