@@ -208,6 +208,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1cc44efbc4d2b4c1cac4d7cee238c808, type: 2}
+    - target: {fileID: 400026, guid: edd7f0ebf28334984889ebcdbece32ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0097
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: edd7f0ebf28334984889ebcdbece32ab, type: 3}
   m_IsPrefabParent: 0
@@ -299,6 +303,7 @@ GameObject:
   - component: {fileID: 1927983158}
   - component: {fileID: 1927983157}
   - component: {fileID: 1927983156}
+  - component: {fileID: 1927983160}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -369,3 +374,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -2.841, y: 101.465004, z: 2.2250001}
+--- !u!95 &1927983160
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927983155}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d0542e12e00346dbb95de81dc8dd9bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
