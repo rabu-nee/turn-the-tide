@@ -16,7 +16,7 @@ public class Stick : MonoBehaviour {
             BoxCollider2D col = this.GetComponent<BoxCollider2D>();
             col.enabled = false;
 
-            this.transform.localRotation = Quaternion.Euler(new Vector3(0,0, hitAngle));
+            //this.transform.localRotation = Quaternion.Euler(new Vector3(0,0, hitAngle));
             col.enabled = true;
             rb.freezeRotation = true;
         }

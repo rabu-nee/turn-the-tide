@@ -44,7 +44,7 @@ public class GearParent : MonoBehaviour {
 
 		//Apply velocities
 		velocity = Mathf.Lerp (velocity, desiredVelocity, Time.deltaTime * rotationFriction);
-		Debug.Log (desiredVelocity);
+
 
 
 		//Rotate Gears based on velocity
