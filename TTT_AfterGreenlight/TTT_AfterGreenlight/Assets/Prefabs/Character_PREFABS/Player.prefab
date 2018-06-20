@@ -2445,7 +2445,7 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 0
   canMove: 0
-  MoveSound: 
+  MoveSound: boystep
   JumpSound: boy jump
   ThrowOrWallJumpSound: throw stick
   PushingSound: push object

@@ -142,4 +142,12 @@ public class Grandpa : Player
             speed = initSpeed;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Crystal"))
+        {
+            anim.SetBool("Dance", true);
+        }
+    }
 }
