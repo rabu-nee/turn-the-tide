@@ -123,7 +123,6 @@ public class Grandpa : Player
 
         Stick.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         Stick.GetComponent<Rigidbody2D>().velocity = throwDirection * throwPower;
-        st.hitAngle = angle + 90;
 
         speed = speedWithoutStick;
 

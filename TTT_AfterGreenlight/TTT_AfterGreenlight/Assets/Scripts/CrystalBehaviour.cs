@@ -15,6 +15,7 @@ public class CrystalBehaviour : MonoBehaviour {
 	private Vector2 standardPosition;
 	private SpriteRenderer glowRenderer;
 	private Color standardGlowColor;
+    private ParticleSystem particle;
 
 	private float elapsedTime = 0;
 	private bool isCollected = false;
@@ -25,6 +26,7 @@ public class CrystalBehaviour : MonoBehaviour {
 		standardPosition = transform.position;
 		glowRenderer = transform.GetChild (0).gameObject.GetComponent<SpriteRenderer>();
 		standardGlowColor = glowRenderer.color;
+        particle = transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
 
 		winMaterial = new Material(winColoration.GetComponent<MeshRenderer> ().material);
 		alphaMaterial = new Material (winMaterial);
@@ -34,7 +36,7 @@ public class CrystalBehaviour : MonoBehaviour {
 		winColoration.GetComponent<MeshRenderer> ().material = alphaMaterial;
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		elapsedTime += Time.deltaTime;
 
 		//Preparing variables
@@ -56,7 +58,8 @@ public class CrystalBehaviour : MonoBehaviour {
 		if ((isPlayerTag (other.gameObject.tag)) && (!isCollected)) {
 			glowRenderer.enabled = false;
 			GetComponent<Renderer> ().enabled = false;
-			GameObject.Find ("Players").GetComponent<CheckWinState> ().addCrystal ();
+            particle.enableEmission = false;
+            GameObject.Find ("Players").GetComponent<CheckWinState> ().addCrystal ();
 			isCollected = true;
 		}
 	}	

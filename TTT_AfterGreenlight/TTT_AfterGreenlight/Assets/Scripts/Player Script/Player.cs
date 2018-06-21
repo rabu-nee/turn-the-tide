@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     private float previousAxispos;
     private float BaseSpeed;
 
+    public float raycastYOffset;
+    public float distance;
+
+
     [Header("Sound names", order = 3)]
     bool hasPlayed = false;
     public string MoveSound;
@@ -50,6 +54,7 @@ public class Player : MonoBehaviour
         {
             Move();
             Jump();
+            Push();
         }
         else if (!selected)
         {
@@ -147,6 +152,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Push()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + raycastYOffset), Vector2.right * transform.localScale.x, distance);
+        if(Input.GetAxisRaw("Horizontal") != 0 && grounded && hit.collider != null && hit.collider.CompareTag("Platform"))
+        {
+            anim.SetBool("IsPushing", true);
+            if (!hasPlayed)
+            {
+                hasPlayed = true;
+                SoundManager.instance.PlaySound(PushingSound);
+            }
+        }
+        else
+        {
+            hasPlayed = false;
+            anim.SetBool("IsPushing", false);
+            SoundManager.instance.StopSound(PushingSound);
+        }
+    }
+
+
     public void OnCollisionEnter2D(Collision2D other)
     {
         outsideForce = false;
@@ -159,26 +185,6 @@ public class Player : MonoBehaviour
         { BaseSpeed = other.gameObject.GetComponent<Rigidbody2D>().velocity.x; }
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Platform") && anim.GetBool("Walking"))
-        {
-            anim.SetBool("IsPushing", true);
-            if (!hasPlayed)
-            {
-                hasPlayed = true;
-                SoundManager.instance.PlaySound(PushingSound);
-            }
-        }
-    }
-
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        hasPlayed = false;
-        anim.SetBool("IsPushing", false);
-        SoundManager.instance.StopSound(PushingSound);
-    }
-
     public void reverseGravity() {
 		GetComponent<Rigidbody2D> ().gravityScale *= -1;
 	}
@@ -187,4 +193,10 @@ public class Player : MonoBehaviour
 		this.transform.position = standardPosition;
 		rb.velocity = Vector3.zero;
 	}
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector2(transform.position.x, transform.position.y + raycastYOffset), new Vector3(transform.position.x, transform.position.y + raycastYOffset) + Vector3.right * transform.localScale.x * distance);
+    }
 }
