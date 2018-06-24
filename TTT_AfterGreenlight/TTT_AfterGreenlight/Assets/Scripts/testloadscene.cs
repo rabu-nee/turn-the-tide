@@ -10,7 +10,7 @@ public class testloadscene : MonoBehaviour {
 	void Update () {
 		if (Input.anyKeyDown) {
 			int nextSceneIndex = SceneManager.GetActiveScene ().buildIndex + 1;
-			SceneManager.LoadScene(nextSceneIndex);
+			//SceneManager.LoadScene(nextSceneIndex);
 		}
 	}
 }
