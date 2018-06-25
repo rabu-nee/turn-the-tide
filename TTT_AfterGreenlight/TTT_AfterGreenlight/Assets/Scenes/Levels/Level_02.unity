@@ -1475,6 +1475,11 @@ Prefab:
       propertyPath: bgmToPlay
       value: bgm Conga
       objectReference: {fileID: 0}
+    - target: {fileID: 114616744636478534, guid: 3c25668154868654a937b980d46b0526,
+        type: 2}
+      propertyPath: rotationAxis.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c25668154868654a937b980d46b0526, type: 2}
   m_IsPrefabParent: 0

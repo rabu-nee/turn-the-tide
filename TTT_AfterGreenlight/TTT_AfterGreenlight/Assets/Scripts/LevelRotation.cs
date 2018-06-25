@@ -4,7 +4,9 @@ using System.Collections;
 using UnityEngine;
 
 public class LevelRotation : MonoBehaviour {
-	
+
+	public bool neverAllowInput = false;
+	public Vector3 rotationAxis = Vector3.zero;
 	public float rotationSpeed;
 	public float movementSpeed = 2f;
 	public float extraRotationAmount = 10f;
@@ -41,7 +43,9 @@ public class LevelRotation : MonoBehaviour {
 
 	void Update () {
 		checkAllowInput ();
-		controllerInput ();
+		if (!neverAllowInput) {
+			controllerInput ();
+		}
 
 		addCameraEffects ();
 		turnScreen ();
@@ -87,7 +91,17 @@ public class LevelRotation : MonoBehaviour {
 		}
 
 		curEuler = Vector3.Lerp(curEuler, desiredEuler + extraRotation, Time.deltaTime * newRotSpeed * slowDownTime);
-		transform.rotation = Quaternion.Euler (curEuler);
+		Vector3 nRot = standardRotation.eulerAngles;	
+		if (rotationAxis.x != 0f) {
+			nRot.x = curEuler.z;
+		}
+		if (rotationAxis.y != 0f) {
+			nRot.y = curEuler.z;
+		}
+		if (rotationAxis.z != 0f) {
+			nRot.z = curEuler.z;
+		}
+		transform.rotation = Quaternion.Euler (nRot);
 	}
 
 	private void resetOvershootRotation() {
@@ -100,7 +114,9 @@ public class LevelRotation : MonoBehaviour {
 
 	private void addIndicatorArrow (int pl) {
 		IndicatorArrowSpawner ias = GameObject.Find ("Players").GetComponent<IndicatorArrowSpawner> ();
-		ias.spawnIndicatorArrow (pl);
+		if (ias != null) {
+			ias.spawnIndicatorArrow (pl);
+		}
 	}
 
 

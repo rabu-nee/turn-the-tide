@@ -5,6 +5,7 @@ using UnityEngine;
 public class SubMenuHandler : MonoBehaviour {
 
 	public bool verticalInput = false;
+	private bool active = true;
 	private bool processInput = true;
 	private IMenuItem[] items;
 	private int selected = 0;
@@ -41,15 +42,30 @@ public class SubMenuHandler : MonoBehaviour {
 		}
 	}
 
+	public void setActivationState(bool input) {
+		active = input;
+		if (!active) {
+			setMenuItemActivationState (-1);
+		}
+	}
+
+	public bool isActive() {
+		return active;
+	}
+
 	void Start () {
 		//Initialize Items
 		items = new IMenuItem[transform.childCount];
 		for (int i = 0; i < transform.childCount; i++) {
 			items [i] = transform.GetChild (i).GetComponent<AbstractMenuItem> ();
 		}
+
+		setMenuItemActivationState (-1);
 	}
 
 	void Update () {
-		handleInput ();
+		if (active) {
+			handleInput ();
+		}
 	}
 }
