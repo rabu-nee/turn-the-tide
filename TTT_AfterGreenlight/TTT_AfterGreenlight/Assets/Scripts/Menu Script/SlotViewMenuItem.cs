@@ -5,6 +5,9 @@ using UnityEngine;
 public class SlotViewMenuItem : AbstractMenuItem {
 
 	public override void onPress() {
-		//Swap to Slot View
+		transform.parent.parent.GetComponent<UImenuHandler> ().setCurActiveMenu (1);
+
+		LevelRotation lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
+		lr.advanceScreen (-1);
 	}
 }

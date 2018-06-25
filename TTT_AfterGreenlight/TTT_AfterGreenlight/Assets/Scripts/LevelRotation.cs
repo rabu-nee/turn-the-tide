@@ -6,7 +6,6 @@ using UnityEngine;
 public class LevelRotation : MonoBehaviour {
 
 	public bool neverAllowInput = false;
-	public Vector3 rotationAxis = Vector3.zero;
 	public float rotationSpeed;
 	public float movementSpeed = 2f;
 	public float extraRotationAmount = 10f;
@@ -20,6 +19,7 @@ public class LevelRotation : MonoBehaviour {
 	private Vector3 curEuler;
 	private Vector3 desiredEuler;
 	private Vector3 standardPosition;
+	private Vector3 forwardAxis;
 	private int curScreen = 1;
 	private int lastDir;
 	private bool buttonHit = false;
@@ -35,10 +35,11 @@ public class LevelRotation : MonoBehaviour {
 	void Start() {
 		CamFX = Camera.main.GetComponent<CameraEffects> ();
 
-		standardRotation = transform.rotation;
+		standardRotation = transform.localRotation;
 		desiredEuler = standardRotation.eulerAngles;
 		curEuler = standardRotation.eulerAngles;
 		standardPosition = transform.position;
+		forwardAxis = transform.forward;
 	}
 
 	void Update () {
@@ -65,7 +66,9 @@ public class LevelRotation : MonoBehaviour {
 			desiredEuler = addEulerRotation (desiredEuler, dir);
 			resetOvershootRotation ();
 			curScreen = -curScreen;
-			addIndicatorArrow (curScreen);
+			if (!neverAllowInput) {
+				addIndicatorArrow (curScreen);
+			}
 		}
 	}
 
@@ -91,17 +94,14 @@ public class LevelRotation : MonoBehaviour {
 		}
 
 		curEuler = Vector3.Lerp(curEuler, desiredEuler + extraRotation, Time.deltaTime * newRotSpeed * slowDownTime);
-		Vector3 nRot = standardRotation.eulerAngles;	
-		if (rotationAxis.x != 0f) {
-			nRot.x = curEuler.z;
+		if (neverAllowInput) {
+			transform.rotation = standardRotation;
+			transform.Rotate (forwardAxis, curEuler.z);
+		} else {
+			Vector3 nRot;
+			nRot = curEuler;
+			transform.localRotation = Quaternion.Euler (nRot);
 		}
-		if (rotationAxis.y != 0f) {
-			nRot.y = curEuler.z;
-		}
-		if (rotationAxis.z != 0f) {
-			nRot.z = curEuler.z;
-		}
-		transform.rotation = Quaternion.Euler (nRot);
 	}
 
 	private void resetOvershootRotation() {

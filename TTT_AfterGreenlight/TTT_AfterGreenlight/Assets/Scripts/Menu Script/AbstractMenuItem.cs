@@ -4,8 +4,10 @@ using UnityEngine;
 
 public abstract class AbstractMenuItem : MonoBehaviour, IMenuItem{
 	public float highlightAlpha = 0.6f;
-	private bool selected = false;
-	private GameObject highlightObj;
+	[HideInInspector]
+	public bool selected = false;
+	[HideInInspector]
+	public GameObject highlightObj;
 
 	public virtual void onPress() {
 		//Derivative classes override their functionality here

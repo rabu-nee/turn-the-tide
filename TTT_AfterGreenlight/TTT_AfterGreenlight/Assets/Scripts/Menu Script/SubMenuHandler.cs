@@ -5,7 +5,7 @@ using UnityEngine;
 public class SubMenuHandler : MonoBehaviour {
 
 	public bool verticalInput = false;
-	private bool active = true;
+	private bool active = false;
 	private bool processInput = true;
 	private IMenuItem[] items;
 	private int selected = 0;
@@ -14,7 +14,7 @@ public class SubMenuHandler : MonoBehaviour {
 		//Get directional Input
 		float axisInput = 0;
 		if (processInput) {
-			axisInput = (verticalInput ? Input.GetAxis ("Vertical") : Input.GetAxis ("Horizontal"));
+			axisInput = (verticalInput ? -Input.GetAxis ("Vertical") : Input.GetAxis ("Horizontal"));
 			processInput = false;
 		}
 
@@ -33,6 +33,10 @@ public class SubMenuHandler : MonoBehaviour {
 		selected = Mathf.Clamp (selected, 0, transform.childCount - 1);
 		setMenuItemActivationState (selected);
 
+		//Confirm selection
+		if ((Input.GetKeyDown (KeyCode.Return)) || (Input.GetButtonDown ("Jump"))) {
+			items [selected].onPress ();
+		}
 	}
 
 	private void setMenuItemActivationState(int index) {
