@@ -10,7 +10,8 @@ public class SlotSelectMenuItem : AbstractMenuItem {
 	public bool newGame = true;
 
 	public override void onPress() {
-		if (selected) {
+		Debug.Log (gameObject.name + ": " + selected.ToString());
+		if (base.selected) {
 			if (newGame) {
 				//Start new game on this slot
 				PlayerPrefs.SetInt ("SaveSlot" + slotNumber.ToString (), 0);
