@@ -24,6 +24,10 @@ public class UImenuHandler : MonoBehaviour {
 		}
 	}
 
+	public int getActiveMenu() {
+		return curActiveMenu;
+	}
+
 	void Start() {
 		subMenus = new SubMenuHandler[transform.childCount - 1];
 		for (int i = 0; i < subMenus.Length; i++) {
@@ -41,6 +45,7 @@ public class UImenuHandler : MonoBehaviour {
 		if ((Input.GetKeyDown (KeyCode.Escape)) || (Input.GetButtonDown ("B-Button"))) {
 			if (curActiveMenu > 0) {
 				setCurActiveMenu (0);
+				//subMenus [1].gameObject.SetActive (false);
 				LevelRotation lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
 				lr.advanceScreen (1);
 			}

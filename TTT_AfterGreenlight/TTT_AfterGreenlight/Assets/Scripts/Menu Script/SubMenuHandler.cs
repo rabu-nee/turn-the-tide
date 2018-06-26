@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SubMenuHandler : MonoBehaviour {
 
+	public bool fallBackMenu = false;
 	public bool verticalInput = false;
 	private bool active = false;
 	private bool processInput = true;
@@ -28,14 +29,21 @@ public class SubMenuHandler : MonoBehaviour {
 			processInput = true;
 		}
 
+		//Confirm selection
+		if ((Input.GetKeyDown (KeyCode.Return)) || (Input.GetButtonDown ("Jump"))) {
+			items [selected].onPress ();
+		}
+
 		//Set selected item
 		selected += dirInput;
 		selected = Mathf.Clamp (selected, 0, transform.childCount - 1);
 		setMenuItemActivationState (selected);
 
-		//Confirm selection
-		if ((Input.GetKeyDown (KeyCode.Return)) || (Input.GetButtonDown ("Jump"))) {
-			items [selected].onPress ();
+		//Select None if going back to Menu
+		if ((Input.GetKeyDown (KeyCode.Escape)) || (Input.GetButtonDown ("B-Button"))) {
+			if (!fallBackMenu) {
+				setActivationState (false);
+			}
 		}
 	}
 
@@ -64,7 +72,7 @@ public class SubMenuHandler : MonoBehaviour {
 			items [i] = transform.GetChild (i).GetComponent<AbstractMenuItem> ();
 		}
 
-		//setMenuItemActivationState (-1);
+		setMenuItemActivationState (-1);
 	}
 
 	void Update () {
