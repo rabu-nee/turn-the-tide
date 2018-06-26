@@ -64,7 +64,7 @@ public class SubMenuHandler : MonoBehaviour {
 			items [i] = transform.GetChild (i).GetComponent<AbstractMenuItem> ();
 		}
 
-		setMenuItemActivationState (-1);
+		//setMenuItemActivationState (-1);
 	}
 
 	void Update () {

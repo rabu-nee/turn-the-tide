@@ -35,4 +35,15 @@ public class UImenuHandler : MonoBehaviour {
 
 		setCurActiveMenu (0);
 	}
+
+	void Update() {
+		//Press Back
+		if ((Input.GetKeyDown (KeyCode.Escape)) || (Input.GetButtonDown ("B-Button"))) {
+			if (curActiveMenu > 0) {
+				setCurActiveMenu (0);
+				LevelRotation lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
+				lr.advanceScreen (1);
+			}
+		}
+	}
 }

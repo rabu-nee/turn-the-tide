@@ -14,6 +14,7 @@ public abstract class AbstractMenuItem : MonoBehaviour, IMenuItem{
 	}
 
 	public virtual void setHighlight() {
+		highlightObj = transform.GetChild (0).gameObject;
 		SpriteRenderer highlightRenderer = highlightObj.GetComponent<SpriteRenderer> ();
 		Color desiredColor = Color.white;
 		desiredColor.a = (selected ? highlightAlpha : 0);
@@ -23,10 +24,5 @@ public abstract class AbstractMenuItem : MonoBehaviour, IMenuItem{
 	public virtual void setActivationState (bool input) {
 		selected = input;
 		setHighlight ();
-	}
-
-	//###Monobehaviour Functions###
-	void Start () {
-		highlightObj = transform.GetChild (0).gameObject;
 	}
 }
