@@ -9,6 +9,7 @@ public class CrystalBehaviour : MonoBehaviour {
 	public float yOffsetSpeed = 2f;
 	public float alphaBlendSpeed = 1.3f;
 	public int alphaRange = 40;
+    public string collectSound;
 
 	private Material winMaterial;
 	private Material alphaMaterial;
@@ -56,6 +57,7 @@ public class CrystalBehaviour : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if ((isPlayerTag (other.gameObject.tag)) && (!isCollected)) {
+            SoundManager.instance.PlaySound(collectSound);
 			glowRenderer.enabled = false;
 			GetComponent<Renderer> ().enabled = false;
             particle.enableEmission = false;

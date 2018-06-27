@@ -9,6 +9,8 @@ public class GearParent : MonoBehaviour {
 	public float velocityAmount = 40f;
 	public float startVelocity = 0f;
 	public bool continuous = false;
+    public string whiteGearSound, blackGearSound;
+    private bool hasPlayed;
 
 	private float velocity = 0f;
 	private float desiredVelocity = 0f;
@@ -26,7 +28,8 @@ public class GearParent : MonoBehaviour {
 			desiredVelocity = 0;
 		} else {
 			desiredVelocity = startVelocity * lr.getCurScreen();
-		}
+            SoundManager.instance.PlaySound(whiteGearSound);
+        }
 	}
 
 	void Update () {
@@ -36,10 +39,16 @@ public class GearParent : MonoBehaviour {
 			if (!continuous) {
 				velocity += (velocityAmount * lr.getLastDir ());
 				desiredVelocity = 0;
+
+                SoundManager.instance.PlaySound(blackGearSound);
 			}
 			if (continuous) {
 				desiredVelocity = startVelocity * lr.getLastDir();
-			}
+
+                SoundManager.instance.StopSound(whiteGearSound);
+                SoundManager.instance.PlaySoundDelayed(whiteGearSound, 0.3f);
+                
+            }
 		}
 
 		//Apply velocities

@@ -66,8 +66,9 @@ public class LevelRotation : MonoBehaviour {
 			desiredEuler = addEulerRotation (desiredEuler, dir);
 			resetOvershootRotation ();
 			curScreen = -curScreen;
+			SoundManager.instance.PlaySound(rotationSound);
 			if (!neverAllowInput) {
-				addIndicatorArrow (curScreen);
+				addIndicatorArrow (GameObject.FindGameObjectWithTag("Player1").transform.parent.GetComponent<PlayerSelection>().getCurSelected());
 			}
 		}
 	}
@@ -225,14 +226,12 @@ public class LevelRotation : MonoBehaviour {
 		if (allowInput) { 
 			//Turn Screen to the left
 			if ((Input.GetButtonDown ("TurnL")) && (buttonHit == false)) {
-                SoundManager.instance.PlaySound(rotationSound);
                 advanceScreen (1);
 				buttonHit = true;
 			}
 
 			//Turn Screen to the right
 			if ((Input.GetButtonDown ("TurnR")) && (buttonHit == false)) {
-                SoundManager.instance.PlaySound(rotationSound);
                 advanceScreen (-1);
 				buttonHit = true;
 			}
@@ -244,14 +243,12 @@ public class LevelRotation : MonoBehaviour {
 
 
 			if ((Input.GetKeyDown(KeyCode.X)) && (buttonHit == false)) {
-                SoundManager.instance.PlaySound(rotationSound);
                 advanceScreen (1);
 				buttonHit = true;
 			}
 
 			//Turn Screen to the right
 			if ((Input.GetKeyDown(KeyCode.C)) && (buttonHit == false)) {
-                SoundManager.instance.PlaySound(rotationSound);
                 advanceScreen (-1);
 				buttonHit = true;
 			}

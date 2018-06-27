@@ -327,7 +327,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1782670358577008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.17, y: -1.255, z: -11.08}
+  m_LocalPosition: {x: -2.1699982, y: -1.255, z: -11.08}
   m_LocalScale: {x: 2.6909726, y: 2.6909707, z: 21.527765}
   m_Children:
   - {fileID: 4309137998165160}
@@ -357,8 +357,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1470596437524862}
   m_LocalRotation: {x: -0, y: -0, z: -0.99999803, w: -0.001978293}
-  m_LocalPosition: {x: -1.7, y: 4.31, z: 5.3672547}
-  m_LocalScale: {x: 1.1757498, y: 1.1630473, z: 1.2953895}
+  m_LocalPosition: {x: -2.336, y: 4.584, z: 20.35}
+  m_LocalScale: {x: 0.8386079, y: 0.7430907, z: 1.2953895}
   m_Children: []
   m_Father: {fileID: 4609313122932736}
   m_RootOrder: 2
@@ -442,7 +442,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1110760159279632}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c59314463eca02a4cbc487147fa15f7c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -492,7 +492,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1566785410447524}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c59314463eca02a4cbc487147fa15f7c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -569,6 +569,8 @@ MonoBehaviour:
   velocityAmount: 100
   startVelocity: 40
   continuous: 1
+  whiteGearSound: gear white
+  blackGearSound: gear black
 --- !u!114 &114380165150877162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -651,7 +653,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6c3ddadc7e87dea40987ab0125153ba1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -672,7 +674,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ad2b80c66ccb4436a80b3124e31d2f29, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12941177, g: 0.10588236, b: 0.08627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -786,7 +788,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6c3ddadc7e87dea40987ab0125153ba1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -807,7 +809,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ad2b80c66ccb4436a80b3124e31d2f29, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12941177, g: 0.10588236, b: 0.08627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
