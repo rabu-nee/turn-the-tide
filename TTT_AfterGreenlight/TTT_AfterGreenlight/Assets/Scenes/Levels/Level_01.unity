@@ -7579,6 +7579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 2119771137}
+  switchSound: switch hit
+  doorSound: door
 --- !u!61 &1345702800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8349,6 +8351,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 4217699107523268, guid: bcd2fdfb64af1476d9657fba5aa2b97a, type: 2}
       propertyPath: m_LocalPosition.y
       value: -2.58
@@ -8365,6 +8368,46 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -0.05
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 4493775523877682, guid: bcd2fdfb64af1476d9657fba5aa2b97a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493775523877682, guid: bcd2fdfb64af1476d9657fba5aa2b97a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217699107523268, guid: bcd2fdfb64af1476d9657fba5aa2b97a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217699107523268, guid: bcd2fdfb64af1476d9657fba5aa2b97a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23845637484284074, guid: bcd2fdfb64af1476d9657fba5aa2b97a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dde7e07812c7aee4cbdd43487db0d034, type: 2}
+    - target: {fileID: 23844410737856742, guid: bcd2fdfb64af1476d9657fba5aa2b97a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05a1f161112600a48b106e78c7013838, type: 2}
+    - target: {fileID: 212795905887037482, guid: bcd2fdfb64af1476d9657fba5aa2b97a,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6948c25ace4945aba7296aa5992ad68,
+        type: 3}
+    - target: {fileID: 212409483125264780, guid: bcd2fdfb64af1476d9657fba5aa2b97a,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300002, guid: f6948c25ace4945aba7296aa5992ad68,
+        type: 3}
+>>>>>>> AfterGreenlight
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd2fdfb64af1476d9657fba5aa2b97a, type: 2}
   m_IsPrefabAsset: 0
