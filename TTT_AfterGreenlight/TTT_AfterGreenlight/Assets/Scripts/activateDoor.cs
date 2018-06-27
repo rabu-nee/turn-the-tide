@@ -5,6 +5,7 @@ using UnityEngine;
 public class activateDoor : MonoBehaviour {
 
 	public GameObject door;
+	public float hitShiftAmount = 0.35f;
     public string switchSound = "switch hit";
     public string doorSound = "door";
 
@@ -14,6 +15,9 @@ public class activateDoor : MonoBehaviour {
 			if (door != null) {
                 SoundManager.instance.PlaySound(doorSound);
 				Destroy (door);
+				//Offset Button Position
+				Vector3 offset = transform.right * hitShiftAmount;
+				transform.position -= offset;
 			}
 		}
 	}

@@ -708,6 +708,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.1274997
       objectReference: {fileID: 0}
+    - target: {fileID: 114186150850611280, guid: 0eb04183d16738e4c96c1cf083ebdbf5,
+        type: 2}
+      propertyPath: hitShiftAmount
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eb04183d16738e4c96c1cf083ebdbf5, type: 2}
   m_IsPrefabAsset: 0
