@@ -33,6 +33,6 @@ public class IndicatorArrowSpawner : MonoBehaviour {
 		newArrow.GetComponent<IndicatorArrowScript> ().follow = Players [pl].transform;
 		newArrow.transform.localScale = newScale;
 		//Set arrow offset
-		newArrow.GetComponent<IndicatorArrowScript>().arrowOffset = dir * arrowOffset;
+		newArrow.GetComponent<IndicatorArrowScript>().arrowOffset = ((dir==0) ? -1 : dir) * arrowOffset;
 	}
 }

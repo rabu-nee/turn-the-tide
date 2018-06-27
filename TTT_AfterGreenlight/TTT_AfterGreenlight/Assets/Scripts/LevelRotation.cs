@@ -67,7 +67,7 @@ public class LevelRotation : MonoBehaviour {
 			resetOvershootRotation ();
 			curScreen = -curScreen;
 			if (!neverAllowInput) {
-				addIndicatorArrow (curScreen);
+				addIndicatorArrow (GameObject.FindGameObjectWithTag("Player1").transform.parent.GetComponent<PlayerSelection>().getCurSelected());
 			}
 		}
 	}
