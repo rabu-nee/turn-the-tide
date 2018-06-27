@@ -9,6 +9,7 @@ public class TurnReverseGravity : MonoBehaviour {
 	private float standardGravityScale;
 	private LevelRotation lrot;
 	private Rigidbody2D rb2d;
+    public string reverseSound;
 
 	// Use this for initialization
 	void Start () {
@@ -26,4 +27,12 @@ public class TurnReverseGravity : MonoBehaviour {
 			lastScreen = curScreen;
 		}
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player1") || !collision.gameObject.CompareTag("Player2"))
+        {
+            SoundManager.instance.PlaySound(reverseSound);
+        }
+    }
 }

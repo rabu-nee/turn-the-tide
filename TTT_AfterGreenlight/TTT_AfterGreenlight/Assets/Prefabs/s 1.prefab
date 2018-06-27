@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 0}
+  switchSound: switch hit
+  doorSound: door
 --- !u!212 &212961286433450804
 SpriteRenderer:
   m_ObjectHideFlags: 1
