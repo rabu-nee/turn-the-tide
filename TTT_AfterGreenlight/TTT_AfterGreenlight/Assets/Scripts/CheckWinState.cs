@@ -13,6 +13,7 @@ public class CheckWinState : MonoBehaviour {
 		Debug.Log(totalCrystals.Length);
 		if (collectedCrystals == totalCrystals.Length) {
 			//Win state reached!
+			SoundManager.instance.PlaySound("victory");
 			StartCoroutine(winExec());
 		}
 	}
