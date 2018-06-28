@@ -3642,6 +3642,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1545833255}
+  - component: {fileID: 1545833256}
   m_Layer: 0
   m_Name: bgm
   m_TagString: Untagged
@@ -3662,6 +3663,18 @@ Transform:
   m_Father: {fileID: 1202517634}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1545833256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1545833254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72891a6f1aa642beb6e98264d300e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmToPlay: ambient
 --- !u!1 &1587166225
 GameObject:
   m_ObjectHideFlags: 0
