@@ -138,7 +138,6 @@ public class SoundManager : MonoBehaviour
 
     public IEnumerator FadeOut(string _name, float FadeTime)
     {
-
         for (int i = 0; i < sounds.Length; i++)
         {
             if (sounds[i].name == _name)

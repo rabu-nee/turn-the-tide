@@ -93,8 +93,10 @@ public class SceneTransition : MonoBehaviour {
 
 		smoothTransition = false;
 
-		//Start loading next Level
-		StartCoroutine (LoadNextLevelAsync ());
+        SoundManager.instance.FadeSound(bgmToPlay, 2f);
+
+        //Start loading next Level
+        StartCoroutine (LoadNextLevelAsync ());
 	}
 		
 	public void setStandardVariables(){
@@ -127,8 +129,6 @@ public class SceneTransition : MonoBehaviour {
 	}
 
 	IEnumerator LoadNextLevelAsync() {
-        SoundManager.instance.FadeSound(bgmToPlay, 200f);
-
 		int nextSceneIndex = SceneManager.GetActiveScene ().buildIndex + 1;
 		asyncLoad = SceneManager.LoadSceneAsync (nextSceneIndex);
 		asyncLoad.allowSceneActivation = false;
