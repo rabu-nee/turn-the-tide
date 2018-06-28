@@ -206,3 +206,45 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+  - name: death
+    clip: {fileID: 8300000, guid: e247a8c00bdf9fe469bbdf96d5a9807a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.053
+  - name: level flip
+    clip: {fileID: 8300000, guid: eb03b1210ebd92a48a151e6bc252c747, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.053
+  - name: link sound
+    clip: {fileID: 8300000, guid: 7cab560305aa7394793089ce732ce33d, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.053
+  - name: intro
+    clip: {fileID: 8300000, guid: 6204abfb9442940eea7320ddf38a9bde, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.053
+  - name: victory
+    clip: {fileID: 8300000, guid: 30339ec0a40d84024adaeb34a0d4ee69, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+  - name: ambience
+    clip: {fileID: 8300000, guid: 5a49ede3bdb644a1b98e70cd10507662, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.053

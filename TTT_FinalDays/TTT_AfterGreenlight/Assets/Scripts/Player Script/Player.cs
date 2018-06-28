@@ -189,14 +189,42 @@ public class Player : MonoBehaviour
 		GetComponent<Rigidbody2D> ().gravityScale *= -1;
 	}
 
-	public void resetPlayerPosition() {
-		this.transform.position = standardPosition;
+	public IEnumerator resetDeath() {
+
+        anim.SetBool("Dead", true);
+        AnimatorClipInfo[] info = anim.GetCurrentAnimatorClipInfo(0);
+        yield return new WaitForSeconds(info.Length);
+        anim.SetBool("Dead", false);
+
+        this.transform.position = standardPosition;
 		rb.velocity = Vector3.zero;
+        
 	}
+
+    public void resetPlayerPosition()
+    {
+        StartCoroutine(resetDeath());
+    }
+
+    public void reset()
+    {
+        if (Input.GetButtonDown("Reset"))
+        {
+
+        }
+    }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(new Vector2(transform.position.x, transform.position.y + raycastYOffset), new Vector3(transform.position.x, transform.position.y + raycastYOffset) + Vector3.right * transform.localScale.x * distance);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Crystal"))
+        {
+            anim.SetBool("Dance", true);
+        }
     }
 }
