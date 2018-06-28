@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 [System.Serializable]
 public class Sound
@@ -48,7 +49,8 @@ public class Sound
 }
 
 
-public class SoundManager : MonoBehaviour {
+public class SoundManager : MonoBehaviour
+{
 
 
     public static SoundManager instance;
@@ -56,17 +58,19 @@ public class SoundManager : MonoBehaviour {
     [SerializeField]
     Sound[] sounds;
 
+    private bool keepFadingIn, keepFadingOut;
+
     private void Awake()
     {
         if (instance != null)
         {
-            if(instance != this)
+            if (instance != this)
             {
                 Destroy(this.gameObject);
             }
         }
         else
-        { 
+        {
             instance = this;
             DontDestroyOnLoad(this);
         }
@@ -74,7 +78,7 @@ public class SoundManager : MonoBehaviour {
 
     private void Start()
     {
-        for(int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < sounds.Length; i++)
         {
             GameObject _go = new GameObject("Sound_" + i + "_" + sounds[i].name);
             _go.transform.SetParent(this.transform);
@@ -86,7 +90,7 @@ public class SoundManager : MonoBehaviour {
     {
         for (int i = 0; i < sounds.Length; i++)
         {
-            if(sounds[i].name == _name)
+            if (sounds[i].name == _name)
             {
                 sounds[i].Play();
                 //Debug.Log("Playing " + sounds[i].name);
@@ -127,8 +131,30 @@ public class SoundManager : MonoBehaviour {
         Debug.LogWarning("AudioManager: Sound not found in list: " + _name);
     }
 
-    public void FadeSound()
+    public void FadeSound(string _name, float speed)
+    {
+        StartCoroutine(FadeOut(_name, speed));
+    }
+
+    public IEnumerator FadeOut(string _name, float FadeTime)
     {
 
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == _name)
+            {
+                float startVolume = sounds[i].volume;
+
+                while (sounds[i].volume > 0)
+                {
+                    sounds[i].volume -= startVolume * Time.deltaTime / FadeTime;
+
+                    yield return null;
+                }
+
+                sounds[i].Stop();
+                sounds[i].volume = startVolume;
+            }
+        }
     }
 }
