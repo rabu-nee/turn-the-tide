@@ -2364,6 +2364,7 @@ MonoBehaviour:
   timeToReset: 2.5
   speed: 9
   jumpForce: 300
+  footCoolDown: 0.5
   selected: 1
   outsideForce: 0
   grounded: 0
@@ -2474,6 +2475,7 @@ MonoBehaviour:
   timeToReset: 2.5
   speed: 6
   jumpForce: 268
+  footCoolDown: 0.52
   selected: 0
   outsideForce: 0
   grounded: 0

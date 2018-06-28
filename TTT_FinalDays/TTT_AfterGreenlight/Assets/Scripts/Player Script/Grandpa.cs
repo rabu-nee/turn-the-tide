@@ -82,7 +82,6 @@ public class Grandpa : Player
                 angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
 
                 aim.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                Debug.Log(angle);
             }
             throwDirection = launchPos.transform.position - this.transform.position;
         }
