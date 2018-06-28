@@ -41,12 +41,13 @@ public class UImenuHandler : MonoBehaviour {
 	}
 
 	void Update() {
+		LevelRotation lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
+
 		//Press Back
 		if ((Input.GetKeyDown (KeyCode.Escape)) || (Input.GetButtonDown ("B-Button"))) {
-			if (curActiveMenu > 0) {
+			if ((lr.isActive()) && (curActiveMenu > 0)) {
 				setCurActiveMenu (0);
 				//subMenus [1].gameObject.SetActive (false);
-				LevelRotation lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
 				lr.advanceScreen (1);
 			}
 		}

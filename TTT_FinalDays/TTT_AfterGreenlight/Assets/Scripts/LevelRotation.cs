@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelRotation : MonoBehaviour {
 
 	public bool neverAllowInput = false;
+	public float timeUntilActivation = 2f;
 	public float rotationSpeed;
 	public float movementSpeed = 2f;
 	public float extraRotationAmount = 10f;
@@ -27,7 +28,9 @@ public class LevelRotation : MonoBehaviour {
 	private bool joltAdded = true;
 	private bool shakeAdded = true;
 	private bool addedExtraRotation = false;
+	private bool waitFinished = false;
 	private float elapsedTurnTime = 0;
+	private float elapsedWaitTime = 0;
 	private CameraEffects CamFX;
 
 	//BUILT-IN FUNCTIONS===================================================================================================================
@@ -40,16 +43,26 @@ public class LevelRotation : MonoBehaviour {
 		curEuler = standardRotation.eulerAngles;
 		standardPosition = transform.position;
 		forwardAxis = transform.forward;
+		waitFinished = (neverAllowInput) ? false : true;
 	}
 
 	void Update () {
-		checkAllowInput ();
-		if (!neverAllowInput) {
-			controllerInput ();
-		}
+		//Wait before turning (Menu)
+		if (neverAllowInput && (elapsedWaitTime < timeUntilActivation)) {
+			elapsedWaitTime += Time.deltaTime;
+		} else {
+			checkAllowInput ();
+			if (!neverAllowInput) {
+				controllerInput ();
+			}
 
-		addCameraEffects ();
-		turnScreen ();
+			addCameraEffects ();
+			turnScreen ();
+			if (!waitFinished) {
+				waitFinished = true;
+				advanceScreen (1);
+			}
+		}
 	}
 
 	//CUSTOM FUNCTIONS===================================================================================================================
@@ -113,6 +126,10 @@ public class LevelRotation : MonoBehaviour {
 		}
 	}
 
+	public bool isActive() {
+		return (neverAllowInput) ? waitFinished : true;
+	}
+
 	private void addIndicatorArrow (int pl) {
 		IndicatorArrowSpawner ias = GameObject.Find ("Players").GetComponent<IndicatorArrowSpawner> ();
 		if (ias != null) {
@@ -150,12 +167,14 @@ public class LevelRotation : MonoBehaviour {
 		}
 	}
 
-	private void checkAllowInput() {
+	public bool checkAllowInput() {
 		if (elapsedTurnTime > turnAgainTiming) {
 			allowInput = true;
 		} else {
 			allowInput = false;
 		}
+
+		return allowInput;
 	}
 
 	private Vector3 addEulerRotation(Vector3 euler, int dir) {

@@ -23,6 +23,10 @@ public class MainMenuLoadScene : MonoBehaviour {
 		transitionNow = true;
 	}
 
+	public bool startedTransition() {
+		return transitionNow;
+	}
+
 	void Start() {
 		anim = GetComponent<Animator> ();
 	}
