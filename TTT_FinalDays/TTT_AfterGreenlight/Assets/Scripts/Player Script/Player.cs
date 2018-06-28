@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float timeToReset;
     public float speed = 5f; //move speed
     public float jumpForce;
+    public float footCoolDown = 0.3f;
 
     //some data types are public for child classes for access
     [Header("Do not touch", order = 1)]
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     private float BaseSpeed;
     private float resetTimer;
     private CheckWinState cws;
+    private float footTimer;
 
     public float raycastYOffset;
     public float distance;
@@ -90,23 +92,27 @@ public class Player : MonoBehaviour
             {
                 anim.SetBool("Walking", true);
 
-                int random = (int)Random.Range(1, 6);
-                if (!anim.GetBool("Walking"))
+                if (grounded)
                 {
-                    for (int i = 1; i < 6; i++)
+                    //FOOTSTEPS
+                    footSound();
+                    if (footTimer > 0)
                     {
-                        SoundManager.instance.StopSound(MoveSound + i);
+                        footTimer -= Time.deltaTime;
                     }
-                    
-                }
-                else if (anim.GetBool("Walking") && grounded)
-                {
-
-                    SoundManager.instance.PlaySoundDelayed(MoveSound + random, 0.3f);
+                    if (footTimer < 0)
+                    {
+                        footTimer = 0;
+                    }
                 }
 
+
+                //FOOTSTEPS END
+
+                //MOVE
                 rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
                 transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale) * scaleX, scaleY);
+
             }
             else if((int)Input.GetAxisRaw("Horizontal") == 0)
             {
@@ -115,6 +121,17 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    private void footSound()
+    {
+        if(footTimer == 0)
+        {
+            int random = Random.Range(1, 6);
+            SoundManager.instance.PlaySound(MoveSound + random);
+            footTimer = footCoolDown;
+        }
+    }
+
 
     public void Jump()
     {

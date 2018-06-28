@@ -80,7 +80,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 95b9d4ec5c12d0144bd24cec0c098924, type: 3}
     loop: 0
     bgm: 0
-    volume: 0.168
+    volume: 0.05
     pitch: 1
     randomVolume: 0.022
     randomPitch: 0.031
@@ -88,7 +88,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c93ed62e56642a043ac38857fa323966, type: 3}
     loop: 0
     bgm: 0
-    volume: 0.168
+    volume: 0.05
     pitch: 1
     randomVolume: 0.043
     randomPitch: 0.031
@@ -96,7 +96,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c25ebf640691ae247a659bb2bcfbcb34, type: 3}
     loop: 0
     bgm: 0
-    volume: 0.168
+    volume: 0.05
     pitch: 1
     randomVolume: 0.042
     randomPitch: 0.031
@@ -104,7 +104,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: db6b4cfa69c07b847b9ee5ea0d864120, type: 3}
     loop: 0
     bgm: 0
-    volume: 0.168
+    volume: 0.05
     pitch: 1
     randomVolume: 0.042
     randomPitch: 0.031
@@ -112,7 +112,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6eddb2ecf0509364389e3ae57cf2ff5a, type: 3}
     loop: 0
     bgm: 0
-    volume: 0.168
+    volume: 0.05
     pitch: 1
     randomVolume: 0.045
     randomPitch: 0.031
@@ -208,7 +208,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 14066d41c8572804dafe888b7c9a9896, type: 3}
     loop: 1
     bgm: 0
-    volume: 0.14
+    volume: 0.05
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
@@ -216,7 +216,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 587d1cb22ace15b49a5121400ca93442, type: 3}
     loop: 0
     bgm: 0
-    volume: 0.14
+    volume: 0.05
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
