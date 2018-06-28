@@ -2678,16 +2678,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4134883643321816, guid: 6bc6ae496dffdcc4e9e4cd2f87b70c06, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6bc6ae496dffdcc4e9e4cd2f87b70c06, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1202517634 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4134883643321816, guid: 6bc6ae496dffdcc4e9e4cd2f87b70c06,
-    type: 2}
-  m_PrefabInternal: {fileID: 1202517633}
 --- !u!1 &1224505360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,7 +3639,7 @@ GameObject:
   - component: {fileID: 1545833255}
   - component: {fileID: 1545833256}
   m_Layer: 0
-  m_Name: bgm
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3656,12 +3651,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545833254}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1202517634}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1545833256
 MonoBehaviour:
@@ -3674,7 +3669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72891a6f1aa642beb6e98264d300e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmToPlay: ambient
+  bgmToPlay: ambience
 --- !u!1 &1587166225
 GameObject:
   m_ObjectHideFlags: 0
