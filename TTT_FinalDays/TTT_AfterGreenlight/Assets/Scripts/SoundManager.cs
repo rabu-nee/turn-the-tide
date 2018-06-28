@@ -9,6 +9,8 @@ public class Sound
 
     public bool loop;
 
+    public bool bgm;
+
     [Range(0f, 1f)]
     public float volume = 0.7f;
     [Range(0.5f, 1.5f)]
