@@ -126,4 +126,9 @@ public class SoundManager : MonoBehaviour {
         //no sounds with _name
         Debug.LogWarning("AudioManager: Sound not found in list: " + _name);
     }
+
+    public void FadeSound()
+    {
+
+    }
 }

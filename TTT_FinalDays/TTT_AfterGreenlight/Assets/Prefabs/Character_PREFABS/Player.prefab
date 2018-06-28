@@ -2329,6 +2329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce76855b1a564df47b0786a3678e2969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToReset: 2.5
   speed: 9
   jumpForce: 300
   selected: 1
@@ -2359,6 +2360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitBeforeTransition: 2
+  crystalCollected: 0
 --- !u!114 &114200224799126012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2396,6 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27167fd4c4169240ad4fa1dab3fdbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boyFirst: 0
   player1: {fileID: 1513072780896090}
   player2: {fileID: 1952796744559946}
 --- !u!114 &114605875858688646
@@ -2410,6 +2413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitBeforeTransition: 2
+  crystalCollected: 0
 --- !u!114 &114806839012872834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2435,6 +2439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46b5fca4d8a72b4b87832d95a52f3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToReset: 2.5
   speed: 6
   jumpForce: 268
   selected: 0

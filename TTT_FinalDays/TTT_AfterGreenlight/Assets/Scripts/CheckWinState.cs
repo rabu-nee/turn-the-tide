@@ -6,6 +6,7 @@ public class CheckWinState : MonoBehaviour {
 
 	public int waitBeforeTransition = 2;
 	private int collectedCrystals = 0;
+    public bool crystalCollected;
 
 	public void addCrystal() {
 		collectedCrystals++;
@@ -14,9 +15,15 @@ public class CheckWinState : MonoBehaviour {
 		if (collectedCrystals == totalCrystals.Length) {
 			//Win state reached!
 			SoundManager.instance.PlaySound("victory");
-			StartCoroutine(winExec());
+            crystalCollected = true;
+            StartCoroutine(winExec());
 		}
 	}
+
+    public bool hasReachedWinState()
+    {
+        return crystalCollected;
+    }
 
 	IEnumerator winExec() {
 		bool t = true;

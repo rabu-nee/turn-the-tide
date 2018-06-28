@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
 
     [Header("Player parameters", order = 0)]
+    public float timeToReset;
     public float speed = 5f; //move speed
     public float jumpForce;
 
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     private float maxTime = 0.1f;
     private float previousAxispos;
     private float BaseSpeed;
+    private float resetTimer;
+    private CheckWinState cws;
 
     public float raycastYOffset;
     public float distance;
@@ -45,6 +48,8 @@ public class Player : MonoBehaviour
         scaleX = this.transform.localScale.x;
         scaleY = this.transform.localScale.y;
 
+        cws = GetComponentInParent<CheckWinState>();
+
 		standardPosition = transform.position;
     }
 
@@ -55,6 +60,7 @@ public class Player : MonoBehaviour
             Move();
             Jump();
             Push();
+            reset();
         }
         else if (!selected)
         {
@@ -208,10 +214,33 @@ public class Player : MonoBehaviour
 
     public void reset()
     {
-        if (Input.GetButtonDown("Reset"))
+        if (!cws.crystalCollected)
         {
+            if (Input.GetButton("Reset"))
+            {
+                resetTimer += Time.deltaTime;
+                Debug.Log(resetTimer);
 
+                if (resetTimer >= timeToReset)
+                {
+                    //RESET LEVEL
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+            }
+            else
+            {
+                resetTimer = 0;
+            }
         }
+        else
+        {
+            resetTimer = 0;
+        }
+    }
+
+    public void ToTitle()
+    {
+        
     }
 
     void OnDrawGizmos()
