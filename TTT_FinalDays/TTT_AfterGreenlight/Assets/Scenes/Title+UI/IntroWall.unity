@@ -366,8 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e73036f49c274d5fa7969197459ddf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 0.25
-  fadeDirection: -1
+  fadeInSpeed: 0.2
+  fadeOutSpeed: 0.48
+  fadeOutAtProgress: 0.825
+  anim: {fileID: 241288955}
 --- !u!1 &280810551
 GameObject:
   m_ObjectHideFlags: 0
