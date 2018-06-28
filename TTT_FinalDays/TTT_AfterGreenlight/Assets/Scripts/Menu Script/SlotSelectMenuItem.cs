@@ -19,7 +19,8 @@ public class SlotSelectMenuItem : AbstractMenuItem {
 			}
 
 			PlayerPrefs.SetInt ("curPlayingSlot", slotNumber);
-			Camera.main.gameObject.GetComponent<MainMenuLoadScene> ().loadSlotScene ();
+			Debug.Log (GameObject.FindGameObjectWithTag("MainCamera").name);
+			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenuLoadScene>().loadSlotScene ();
 		}
 	}
 
