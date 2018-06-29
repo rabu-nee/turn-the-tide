@@ -66,7 +66,7 @@ public class CrystalBehaviour : MonoBehaviour {
 			glowRenderer.enabled = false;
 			GetComponent<Renderer> ().enabled = false;
             particle.enableEmission = false;
-            GameObject.Find ("Players").GetComponent<CheckWinState> ().addCrystal ();
+			GameObject.Find("Players").GetComponent<CheckWinState> ().addCrystal ();
 			isCollected = true;
 		}
 	}	

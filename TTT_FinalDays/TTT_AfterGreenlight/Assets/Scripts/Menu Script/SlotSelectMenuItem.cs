@@ -7,17 +7,19 @@ using UnityEngine;
 public class SlotSelectMenuItem : AbstractMenuItem {
 
 	public int slotNumber = 0;
-	public bool newGame = true;
 
 	void Start() {
 		fillText();
+		Debug.Log ("Slot" + slotNumber.ToString() + ": " + SaveLoadHandler.instance.getLevelOnSlot(slotNumber));
 	}
 
 	public override void onPress() {
 		if (base.selected) {
-			if (newGame) {
+			if (PlayerPrefs.GetInt ("MenuMode_NewGame") == 1) {
 				//Start new game on this slot
 				SaveLoadHandler.instance.createNewSave (slotNumber);
+			} else {
+				SaveLoadHandler.instance.selectSlot (slotNumber);
 			}
 			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenuLoadScene>().loadSlotScene(SaveLoadHandler.instance.getLevelOnSlot (slotNumber));
 		}
@@ -38,6 +40,13 @@ public class SlotSelectMenuItem : AbstractMenuItem {
 			int nPercentage = Mathf.RoundToInt (percentage);
 			nPercentage = Mathf.Clamp (nPercentage, 0, 100);
 			pText.text = nPercentage.ToString() + "%";
+			//Gold Text
+			if (nPercentage == 100) {
+				Vector3 nScale = pText.transform.localScale;
+				nScale *= 0.81f;
+				pText.transform.localScale = nScale;
+				pText.color = Color.yellow;
+			}
 		}
 		dText.text = curLastDate;
 	}

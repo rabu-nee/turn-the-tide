@@ -138,6 +138,12 @@ public class SoundManager : MonoBehaviour
         Debug.LogWarning("AudioManager: Sound not found in list: " + _name);
     }
 
+	public void stopAllSounds(){
+		for (int i = 0; i < sounds.Length; i++) {
+			sounds [i].Stop ();
+		}
+	}
+
     public void FadeSound(string _name, float speed)
     {
         StartCoroutine(FadeOut(_name, speed));

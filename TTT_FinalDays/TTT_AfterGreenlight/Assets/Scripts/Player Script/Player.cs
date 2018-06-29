@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public float scaleX, scaleY; //mostly used for sign of scale for gravity and control
     public bool canMove;
+	public bool canJump;
     private float timer;
-    private bool canJump;
     private float maxTime = 0.1f;
     private float previousAxispos;
     private float BaseSpeed;

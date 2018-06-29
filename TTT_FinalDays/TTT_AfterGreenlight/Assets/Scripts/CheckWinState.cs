@@ -13,6 +13,7 @@ public class CheckWinState : MonoBehaviour {
 		collectedCrystals++;
 		GameObject[] totalCrystals = GameObject.FindGameObjectsWithTag ("Crystal");
 		Debug.Log(totalCrystals.Length);
+		Debug.Log (collectedCrystals);
 		if (collectedCrystals == totalCrystals.Length) {
 			//Win state reached!
 			SoundManager.instance.PlaySound("victory");

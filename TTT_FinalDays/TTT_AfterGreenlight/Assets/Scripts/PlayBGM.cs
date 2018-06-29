@@ -8,7 +8,7 @@ public class PlayBGM : MonoBehaviour {
 	public string bgmToPlay;
 
 	void Start () {
-		SoundManager.instance.PlaySound (bgmToPlay);
+		SoundManager.instance.PlaySound(bgmToPlay);
 		SceneManager.sceneLoaded += stopSoundOnLevelLoad;
 	}
 

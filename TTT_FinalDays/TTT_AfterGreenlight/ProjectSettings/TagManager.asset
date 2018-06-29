@@ -18,6 +18,7 @@ TagManager:
   - Indicator
   - Crystal
   - ResetObj
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

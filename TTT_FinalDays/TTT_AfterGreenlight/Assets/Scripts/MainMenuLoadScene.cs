@@ -16,7 +16,7 @@ public class MainMenuLoadScene : MonoBehaviour {
 		if (index < 1) {
 			sceneToLoad = index + 1;
 		} else {
-			sceneToLoad = index;
+			sceneToLoad = index + 2;
 		}
 		anim.SetBool ("GameStart", true);
 		transitionNow = true;

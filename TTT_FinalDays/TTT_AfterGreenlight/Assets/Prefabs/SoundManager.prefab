@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1189471927767596}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1189471927767596
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4134883643321816}
   - component: {fileID: 114344250128220026}
@@ -30,7 +30,7 @@ GameObject:
 --- !u!4 &4134883643321816
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189471927767596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -43,7 +43,7 @@ Transform:
 --- !u!114 &114344250128220026
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189471927767596}
   m_Enabled: 1
@@ -56,18 +56,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 79c1669f56e57fb4ca4d8145cc497360, type: 3}
     loop: 1
     bgm: 1
-    volume: 0.09
+    volume: 0.178
     pitch: 1
     randomVolume: 0
     randomPitch: 0
+    source: {fileID: 0}
   - name: bgm Harp
     clip: {fileID: 8300000, guid: 34389656b7bf8d74784eee127a109acb, type: 3}
     loop: 1
     bgm: 1
-    volume: 0.07
+    volume: 0.139
     pitch: 1
     randomVolume: 0
     randomPitch: 0
+    source: {fileID: 0}
   - name: boy jump
     clip: {fileID: 8300000, guid: bf0447588f3dad34a803cd19c0110fb2, type: 3}
     loop: 0
@@ -76,6 +78,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: boystep1
     clip: {fileID: 8300000, guid: 95b9d4ec5c12d0144bd24cec0c098924, type: 3}
     loop: 0
@@ -84,6 +87,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.022
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: boystep2
     clip: {fileID: 8300000, guid: c93ed62e56642a043ac38857fa323966, type: 3}
     loop: 0
@@ -92,6 +96,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.043
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: boystep3
     clip: {fileID: 8300000, guid: c25ebf640691ae247a659bb2bcfbcb34, type: 3}
     loop: 0
@@ -100,6 +105,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.042
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: boystep4
     clip: {fileID: 8300000, guid: db6b4cfa69c07b847b9ee5ea0d864120, type: 3}
     loop: 0
@@ -108,6 +114,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.042
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: boystep5
     clip: {fileID: 8300000, guid: 6eddb2ecf0509364389e3ae57cf2ff5a, type: 3}
     loop: 0
@@ -116,6 +123,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.045
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: walljump
     clip: {fileID: 8300000, guid: 7cdde4372783c6a40990e6e691145420, type: 3}
     loop: 0
@@ -124,6 +132,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: wallslide
     clip: {fileID: 8300000, guid: 95432c709631b2e4abb096bd5b92d369, type: 3}
     loop: 1
@@ -132,6 +141,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: wall contact
     clip: {fileID: 8300000, guid: 63791edf10063314a9a00c7a706e244f, type: 3}
     loop: 0
@@ -140,6 +150,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: ground contact
     clip: {fileID: 8300000, guid: 046d02572bcbf5a48833286ad2741ecc, type: 3}
     loop: 0
@@ -148,6 +159,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: push object
     clip: {fileID: 8300000, guid: b7bb2951536fa8d4cb90acd71e5ce5cc, type: 3}
     loop: 1
@@ -156,6 +168,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: bouncy string
     clip: {fileID: 8300000, guid: caaeab2e4d90caa4788384cad1bd62bc, type: 3}
     loop: 0
@@ -164,6 +177,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: throw stick
     clip: {fileID: 8300000, guid: 3c25f33eebe048b47a21f3ddbeeebd06, type: 3}
     loop: 0
@@ -172,6 +186,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.118
     randomPitch: 0.031
+    source: {fileID: 0}
   - name: rotation
     clip: {fileID: 8300000, guid: 2fff5c0f1df56d3419308311076708f4, type: 3}
     loop: 0
@@ -180,6 +195,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: steady gravity box
     clip: {fileID: 8300000, guid: 0bfd548b24fcec64599f7ce152a88b77, type: 3}
     loop: 0
@@ -188,6 +204,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0.026
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: crystal collect
     clip: {fileID: 8300000, guid: 841bd17e49967ee449c0884647d75fc1, type: 3}
     loop: 0
@@ -196,6 +213,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: door
     clip: {fileID: 8300000, guid: 6ed6e2abd56404a4bb6ced6dcc95b27d, type: 3}
     loop: 0
@@ -204,6 +222,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: gear white
     clip: {fileID: 8300000, guid: 14066d41c8572804dafe888b7c9a9896, type: 3}
     loop: 1
@@ -212,6 +231,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: gear black
     clip: {fileID: 8300000, guid: 587d1cb22ace15b49a5121400ca93442, type: 3}
     loop: 0
@@ -220,6 +240,7 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: switch hit
     clip: {fileID: 8300000, guid: 91846ef2cb723f24d968c99859f057d5, type: 3}
     loop: 0
@@ -228,22 +249,25 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: death
     clip: {fileID: 8300000, guid: e247a8c00bdf9fe469bbdf96d5a9807a, type: 3}
     loop: 0
     bgm: 0
-    volume: 1
+    volume: 0.36
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: level flip
     clip: {fileID: 8300000, guid: eb03b1210ebd92a48a151e6bc252c747, type: 3}
     loop: 0
     bgm: 0
-    volume: 1
+    volume: 0.738
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: link sound
     clip: {fileID: 8300000, guid: 7cab560305aa7394793089ce732ce33d, type: 3}
     loop: 0
@@ -252,14 +276,16 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: intro
     clip: {fileID: 8300000, guid: 6204abfb9442940eea7320ddf38a9bde, type: 3}
     loop: 1
     bgm: 0
-    volume: 1
+    volume: 0.73
     pitch: 1
     randomVolume: 0
     randomPitch: 0.053
+    source: {fileID: 0}
   - name: victory
     clip: {fileID: 8300000, guid: bc1a0551a2eaaa64ca86a8562ccb0052, type: 3}
     loop: 0
@@ -268,14 +294,16 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0
+    source: {fileID: 0}
   - name: ambience bird
     clip: {fileID: 8300000, guid: 3a4f348aaa1a0954899a38a974a64ad8, type: 3}
     loop: 1
     bgm: 0
-    volume: 1
+    volume: 0.6
     pitch: 1
     randomVolume: 0
     randomPitch: 0
+    source: {fileID: 0}
   - name: ambience water
     clip: {fileID: 8300000, guid: 0bad69c1f5bdb8b49b3318f5b837ad04, type: 3}
     loop: 1
@@ -284,11 +312,13 @@ MonoBehaviour:
     pitch: 1
     randomVolume: 0
     randomPitch: 0
+    source: {fileID: 0}
   - name: plop
     clip: {fileID: 8300000, guid: f9f9dea9eeeccd74783b72c6b8cf9bbb, type: 3}
     loop: 0
     bgm: 0
-    volume: 1
+    volume: 0.495
     pitch: 1
     randomVolume: 0
     randomPitch: 0.065
+    source: {fileID: 0}

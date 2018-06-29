@@ -30,6 +30,10 @@ public class SaveLoadHandler : MonoBehaviour {
 		PlayerPrefs.SetInt ("curPlayingSlot", slot);
 	}
 
+	public void selectSlot(int slot) {
+		PlayerPrefs.SetInt ("curPlayingSlot", slot);
+	}
+
 	public void addLevelToCurrentSlot(int addLevel) {
 		int curSlot = PlayerPrefs.GetInt ("curPlayingSlot");
 		int levelOnSlot = PlayerPrefs.GetInt ("SaveSlot" + curSlot.ToString ());
