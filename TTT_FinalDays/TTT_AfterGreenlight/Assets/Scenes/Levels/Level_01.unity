@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 44528967}
   - component: {fileID: 44528968}
+  - component: {fileID: 44528969}
   m_Layer: 0
   m_Name: Point Light (6)
   m_TagString: Untagged
@@ -179,6 +180,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &44528969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 44528966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bed2fb833142ad8c6cb2b3cb39c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDeviation: 0.8
+  rangeDeviation: 8
+  positionDeviation: 0.16
+  deviationSpeed: 0.18
+  deviationTime: 3.1
 --- !u!1 &201799826
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 238285453}
   - component: {fileID: 238285454}
+  - component: {fileID: 238285455}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -292,7 +310,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.23016791, b: 0, a: 1}
+  m_Color: {r: 0.6886792, g: 0.26637593, b: 0.47014415, a: 1}
   m_Intensity: 2.83
   m_Range: 20
   m_SpotAngle: 30
@@ -320,6 +338,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &238285455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238285452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bed2fb833142ad8c6cb2b3cb39c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDeviation: 0.8
+  rangeDeviation: 8
+  positionDeviation: 0.16
+  deviationSpeed: 0.18
+  deviationTime: 3.1
 --- !u!1001 &255035401
 Prefab:
   m_ObjectHideFlags: 0
@@ -7048,6 +7082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089094081}
   - component: {fileID: 1089094082}
+  - component: {fileID: 1089094083}
   m_Layer: 0
   m_Name: Point Light (2)
   m_TagString: Untagged
@@ -7077,7 +7112,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.23016791, b: 0, a: 1}
+  m_Color: {r: 0.6886792, g: 0.26637593, b: 0.47014415, a: 1}
   m_Intensity: 2.83
   m_Range: 20
   m_SpotAngle: 30
@@ -7105,6 +7140,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1089094083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089094080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bed2fb833142ad8c6cb2b3cb39c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDeviation: 0.8
+  rangeDeviation: 8
+  positionDeviation: 0.16
+  deviationSpeed: 0.18
+  deviationTime: 3.1
 --- !u!1 &1089845714
 GameObject:
   m_ObjectHideFlags: 0
@@ -7114,6 +7165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089845715}
   - component: {fileID: 1089845716}
+  - component: {fileID: 1089845717}
   m_Layer: 0
   m_Name: Point Light (4)
   m_TagString: Untagged
@@ -7171,6 +7223,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1089845717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089845714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bed2fb833142ad8c6cb2b3cb39c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDeviation: 0.8
+  rangeDeviation: 8
+  positionDeviation: 0.16
+  deviationSpeed: 0.18
+  deviationTime: 3.1
 --- !u!1 &1108018475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7331,6 +7399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1219548398}
   - component: {fileID: 1219548399}
+  - component: {fileID: 1219548400}
   m_Layer: 0
   m_Name: Point Light (5)
   m_TagString: Untagged
@@ -7388,6 +7457,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1219548400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219548397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bed2fb833142ad8c6cb2b3cb39c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDeviation: 0.8
+  rangeDeviation: 8
+  positionDeviation: 0.16
+  deviationSpeed: 0.18
+  deviationTime: 3.1
 --- !u!1 &1272174816
 GameObject:
   m_ObjectHideFlags: 0
@@ -7870,6 +7955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1676009906}
   - component: {fileID: 1676009907}
+  - component: {fileID: 1676009908}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -7899,7 +7985,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.23016791, b: 0, a: 1}
+  m_Color: {r: 0.6886792, g: 0.26637593, b: 0.47014415, a: 1}
   m_Intensity: 2.83
   m_Range: 20
   m_SpotAngle: 30
@@ -7927,6 +8013,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1676009908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676009905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bed2fb833142ad8c6cb2b3cb39c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDeviation: 0.8
+  rangeDeviation: 8
+  positionDeviation: 0.16
+  deviationSpeed: 0.18
+  deviationTime: 3.1
 --- !u!1001 &1764734392
 Prefab:
   m_ObjectHideFlags: 0
@@ -8544,6 +8646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036205289}
   - component: {fileID: 2036205290}
+  - component: {fileID: 2036205291}
   m_Layer: 0
   m_Name: Point Light (3)
   m_TagString: Untagged
@@ -8601,6 +8704,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2036205291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2036205288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4bed2fb833142ad8c6cb2b3cb39c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityDeviation: 0.8
+  rangeDeviation: 8
+  positionDeviation: 0
+  deviationSpeed: 0.18
+  deviationTime: 3.1
 --- !u!1 &2038852594
 GameObject:
   m_ObjectHideFlags: 0

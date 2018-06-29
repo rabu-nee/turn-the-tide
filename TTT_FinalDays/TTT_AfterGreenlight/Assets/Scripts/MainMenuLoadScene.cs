@@ -12,18 +12,18 @@ public class MainMenuLoadScene : MonoBehaviour {
 	private bool transitionNow = false;
 	private float elapsedTime = 0;
 
-	public void loadSlotScene() {
-		int nScene = PlayerPrefs.GetInt ("SaveSlot" + PlayerPrefs.GetInt ("curPlayingSlot").ToString(), -1);
-		if (nScene < 1) {
-			sceneToLoad = SceneManager.GetActiveScene ().buildIndex + 1;
+	public void loadSlotScene(int index) {
+		if (index < 1) {
+			sceneToLoad = index + 1;
 		} else {
-			sceneToLoad = nScene + 1;
+			sceneToLoad = index;
 		}
 		anim.SetBool ("GameStart", true);
 		transitionNow = true;
 
 		//Play flip sound
 		SoundManager.instance.PlaySound("level flip");
+		SoundManager.instance.FadeSound ("ambience bird", 0.295f);
 	}
 
 	public bool startedTransition() {

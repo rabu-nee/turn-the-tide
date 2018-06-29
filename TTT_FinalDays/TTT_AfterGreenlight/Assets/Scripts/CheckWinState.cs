@@ -17,6 +17,8 @@ public class CheckWinState : MonoBehaviour {
 			//Win state reached!
 			SoundManager.instance.PlaySound("victory");
             crystalCollected = true;
+			//Set save slot to next level
+			SaveLoadHandler.instance.addLevelToCurrentSlot(1);
             StartCoroutine(winExec(1));
 		}
 	}

@@ -386,7 +386,6 @@ GameObject:
   - component: {fileID: 280810555}
   - component: {fileID: 280810552}
   - component: {fileID: 280810554}
-  - component: {fileID: 280810553}
   m_Layer: 0
   m_Name: RenderCamera
   m_TagString: Untagged
@@ -434,13 +433,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &280810553
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 280810551}
-  m_Enabled: 1
 --- !u!124 &280810554
 Behaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +551,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 437065393}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 184.7, y: 14.299999, z: 3.434138}
+  m_LocalPosition: {x: 186.12, y: 16.7, z: 3.434138}
   m_LocalScale: {x: 1.1899999, y: 1.19, z: 1.19}
   m_Children: []
   m_Father: {fileID: 1276746350}
@@ -877,15 +869,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 7600236cba14b4b339bbd9155f75e8b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7600236cba14b4b339bbd9155f75e8b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00011
+      value: 0.00002
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7600236cba14b4b339bbd9155f75e8b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7600236cba14b4b339bbd9155f75e8b7, type: 3}
       propertyPath: m_LocalRotation.x
