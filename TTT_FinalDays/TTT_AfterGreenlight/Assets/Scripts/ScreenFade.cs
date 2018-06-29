@@ -22,6 +22,7 @@ public class ScreenFade : MonoBehaviour {
 			AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo (0);
 			float animationProgress = currentState.normalizedTime;
 			if (animationProgress >= fadeOutAtProgress) {
+				SoundManager.instance.FadeSound ("intro", 1.2f);
 				fadeDirection = 1;
 			}
 			if (animationProgress == 1) {

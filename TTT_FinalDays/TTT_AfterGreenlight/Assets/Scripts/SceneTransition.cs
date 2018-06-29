@@ -13,6 +13,8 @@ public class SceneTransition : MonoBehaviour {
 
     public string bgmToPlay;
 
+	private int relNextIndex = 1;
+
 	private Vector3 standardPosition;
 	private Quaternion standardRotation;
 	private float standardCameraZoom;
@@ -77,7 +79,7 @@ public class SceneTransition : MonoBehaviour {
 		smoothTransition = true;
 	}
 
-	public void setExitVariables() {
+	public void setExitVariables(int nRelnNextIndex) {
 		//Set Position
 		Vector3 nPos = standardPosition;
 		nPos.z -= positionShiftAmount;
@@ -93,8 +95,16 @@ public class SceneTransition : MonoBehaviour {
 
 		smoothTransition = false;
 
+		relNextIndex = nRelnNextIndex;
+
+		//Disable Reset Obj
+		GameObject.FindGameObjectWithTag("ResetObj").SetActive(false);
+
+		//Play flip sound
+		SoundManager.instance.PlaySound("level flip");
+
         //Start loading next Level
-        StartCoroutine (LoadNextLevelAsync ());
+		StartCoroutine (LoadNextLevelAsync (nRelnNextIndex));
 	}
 		
 	public void setStandardVariables(){
@@ -109,7 +119,7 @@ public class SceneTransition : MonoBehaviour {
 		//Plus player controls...
 	}
 
-	private bool hasReachedExit() {
+	public bool hasReachedExit() {
 		Debug.Log (transform.rotation.eulerAngles.x);
 		if (Mathf.CeilToInt(transform.rotation.eulerAngles.x) == 90) {
 			return true;
@@ -118,7 +128,7 @@ public class SceneTransition : MonoBehaviour {
 		}
 	}
 
-	private bool hasReachedStandard() {
+	public bool hasReachedStandard() {
 		if (transform.rotation == standardRotation) {
 			return true;
 		} else {
@@ -126,10 +136,9 @@ public class SceneTransition : MonoBehaviour {
 		}
 	}
 
-	IEnumerator LoadNextLevelAsync() {
+	IEnumerator LoadNextLevelAsync(int relNext) {
         SoundManager.instance.StopSound(bgmToPlay);
-		int nextSceneIndex = SceneManager.GetActiveScene ().buildIndex + 1;
-		asyncLoad = SceneManager.LoadSceneAsync (nextSceneIndex);
+		asyncLoad = SceneManager.LoadSceneAsync (relNext);
 		asyncLoad.allowSceneActivation = false;
 
 		while (!asyncLoad.isDone) {

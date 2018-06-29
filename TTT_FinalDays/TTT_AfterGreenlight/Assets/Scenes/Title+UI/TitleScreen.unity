@@ -3793,7 +3793,7 @@ Prefab:
     - target: {fileID: 114344250128220026, guid: 6bc6ae496dffdcc4e9e4cd2f87b70c06,
         type: 2}
       propertyPath: sounds.Array.data[25].volume
-      value: 0.85
+      value: 0.791
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bc6ae496dffdcc4e9e4cd2f87b70c06, type: 2}

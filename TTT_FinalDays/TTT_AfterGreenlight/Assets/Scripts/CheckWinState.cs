@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CheckWinState : MonoBehaviour {
@@ -16,7 +17,7 @@ public class CheckWinState : MonoBehaviour {
 			//Win state reached!
 			SoundManager.instance.PlaySound("victory");
             crystalCollected = true;
-            StartCoroutine(winExec());
+            StartCoroutine(winExec(1));
 		}
 	}
 
@@ -25,17 +26,16 @@ public class CheckWinState : MonoBehaviour {
         return crystalCollected;
     }
 
-	IEnumerator winExec() {
+	public IEnumerator winExec(int relNextSceneIndex) {
 		bool t = true;
 		while (t) {
 			yield return new WaitForSeconds(waitBeforeTransition);
 
 			GameObject levelContainer = GameObject.FindGameObjectWithTag("CurrentLevel");
-			Debug.Log (levelContainer.name);
 			levelContainer.GetComponent<LevelRotation>().enabled = false;
 			levelContainer.GetComponent<SceneTransition>().enabled = true;
 			levelContainer.GetComponent<SceneTransition> ().setStandardVariables ();
-			levelContainer.GetComponent<SceneTransition> ().setExitVariables ();
+			levelContainer.GetComponent<SceneTransition> ().setExitVariables (SceneManager.GetActiveScene().buildIndex + 1);
 
 
 			t = false;

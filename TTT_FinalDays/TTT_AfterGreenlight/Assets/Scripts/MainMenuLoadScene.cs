@@ -21,6 +21,9 @@ public class MainMenuLoadScene : MonoBehaviour {
 		}
 		anim.SetBool ("GameStart", true);
 		transitionNow = true;
+
+		//Play flip sound
+		SoundManager.instance.PlaySound("level flip");
 	}
 
 	public bool startedTransition() {

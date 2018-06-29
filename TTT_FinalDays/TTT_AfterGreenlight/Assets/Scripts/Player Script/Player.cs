@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
     private float maxTime = 0.1f;
     private float previousAxispos;
     private float BaseSpeed;
-    private float resetTimer;
     private CheckWinState cws;
     private float footTimer;
 
@@ -62,7 +61,6 @@ public class Player : MonoBehaviour
             Move();
             Jump();
             Push();
-            reset();
         }
         else if (!selected)
         {
@@ -227,32 +225,6 @@ public class Player : MonoBehaviour
     public void resetPlayerPosition()
     {
         StartCoroutine(resetDeath());
-    }
-
-    public void reset()
-    {
-        if (!cws.crystalCollected)
-        {
-            if (Input.GetButton("Reset"))
-            {
-                resetTimer += Time.deltaTime;
-                Debug.Log(resetTimer);
-
-                if (resetTimer >= timeToReset)
-                {
-                    //RESET LEVEL
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
-            }
-            else
-            {
-                resetTimer = 0;
-            }
-        }
-        else
-        {
-            resetTimer = 0;
-        }
     }
 
     public void ToTitle()

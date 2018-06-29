@@ -17,6 +17,7 @@ TagManager:
   - Platform
   - Indicator
   - Crystal
+  - ResetObj
   layers:
   - Default
   - TransparentFX
