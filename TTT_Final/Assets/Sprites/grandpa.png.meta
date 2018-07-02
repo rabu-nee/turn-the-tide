@@ -1,0 +1,411 @@
+fileFormatVersion: 2
+guid: d7aee322c626a624cadbc92b60f10d5d
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: grandpa_shoulder_l
+    21300002: grandpa_head
+    21300004: grandpa_shoulder_r
+    21300006: grandpa_arm_l
+    21300008: grandpa_hand_l
+    21300010: grandpa_torso
+    21300012: grandpa_arm_r
+    21300014: grandpa_stick
+    21300016: grandpa_thigh_l
+    21300018: grandpa_hand_r
+    21300020: grandpa_leg_l
+    21300022: grandpa_leg_r
+    21300024: grandpa_thigh_r
+    21300026: grandpa_foot_l
+    21300028: grandpa_foot_r
+    21300030: grandpa_leg_l
+  externalObjects: {}
+  serializedVersion: 5
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: grandpa_shoulder_l
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 213
+        width: 37
+        height: 32
+      alignment: 9
+      pivot: {x: 0.8192968, y: 0.79818916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2948a26b41834464fbc3bafebb178234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_head
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 178
+        width: 79
+        height: 76
+      alignment: 9
+      pivot: {x: 0.54026175, y: 0.09344543}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72311ed6470bd8c48915567f9675c515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_shoulder_r
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 207
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.12513313, y: 0.8123884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fdb92e6008aef34b91dd1a34107334f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_arm_l
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 158
+        width: 31
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a0265ae1c27b445866ef07898935ae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_hand_l
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 162
+        width: 23
+        height: 30
+      alignment: 9
+      pivot: {x: 0.38146475, y: 0.7877762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd91ca5886ee8d4f92a7b2424409de0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_torso
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 93
+        width: 71
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc0c8f9bccc9a2418858f06d2c3df50
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_arm_r
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 141
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbf4552a9888f34faeb687a67124dec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_stick
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 9
+        width: 43
+        height: 104
+      alignment: 9
+      pivot: {x: 0.48943275, y: 0.69473594}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23587cf1a3184c4d9acd24975079cea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_thigh_l
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 91
+        width: 32
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5851972, y: 0.809807}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff72ee29c58c80b47aace97a067c3fe2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_hand_r
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 84
+        width: 27
+        height: 32
+      alignment: 9
+      pivot: {x: 0.7019478, y: 0.8123889}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50cbedcbe29f3b429a1830493d9f80c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_leg_l
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 39
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf9139f69314ef4ba9354b0e82b7cf1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_leg_r
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 44
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a52c6fad8a89e744db4c982e375643fe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_thigh_r
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 37
+        width: 32
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5993962, y: 0.7921035}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d0c335c90f1e640a9592d1d13395f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_foot_l
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 3
+        width: 35
+        height: 25
+      alignment: 9
+      pivot: {x: 0.7726301, y: 0.84533155}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae57a7b731564724fa09a6d801dd09ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grandpa_foot_r
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 2
+        width: 34
+        height: 25
+      alignment: 9
+      pivot: {x: 0.820742, y: 0.736279}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a4872a83183fb499bd6f4fb2479922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5c46637c1b184154ebda291cd735de88
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
