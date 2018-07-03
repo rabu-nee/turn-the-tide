@@ -7,47 +7,51 @@ using UnityEngine;
 public class SlotSelectMenuItem : AbstractMenuItem {
 
 	public int slotNumber = 0;
-	public bool newGame = true;
+
+	void Start() {
+		fillText();
+		Debug.Log ("Slot" + slotNumber.ToString() + ": " + SaveLoadHandler.instance.getLevelOnSlot(slotNumber));
+	}
 
 	public override void onPress() {
-		Debug.Log (gameObject.name + ": " + selected.ToString());
 		if (base.selected) {
-			if (newGame) {
-				//Start new game on this slot
-				PlayerPrefs.SetInt ("SaveSlot" + slotNumber.ToString (), 0);
-				PlayerPrefs.SetString ("SaveSlot" + slotNumber.ToString () + "_lastDate", getCurDate ());
+			//Start new game on this slot
+			if (PlayerPrefs.GetInt ("MenuMode_NewGame") == 1) {
+				SaveLoadHandler.instance.createNewSave (slotNumber);
+				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<MainMenuLoadScene> ().loadSlotScene (SaveLoadHandler.instance.getLevelOnSlot (slotNumber));
 			}
 
-			PlayerPrefs.SetInt ("curPlayingSlot", slotNumber);
-			Debug.Log (GameObject.FindGameObjectWithTag("MainCamera").name);
-			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenuLoadScene>().loadSlotScene ();
+			//Load game on slot
+			if ((PlayerPrefs.GetInt ("MenuMode_NewGame") == 0) && (SaveLoadHandler.instance.getLevelOnSlot (slotNumber) >= 0)) {
+				SaveLoadHandler.instance.selectSlot (slotNumber);
+				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<MainMenuLoadScene> ().loadSlotScene (SaveLoadHandler.instance.getLevelOnSlot (slotNumber));
+			}
 		}
 	}
 
 	void fillText() {
 		TextMesh pText = transform.GetChild (1).GetComponent<TextMesh> ();
 		TextMesh dText = transform.GetChild (2).GetComponent<TextMesh> ();
-		int curSaveLevel = PlayerPrefs.GetInt ("SaveSlot" + slotNumber.ToString (), -1);
-		string curLastDate = PlayerPrefs.GetString ("SaveSlot" + slotNumber.ToString () + "_lastDate", "");
+		int curSaveLevel = SaveLoadHandler.instance.getLevelOnSlot (slotNumber);
+		string curLastDate = SaveLoadHandler.instance.getLastDateOnSlot (slotNumber);
 
 		if (curSaveLevel < 0) {
 			pText.text = "New";
 		} else {
-			float percentage = curSaveLevel / (SceneManager.sceneCountInBuildSettings - 2);
+			float percentage = (float)curSaveLevel / (float)(SceneManager.sceneCountInBuildSettings - 3);
+			Debug.Log ("Slot" + slotNumber.ToString() + ": " + curSaveLevel);
 			percentage *= 100;
 			int nPercentage = Mathf.RoundToInt (percentage);
+			nPercentage = Mathf.Clamp (nPercentage, 0, 100);
 			pText.text = nPercentage.ToString() + "%";
+			//Gold Text
+			if (nPercentage == 100) {
+				Vector3 nScale = pText.transform.localScale;
+				nScale *= 0.81f;
+				pText.transform.localScale = nScale;
+				pText.color = Color.yellow;
+			}
 		}
 		dText.text = curLastDate;
-	}
-
-	string getCurDate() {
-		string curDate = DateTime.Today.Month + "/" + DateTime.Today.Day + "/" + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
-		return curDate;
-	}
-
-	void Start() {
-		//Set UI percentage, etc...
-		fillText();
 	}
 }

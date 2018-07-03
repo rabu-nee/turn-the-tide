@@ -11,6 +11,27 @@ public class SubMenuHandler : MonoBehaviour {
 	private IMenuItem[] items;
 	private int selected = 0;
 
+	void Start () {
+		//Initialize Items
+		items = new IMenuItem[transform.childCount];
+		for (int i = 0; i < transform.childCount; i++) {
+			items [i] = transform.GetChild (i).GetComponent<AbstractMenuItem> ();
+		}
+
+		setMenuItemActivationState (-1);
+	}
+
+	void Update () {
+		LevelRotation lr = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<LevelRotation> ();
+		MainMenuLoadScene mml = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<MainMenuLoadScene> ();
+
+		if (active && lr.isActive() && lr.checkAllowInput() && !mml.startedTransition()) {
+			handleInput ();
+		}
+	}
+
+	//###Custom Functions###
+
 	private void handleInput() {
 		//Get directional Input
 		float axisInput = 0;
@@ -63,21 +84,5 @@ public class SubMenuHandler : MonoBehaviour {
 
 	public bool isActive() {
 		return active;
-	}
-
-	void Start () {
-		//Initialize Items
-		items = new IMenuItem[transform.childCount];
-		for (int i = 0; i < transform.childCount; i++) {
-			items [i] = transform.GetChild (i).GetComponent<AbstractMenuItem> ();
-		}
-
-		setMenuItemActivationState (-1);
-	}
-
-	void Update () {
-		if (active) {
-			handleInput ();
-		}
 	}
 }

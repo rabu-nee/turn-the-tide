@@ -67,7 +67,6 @@ public class Grandpa : Player
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
 
-            aim.GetComponent<SpriteRenderer>().enabled = true;
             aim.gameObject.SetActive(true);
             aim.transform.position = this.transform.position;
 
@@ -101,8 +100,6 @@ public class Grandpa : Player
 
     IEnumerator Throw()
     {
-        aim.GetComponent<SpriteRenderer>().enabled = false;
-
         //ANIMATION CONTROLLER
         anim.SetBool("Throwing", true);
 

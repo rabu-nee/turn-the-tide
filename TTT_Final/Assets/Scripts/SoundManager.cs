@@ -21,7 +21,8 @@ public class Sound
     [Range(0f, 0.5f)]
     public float randomPitch = 0f;
 
-    private AudioSource source;
+	[HideInInspector]
+	public  AudioSource source;
 
     public void SetSource(AudioSource _source)
     {
@@ -29,6 +30,10 @@ public class Sound
         source.loop = loop;
         source.clip = clip;
     }
+
+	public void setVolume(float vol) {
+		volume = vol;
+	}
 
     public void Play()
     {
@@ -133,6 +138,12 @@ public class SoundManager : MonoBehaviour
         Debug.LogWarning("AudioManager: Sound not found in list: " + _name);
     }
 
+	public void stopAllSounds(){
+		for (int i = 0; i < sounds.Length; i++) {
+			sounds [i].Stop ();
+		}
+	}
+
     public void FadeSound(string _name, float speed)
     {
         StartCoroutine(FadeOut(_name, speed));
@@ -144,17 +155,22 @@ public class SoundManager : MonoBehaviour
         {
             if (sounds[i].name == _name)
             {
-                float startVolume = sounds[i].volume;
+				float startVolume = sounds[i].source.volume;
 
-                while (sounds[i].volume > 0)
+				while (sounds[i].source.volume > 0)
                 {
-                    sounds[i].volume -= startVolume * Time.deltaTime / FadeTime;
+					if ((sounds [i].source.volume - Time.deltaTime * FadeTime) < 0) {
+						sounds [i].source.volume = 0;
+					} else {
+						sounds [i].source.volume -= Time.deltaTime * FadeTime;
+					}
 
-                    yield return null;
+					yield return null;
                 }
 
                 sounds[i].Stop();
-                sounds[i].volume = startVolume;
+				//sounds[i].source.volume = startVolume;
+				break;
             }
         }
     }

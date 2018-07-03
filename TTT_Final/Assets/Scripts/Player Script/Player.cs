@@ -18,16 +18,18 @@ public class Player : MonoBehaviour
     private bool hanging = false;
     private Vector3 standardPosition;
     public bool grounded;
+	public bool spawnDustCloud = false;
+	public bool isHuggingWall = false;
     public Animator anim;
     public Rigidbody2D rb;
+	public GameObject DustCloud;
     public float scaleX, scaleY; //mostly used for sign of scale for gravity and control
     public bool canMove;
+	public bool canJump;
     private float timer;
-    private bool canJump;
     private float maxTime = 0.1f;
     private float previousAxispos;
     private float BaseSpeed;
-    private float resetTimer;
     private CheckWinState cws;
     private float footTimer;
 
@@ -62,7 +64,7 @@ public class Player : MonoBehaviour
             Move();
             Jump();
             Push();
-            reset();
+			spawnDC ();
         }
         else if (!selected)
         {
@@ -73,71 +75,85 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Move()
-    {
-        if (!grounded && Input.GetAxisRaw("Horizontal") != previousAxispos)
-        {
-            BaseSpeed = 0;
-            outsideForce = false;
-        }
-        previousAxispos = Input.GetAxisRaw("Horizontal");
+	public void Move()
+	{
+		if (!grounded && Input.GetAxisRaw("Horizontal") != previousAxispos)
+		{
+			BaseSpeed = 0;
+			outsideForce = false;
+		}
+		previousAxispos = Input.GetAxisRaw("Horizontal");
 
-        //MOVING CODE
+		//MOVING CODE
 
-        //anim.SetFloat("velocityY", rb.velocity.y);
-        if (!outsideForce && hanging == false)
-        {
+		//anim.SetFloat("velocityY", rb.velocity.y);
+		if ((!outsideForce && hanging == false) && (canMove))
+		{
 
-            if (Input.GetAxisRaw("Horizontal") != 0)
-            {
-                anim.SetBool("Walking", true);
+			if (Input.GetAxisRaw("Horizontal") != 0)
+			{
+				anim.SetBool("Walking", true);
 
-                if (grounded)
-                {
-                    //FOOTSTEPS
-                    footSound();
-                    if (footTimer > 0)
-                    {
-                        footTimer -= Time.deltaTime;
-                    }
-                    if (footTimer < 0)
-                    {
-                        footTimer = 0;
-                    }
-                }
+				if (grounded)
+				{
+					//FOOTSTEPS
+					footSound();
+					if (footTimer > 0)
+					{
+						footTimer -= Time.deltaTime;
+					}
+					if (footTimer < 0)
+					{
+						footTimer = 0;
+					}
+				}
 
 
-                //FOOTSTEPS END
+				//FOOTSTEPS END
 
-                //MOVE
-                rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
-                transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale) * scaleX, scaleY);
+				//MOVE
+				rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Mathf.Sign(rb.gravityScale) + BaseSpeed, rb.velocity.y);
+				transform.localScale = new Vector2(Mathf.Sign(Input.GetAxisRaw("Horizontal")) * Mathf.Sign(rb.gravityScale) * scaleX, scaleY);
 
-            }
-            else if((int)Input.GetAxisRaw("Horizontal") == 0)
-            {
-                anim.SetBool("Walking", false);
-                rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
-            }
-        }
-    }
+			}
+			else if((int)Input.GetAxisRaw("Horizontal") == 0)
+			{
+				anim.SetBool("Walking", false);
+				rb.velocity = new Vector2(BaseSpeed, rb.velocity.y);
+			}
+		}
+	}
 
-    private void footSound()
-    {
-        if(footTimer == 0)
-        {
-            int random = Random.Range(1, 6);
-            SoundManager.instance.PlaySound(MoveSound + random);
-            footTimer = footCoolDown;
-        }
-    }
+	private void footSound()
+	{
+		if(footTimer == 0)
+		{
+			int random = Random.Range(1, 6);
+			SoundManager.instance.PlaySound(MoveSound + random);
+			footTimer = footCoolDown;
+		}
+	}
 
+	private void spawnDC() {
+		if (spawnDustCloud) {
+			spawnDustCloud = false;
+			Vector3 cloudPos = transform.position;
+			if (!isHuggingWall) {
+				cloudPos.y += raycastYOffset;
+			}
+			GameObject dc = Instantiate (DustCloud, cloudPos, transform.rotation);
+			dc.GetComponent<DustCloudScript> ().setStandardValues ();
+			if (isHuggingWall) {
+				dc.GetComponent<DustCloudScript> ().setVelocity(new Vector2(0, rb.velocity.y/2));
+			}
+		}
+	}
 
     public void Jump()
     {
         //JUMPCODE
 
-        if ((grounded || hanging) && Input.GetButtonDown("Jump"))
+		if ((grounded || hanging) && Input.GetButtonDown("Jump"))
         {
             hanging = false;
 
@@ -189,6 +205,9 @@ public class Player : MonoBehaviour
         }
         else
         {
+			if (hasPlayed) {
+				rb.velocity = new Vector2 (0, rb.velocity.y);
+			}
             hasPlayed = false;
             anim.SetBool("IsPushing", false);
             SoundManager.instance.StopSound(PushingSound);
@@ -201,7 +220,7 @@ public class Player : MonoBehaviour
         outsideForce = false;
         if(other.gameObject.tag != "Stick")
         {
-            canMove = true;
+			canMove = !(anim.GetBool ("Dead"));
         }
 
         if (other.gameObject.tag == "Platform")
@@ -217,42 +236,19 @@ public class Player : MonoBehaviour
         anim.SetBool("Dead", true);
         AnimatorClipInfo[] info = anim.GetCurrentAnimatorClipInfo(0);
         yield return new WaitForSeconds(info.Length);
-        anim.SetBool("Dead", false);
+		anim.SetBool("Dead", false);
+		canMove = true;
+		canJump = true;
 
-        this.transform.position = standardPosition;
-		rb.velocity = Vector3.zero;
-        
+		this.transform.position = standardPosition;
 	}
 
     public void resetPlayerPosition()
     {
+		canMove = false;
+		canJump = false;
+		rb.velocity = Vector3.zero;
         StartCoroutine(resetDeath());
-    }
-
-    public void reset()
-    {
-        if (!cws.crystalCollected)
-        {
-            if (Input.GetButton("Reset"))
-            {
-                resetTimer += Time.deltaTime;
-                Debug.Log(resetTimer);
-
-                if (resetTimer >= timeToReset)
-                {
-                    //RESET LEVEL
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
-            }
-            else
-            {
-                resetTimer = 0;
-            }
-        }
-        else
-        {
-            resetTimer = 0;
-        }
     }
 
     public void ToTitle()

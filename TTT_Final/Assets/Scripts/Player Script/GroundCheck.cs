@@ -14,6 +14,9 @@ public class GroundCheck : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+		if (!p.grounded) {
+			p.spawnDustCloud = true;
+		}
         p.grounded = true;
     }
 
@@ -27,10 +30,13 @@ public class GroundCheck : MonoBehaviour {
         if (collision.gameObject.CompareTag("Wall"))
         {
             SoundManager.instance.PlaySound(WallContactSound);
+			p.isHuggingWall = true;
+			p.spawnDustCloud = true;
         }
         else
         {
             SoundManager.instance.PlaySound(LandingGroundSound);
+			p.isHuggingWall = false;
         }
     }
 }

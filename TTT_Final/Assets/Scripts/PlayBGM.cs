@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayBGM : MonoBehaviour {
 
-	public string bgmToPlay;
+	public string birdAmbience;
 
 	void Start () {
-		SoundManager.instance.PlaySound (bgmToPlay);
+		SoundManager.instance.PlaySound(birdAmbience);
 		SceneManager.sceneLoaded += stopSoundOnLevelLoad;
 	}
 
 	void stopSoundOnLevelLoad(Scene scene, LoadSceneMode mode) {
-		SoundManager.instance.StopSound (bgmToPlay);
+		SoundManager.instance.StopSound (birdAmbience);
 		SceneManager.sceneLoaded -= stopSoundOnLevelLoad;
 	}
 }
